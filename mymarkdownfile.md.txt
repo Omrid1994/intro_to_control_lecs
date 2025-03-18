@@ -1,0 +1,9 @@
+#Introduction to Control Theory
+
+Welcome to the introduction to control theory course!
+
+(section-label-1)=
+## Lesson 1
+```{tip}
+Some text that will give you readers some tips!
+```

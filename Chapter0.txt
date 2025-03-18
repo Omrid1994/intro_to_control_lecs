@@ -1,0 +1,135 @@
+# Introduction to Control Theory
+
+**Author:** Michael Margaliot  
+**Date:** \today
+
+```{tableofcontents}
+```
+
+---
+
+# Chapter 0: Matrix Theory {#chap:matrixtheory}
+
+Control theory uses tools from many fields of mathematics, including matrix theory, complex analysis, and the qualitative theory of dynamical systems. Here, we review some required tools from matrix theory.
+
+## Linear Independence
+
+Let \(x^1, \dots, x^n\) denote \(n\) vectors in \(\mathbb{R}^n\). The vectors are said to be linearly independent if the equation:
+
+$$
+c_1 x^1 + \dots + c_n x^n = 0,
+$$
+
+with \(c_i \in \mathbb{R}\), holds only for the trivial choice \(c_1 = \dots = c_n = 0\). If the vectors are linearly independent, then they span \(\mathbb{R}^n\), that is, for any \(v \in \mathbb{R}^n\), there exist \(d_1, \dots, d_n \in \mathbb{R}\) such that:
+
+$$
+d_1 x^1 + \dots + d_n x^n = v.
+$$
+
+Let \( \mathbb{R}^{n \times n} \) denote the set of all \(n \times n\) real matrices. Let \(I_n\) be the \(n \times n\) identity matrix. Let \(e^i\) denote the \(i\)-th column of \(I_n\).
+
+## Singular Matrices
+
+```{admonition} Definition
+A matrix \( A \in \mathbb{R}^{n \times n} \) is called **invertible (non-singular)** if there exists a matrix \( B \in \mathbb{R}^{n \times n} \) such that:
+$$
+AB = I_n.
+$$
+In this case, \( B \) is called the **inverse** of \( A \) and is denoted by \( A^{-1} \), so that:
+$$
+A A^{-1} = I_n.
+$$
+```
+
+```{exercise} Singular Matrix Example
+Show that the matrix \(
+A = \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+\) is not invertible.
+```
+
+```{solution}
+If \( A \) is invertible, then there exists a matrix \( B \) such that \( AB = I_2 \), that is:
+$$
+\begin{bmatrix} 0 & 0 \\ b_{21} & b_{22} \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+$$
+Clearly, this is impossible, so \( A \) is singular.
+```
+
+## Eigenvalues and Eigenvectors
+
+```{admonition} Definition
+A pair \( \lambda \in \mathbb{C}, v \in \mathbb{C}^n \setminus \{0\} \) is called an **eigenvalue-eigenvector pair** of \( A \) if:
+$$
+Av = \lambda v.
+$$
+```
+
+```{exercise}
+Let \(
+A = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+\). Show that \((i, \begin{bmatrix}1 \\ -i \end{bmatrix})\) and \((-i, \begin{bmatrix}1 \\ i \end{bmatrix})\) are eigenvalue-eigenvector pairs of \( A \).
+```
+
+```{solution}
+Substituting \( \lambda = i \) and \( v = \begin{bmatrix} 1 \\ -i \end{bmatrix} \):
+$$
+Av = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 \\ -i \end{bmatrix} = \begin{bmatrix} i \\ 1 \end{bmatrix},
+$$
+and:
+$$
+\lambda v = i \begin{bmatrix} 1 \\ -i \end{bmatrix} = \begin{bmatrix} i \\ 1 \end{bmatrix}.
+$$
+Thus, \( A v = \lambda v \). A similar calculation shows that \( (-i, \begin{bmatrix}1 \\ i \end{bmatrix}) \) is also an eigenvalue-eigenvector pair.
+```
+
+## The Cayley-Hamilton Theorem
+
+```{admonition} Definition
+The **characteristic polynomial** of an \(n \times n\) matrix \( A \) is defined as:
+$$
+p_A(\lambda) = \det(\lambda I_n - A).
+$$
+```
+
+The Cayley-Hamilton theorem states:
+
+```{theorem}
+Let \( A \in \mathbb{R}^{n \times n} \). Then:
+$$
+p_A(A) = 0.
+$$
+```
+
+```{exercise}
+Prove the Cayley-Hamilton theorem for diagonal matrices and then for diagonalizable matrices.
+```
+
+## Matrix Exponential
+
+```{admonition} Definition
+The **matrix exponential** of \( A \), denoted \( e^A \) or \( \exp(A) \), is defined as:
+$$
+e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!}.
+$$
+```
+
+For a diagonalizable matrix \( A \) with \( A = T D T^{-1} \), the matrix exponential simplifies to:
+$$
+e^{At} = T e^{Dt} T^{-1}.
+$$
+
+## Stability of Matrices
+
+A matrix \( A \in \mathbb{C}^{n \times n} \) is called **stable** if:
+$$
+\lim_{t \to \infty} e^{At} = 0.
+$$
+
+```{exercise}
+Let \( A \in \mathbb{R}^{n \times n} \). Prove that \( A \) is stable if and only if all its eigenvalues have negative real parts.
+```
+
+---
+
+This document is now **fully converted to MyST Markdown for Jupyter Book**! Let me know if you need any further adjustments. 🚀
+
