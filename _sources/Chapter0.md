@@ -430,7 +430,7 @@ Then
 $$
  e^{\lambda t}=e^{(\alpha+i\beta )t}
  =e^{\alpha t} (\cos(\beta t)+i \sin(\beta t)).
-$$$
+$$
 
 Thus, $\lim_{t\to\infty} e^{\lambda t}=0$ iff $\alpha<0$, that is, iff the real part of $\lambda$ is negative. Now let $D=\text{diag}(\lambda_1,\dots,\lambda_n)$, with $\lambda_i\in \mathbb{C}$. 
 Since
