@@ -270,16 +270,17 @@ The <em>characteristic polynomial</em> of an $n\times n$ matrix $A$ is
 
  Note that $p_A(\lambda)$ is a polynomial of degree $n$  in $\lambda$, so it can be written as
  
-$$
-    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+&middot;&middot;&middot;+c_1 \lambda+c_0.
-$$
+```{math}
+    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1 \lambda+c_0.
+```
+
 In particular, $p_A(0)=c_0$ and using {eq}'eq:def_char_poly' gives $c_0=\det(-A)=(-1)^n\det(A)$.
     
 Replacing the scalar variable $\lambda$ with the matrix $A$, one can define an analogous \emph{matrix polynomial} expression,
 
-$$
-    p_A(A)=A^n+c_{n-1}A^{n-1}+&middot;&middot;&middot;+c_1 A+c_0 I_n.
-$$
+```{math}
+    p_A(A)=A^n+c_{n-1}A^{n-1}+\dots+c_1 A+c_0 I_n.
+```
 
 ````{prf:theorem} The Cayley-Hamilton Theorem
 :label: thm:cayley_hamilton
@@ -333,6 +334,7 @@ Consider the following linear time-invariant (LTI) system
 ```
 where $x_0\in\mathbb{R}^n$, $A\in\mathbb{R}^{n\times n}$. The solution of {eq}`eq:homo_lti` at time $t$ 
 is
+
 $$
     x(t)=e^{At}x_0.
 $$
@@ -346,9 +348,9 @@ $$
 Also, differentiating $z(t)$ gives 
 
 $$
-        \dot{z}(t)&=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
-        &=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\mathbb{C}dots\Big)x_0\\
-        &=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
+        \dot{z}(t)&=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
+        &=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\dots\Big)x_0\\
+        &=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
         &=Az(t).
 $$
 

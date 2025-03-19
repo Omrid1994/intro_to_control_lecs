@@ -607,15 +607,11 @@ However, every matrix is arbitrarily close to a matrix that can be diagonalized.
 </section>
 </div><p>Note that <span class="math notranslate nohighlight">\(p_A(\lambda)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span>  in <span class="math notranslate nohighlight">\(\lambda\)</span>, so it can be written as</p>
 <div class="math notranslate nohighlight">
-\[
-    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+&amp;middot;&amp;middot;&amp;middot;+c_1 \lambda+c_0.
-\]</div>
+\[    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1 \lambda+c_0.\]</div>
 <p>In particular, <span class="math notranslate nohighlight">\(p_A(0)=c_0\)</span> and using {eq}‘eq:def_char_poly’ gives <span class="math notranslate nohighlight">\(c_0=\det(-A)=(-1)^n\det(A)\)</span>.</p>
 <p>Replacing the scalar variable <span class="math notranslate nohighlight">\(\lambda\)</span> with the matrix <span class="math notranslate nohighlight">\(A\)</span>, one can define an analogous \emph{matrix polynomial} expression,</p>
 <div class="math notranslate nohighlight">
-\[
-    p_A(A)=A^n+c_{n-1}A^{n-1}+&amp;middot;&amp;middot;&amp;middot;+c_1 A+c_0 I_n.
-\]</div>
+\[    p_A(A)=A^n+c_{n-1}A^{n-1}+\dots+c_1 A+c_0 I_n.\]</div>
 <div class="proof theorem admonition" id="thm:cayley_hamilton">
 <p class="admonition-title"><span class="caption-number">Theorem 1 </span> (The Cayley-Hamilton Theorem)</p>
 <section class="theorem-content" id="proof-content">
@@ -656,10 +652,11 @@ Continuing in this fashion we conclude that we can express any <span class="math
 <span class="eqno">(8)<a class="headerlink" href="#equation-eq-homo-lti" title="Link to this equation">#</a></span>\[\begin{split}    \dot{x}(t)&amp;=Ax(t),\\
      x(0)&amp;=x_0,\nonumber\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x_0\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>. The solution of <a class="reference internal" href="#equation-eq-homo-lti">(8)</a> at time <span class="math notranslate nohighlight">\(t\)</span>
-is
-$<span class="math notranslate nohighlight">\(
+is</p>
+<div class="math notranslate nohighlight">
+\[
     x(t)=e^{At}x_0.
-\)</span>$</p>
+\]</div>
 <p>To prove this, define <span class="math notranslate nohighlight">\(z(t):=e^{At}x_0\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -668,9 +665,9 @@ $<span class="math notranslate nohighlight">\(
 <p>Also, differentiating <span class="math notranslate nohighlight">\(z(t)\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-        \dot{z}(t)&amp;=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
-        &amp;=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\mathbb{C}dots\Big)x_0\\
-        &amp;=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
+        \dot{z}(t)&amp;=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
+        &amp;=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\dots\Big)x_0\\
+        &amp;=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
         &amp;=Az(t).
 \end{split}\]</div>
 <p>Thus, <span class="math notranslate nohighlight">\(z(t)\)</span> satisfies the same differential equation as <span class="math notranslate nohighlight">\(x(t)\)</span>, with the same initial condition. By uniqueness of the solution of the LTI, this implies that <span class="math notranslate nohighlight">\(x(t)=z(t)=e^{At}x_0\)</span>.</p>
