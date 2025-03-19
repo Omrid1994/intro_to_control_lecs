@@ -138,7 +138,10 @@ so $A v =\lambda v$. A similar calculation shows that
 
 ````{prf:remark}
 Note that combining Definitions {prf:ref}`def:singular_matrix` and {prf:ref}`def:eigvalue_eigenvector` with the fact that $\det(A)$ is the product of the eigenvalues of $A$
-    implies that A \text{ is singular } \iff A \text{ has a zero eigenvalue } \iff \det(A)=0,
+    implies that 
+$$	
+	A \text{ is singular } \iff A \text{ has a zero eigenvalue } \iff \det(A)=0,
+$$	
     where $\iff$ stands  for if and only if (iff).
 {eq}`eq:eigenvalue_equation` can be written as
 
@@ -266,14 +269,14 @@ The <em>characteristic polynomial</em> of an $n\times n$ matrix $A$ is
  Note that $p_A(\lambda)$ is a polynomial of degree $n$  in $\lambda$, so it can be written as
  
 $$
-    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\mathbb{C}dots+c_1 \lambda+c_0.
+    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+...+c_1 \lambda+c_0.
 $$
 In particular, $p_A(0)=c_0$ and using {eq}'eq:def_char_poly' gives $c_0=\det(-A)=(-1)^n\det(A)$.
     
 Replacing the scalar variable $\lambda$ with the matrix $A$, one can define an analogous \emph{matrix polynomial} expression,
 
 $$
-    p_A(A)=A^n+c_{n-1}A^{n-1}+\mathbb{C}dots+c_1 A+c_0 I_n.
+    p_A(A)=A^n+c_{n-1}A^{n-1}+...+c_1 A+c_0 I_n.
 $$
 
 ````{prf:theorem} The Cayley-Hamilton Theorem
