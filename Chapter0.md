@@ -139,10 +139,12 @@ so $A v =\lambda v$. A similar calculation shows that
 ````{prf:remark}
 Note that combining Definitions {prf:ref}`def:singular_matrix` and {prf:ref}`def:eigvalue_eigenvector` with the fact that $\det(A)$ is the product of the eigenvalues of $A$
     implies that 
+	
 $$	
 	A \text{ is singular } \iff A \text{ has a zero eigenvalue } \iff \det(A)=0,
 $$	
-    where $\iff$ stands  for if and only if (iff).
+
+where $\iff$ stands  for if and only if (iff).
 {eq}`eq:eigenvalue_equation` can be written as
 
 ```{math}
@@ -159,7 +161,7 @@ Note that this equation admits $n$ solutions $\lambda_1,...,\lambda_n\in\mathbb{
 
 ```{admonition} Exercise
 	:label: exercise:det=0
-Solve equation {eq}'eq:det(lambda I-A)=0' for $A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$.
+Solve equation {eq}`eq:det(lambda I-A)=0` for $A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$.
 ```
 
 ```{admonition} Solution
