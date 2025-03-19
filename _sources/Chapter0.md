@@ -137,7 +137,7 @@ so $A v =\lambda v$. A similar calculation shows that
 ````
 
 ````{prf:remark}
-Note that combining Definitions {prf:ref}`def:singular_matrix` and {prf:ref}`def:eigvalue_eigenvector` with the fact that $\det(A)$ is the product of the eigenvalues of $A$
+Note that combining {prf:ref}`def:singular_matrix` and {prf:ref}`def:eigvalue_eigenvector` with the fact that $\det(A)$ is the product of the eigenvalues of $A$
     implies that 
 	
 $$	
@@ -270,16 +270,17 @@ The <em>characteristic polynomial</em> of an $n\times n$ matrix $A$ is
 
  Note that $p_A(\lambda)$ is a polynomial of degree $n$  in $\lambda$, so it can be written as
  
-$$
-    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+&middot;&middot;&middot;+c_1 \lambda+c_0.
-$$
-In particular, $p_A(0)=c_0$ and using {eq}'eq:def_char_poly' gives $c_0=\det(-A)=(-1)^n\det(A)$.
-    
-Replacing the scalar variable $\lambda$ with the matrix $A$, one can define an analogous \emph{matrix polynomial} expression,
+```{math}
+    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1 \lambda+c_0.
+```
 
-$$
-    p_A(A)=A^n+c_{n-1}A^{n-1}+&middot;&middot;&middot;+c_1 A+c_0 I_n.
-$$
+In particular, $p_A(0)=c_0$ and using {eq}`eq:def_char_poly` gives $c_0=\det(-A)=(-1)^n\det(A)$.
+    
+Replacing the scalar variable $\lambda$ with the matrix $A$, one can define an analogous <em>matrix polynomial</em> expression,
+
+```{math}
+    p_A(A)=A^n+c_{n-1}A^{n-1}+\dots+c_1 A+c_0 I_n.
+```
 
 ````{prf:theorem} The Cayley-Hamilton Theorem
 :label: thm:cayley_hamilton
@@ -288,7 +289,7 @@ Let $A\in\mathbb{R}^{n\times n}$. Then
 $$
     p_A(A)=0.
 $$
-Note that here $``0``$ is the zero $n\times n$ matrix.
+Note that here $"0"$ is the zero $n\times n$ matrix.
 ````
 
 ````{admonition} Exercise
@@ -299,14 +300,14 @@ One implication of the Cayley-Hamilton Theorem is that
 
 ```{math}
 :label: eq:expressan
-A^n=-c_{n-1}A^{n-1}-...-c_1 A-c_0 I_n,
+A^n=-c_{n-1}A^{n-1}-\dots-c_1 A-c_0 I_n,
 ```
 that is, we can express $A^n$ as a weighted sum of matrices in the set $\mathcal A:=\{A^0,\dots,A^{n-1}\}$. Multiplying {eq}`eq:expressan` by $A$ gives 
 
 ```{math}
 :label: eq:recurrence
 \begin{aligned}
-A^{n+1} &= -c_{n-1}A^{n} - ... - c_1 A^2 - c_0 A,
+A^{n+1} &= -c_{n-1}A^{n} - \dots - c_1 A^2 - c_0 A,
 \end{aligned}
 ```
 
@@ -333,6 +334,7 @@ Consider the following linear time-invariant (LTI) system
 ```
 where $x_0\in\mathbb{R}^n$, $A\in\mathbb{R}^{n\times n}$. The solution of {eq}`eq:homo_lti` at time $t$ 
 is
+
 $$
     x(t)=e^{At}x_0.
 $$
@@ -346,9 +348,9 @@ $$
 Also, differentiating $z(t)$ gives 
 
 $$
-        \dot{z}(t)&=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
-        &=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\mathbb{C}dots\Big)x_0\\
-        &=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\mathbb{C}dots\Big)x_0\\
+        \dot{z}(t)&=\frac{d}{dt}\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
+        &=\Big(0+\frac{A}{1!}+\frac{2A^2t}{2!} +\frac{3A^3t^2}{3!}+\dots\Big)x_0\\
+        &=A\Big(I_n+\frac{At}{1!}+\frac{A^2t^2}{2!}+\dots\Big)x_0\\
         &=Az(t).
 $$
 
@@ -358,7 +360,7 @@ Let $D=\text{diag}(\lambda_1,\dots,\lambda_n)$ denote the $n\times n$ diagonal m
 
 ```{math}
 :label: eq:exp_diag
-e^D=\text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).
+e^{D} = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).
 ```
 
 (prove this).
