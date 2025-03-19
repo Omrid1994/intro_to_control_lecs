@@ -491,8 +491,11 @@ A A^{-1} =I_n.
 <p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Note that combining Definitions <a class="reference internal" href="#def:singular_matrix">Definition 1</a> and <a class="reference internal" href="#def:eigvalue_eigenvector">Definition 2</a> with the fact that <span class="math notranslate nohighlight">\(\det(A)\)</span> is the product of the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>
-implies that A \text{ is singular } \iff A \text{ has a zero eigenvalue } \iff \det(A)=0,
-where <span class="math notranslate nohighlight">\(\iff\)</span> stands  for if and only if (iff).
+implies that
+$<span class="math notranslate nohighlight">\(	
+	A \text{ is singular } \iff A \text{ has a zero eigenvalue } \iff \det(A)=0,
+\)</span><span class="math notranslate nohighlight">\(	
+    where \)</span>\iff$ stands  for if and only if (iff).
 <a class="reference internal" href="#equation-eq-eigenvalue-equation">(1)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-eigenvalue-equation2">
 <span class="eqno">(2)<a class="headerlink" href="#equation-eq-eigenvalue-equation2" title="Link to this equation">#</a></span>\[    \big(\lambda I_n-A\big)v=0.\]</div>
@@ -605,13 +608,13 @@ However, every matrix is arbitrarily close to a matrix that can be diagonalized.
 </div><p>Note that <span class="math notranslate nohighlight">\(p_A(\lambda)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span>  in <span class="math notranslate nohighlight">\(\lambda\)</span>, so it can be written as</p>
 <div class="math notranslate nohighlight">
 \[
-    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\mathbb{C}dots+c_1 \lambda+c_0.
+    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+...+c_1 \lambda+c_0.
 \]</div>
 <p>In particular, <span class="math notranslate nohighlight">\(p_A(0)=c_0\)</span> and using {eq}‘eq:def_char_poly’ gives <span class="math notranslate nohighlight">\(c_0=\det(-A)=(-1)^n\det(A)\)</span>.</p>
 <p>Replacing the scalar variable <span class="math notranslate nohighlight">\(\lambda\)</span> with the matrix <span class="math notranslate nohighlight">\(A\)</span>, one can define an analogous \emph{matrix polynomial} expression,</p>
 <div class="math notranslate nohighlight">
 \[
-    p_A(A)=A^n+c_{n-1}A^{n-1}+\mathbb{C}dots+c_1 A+c_0 I_n.
+    p_A(A)=A^n+c_{n-1}A^{n-1}+...+c_1 A+c_0 I_n.
 \]</div>
 <div class="proof theorem admonition" id="thm:cayley_hamilton">
 <p class="admonition-title"><span class="caption-number">Theorem 1 </span> (The Cayley-Hamilton Theorem)</p>
