@@ -153,7 +153,7 @@ where $\iff$ stands  for if and only if (iff).
 ```
 Thus, the eigenvalues of $A$ are the values $\lambda$ such that $\lambda I_n-A$ is a singular matrix, i.e. the roots of the equation
 ```{math}
-:label: eq:eq:det(lambda I-A)=0
+:label: eq:det(lambda I-A)=0
     \det\big(\lambda I_n-A\big)=0.
 ```
 Note that this equation admits $n$ solutions $\lambda_1,...,\lambda_n\in\mathbb{C}$.
@@ -207,12 +207,12 @@ Suppose that $A$ admits $n$ linearly independent eigenvectors $v^1,\dots,v^n\in\
 Let $T:=\begin{bmatrix}
     v^1 &v^2 &\dots& v^n
 \end{bmatrix}$. Then
+
 $$
 A T= T \text{diag}(\lambda_1,\dots,\lambda_n),
 $$
-and thus 
-$T^{-1} A T $
-is diagonal, so $A$ is diagonalizable. 
+
+and thus $T^{-1} A T $ is diagonal, so $A$ is diagonalizable. 
 ````
 
 Fix $A\in\mathbb{R}^{n\times n}$   and denote  its eigenvalue-eigenvector pairs by $(\lambda_i,v^i)$, $i=1,\dots,n$. Suppose that $A $ is diagonalizable, that is, there exists a matrix $T$ such that $T^{-1}AT$ is diagonal. Then

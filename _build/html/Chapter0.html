@@ -501,13 +501,13 @@ implies that</p>
 <div class="math notranslate nohighlight" id="equation-eq-eigenvalue-equation2">
 <span class="eqno">(2)<a class="headerlink" href="#equation-eq-eigenvalue-equation2" title="Link to this equation">#</a></span>\[    \big(\lambda I_n-A\big)v=0.\]</div>
 <p>Thus, the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are the values <span class="math notranslate nohighlight">\(\lambda\)</span> such that <span class="math notranslate nohighlight">\(\lambda I_n-A\)</span> is a singular matrix, i.e. the roots of the equation</p>
-<div class="math notranslate nohighlight" id="equation-eq-eq-det-lambda-i-a-0">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-eq-det-lambda-i-a-0" title="Link to this equation">#</a></span>\[    \det\big(\lambda I_n-A\big)=0.\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-det-lambda-i-a-0">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-det-lambda-i-a-0" title="Link to this equation">#</a></span>\[    \det\big(\lambda I_n-A\big)=0.\]</div>
 <p>Note that this equation admits <span class="math notranslate nohighlight">\(n\)</span> solutions <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_n\in\mathbb{C}\)</span>.</p>
 </section>
 </div><div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
-<p>Solve equation <code class="xref eq docutils literal notranslate"><span class="pre">eq:det(lambda</span> <span class="pre">I-A)=0</span></code> for <span class="math notranslate nohighlight">\(A=\begin{bmatrix}0&amp;-1\\1&amp;0\end{bmatrix}\)</span>.</p>
+<p>Solve equation <a class="reference internal" href="#equation-eq-det-lambda-i-a-0">(3)</a> for <span class="math notranslate nohighlight">\(A=\begin{bmatrix}0&amp;-1\\1&amp;0\end{bmatrix}\)</span>.</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
@@ -550,13 +550,12 @@ is diagonal.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(A\)</span> admits <span class="math notranslate nohighlight">\(n\)</span> linearly independent eigenvectors <span class="math notranslate nohighlight">\(v^1,\dots,v^n\in\mathbb{C}^n\)</span>.
 Let <span class="math notranslate nohighlight">\(T:=\begin{bmatrix}
     v^1 &amp;v^2 &amp;\dots&amp; v^n
-\end{bmatrix}\)</span>. Then
-$<span class="math notranslate nohighlight">\(
+\end{bmatrix}\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
 A T= T \text{diag}(\lambda_1,\dots,\lambda_n),
-\)</span><span class="math notranslate nohighlight">\(
-and thus 
-\)</span>T^{-1} A T <span class="math notranslate nohighlight">\(
-is diagonal, so \)</span>A$ is diagonalizable.</p>
+\]</div>
+<p>and thus <span class="math notranslate nohighlight">\(T^{-1} A T \)</span> is diagonal, so <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable.</p>
 </section>
 </div><p>Fix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>   and denote  its eigenvalue-eigenvector pairs by <span class="math notranslate nohighlight">\((\lambda_i,v^i)\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,n\)</span>. Suppose that <span class="math notranslate nohighlight">\(A \)</span> is diagonalizable, that is, there exists a matrix <span class="math notranslate nohighlight">\(T\)</span> such that <span class="math notranslate nohighlight">\(T^{-1}AT\)</span> is diagonal. Then</p>
 <div class="amsmath math notranslate nohighlight">
