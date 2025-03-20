@@ -178,6 +178,7 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter1.html">The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Linear Time-Invariant Control Systems</a></li>
 </ul>
 
     </div>
@@ -335,10 +336,22 @@
    <a href="#cap-definition-9"><strong>definition-9</strong></a> | 
    <a href="#cap-example-10"><strong>example-10</strong></a> | 
    <a href="#cap-example-11"><strong>example-11</strong></a> | 
+   <a href="#cap-example-4"><strong>example-4</strong></a> | 
    <a href="#cap-example-5"><strong>example-5</strong></a> | 
+   <a href="#cap-example-6"><strong>example-6</strong></a> | 
+   <a href="#cap-example-9"><strong>example-9</strong></a> | 
+   <a href="#cap-example:RLC_circuit"><strong>example:RLC_circuit</strong></a> | 
    <a href="#cap-prop:B_close_diagonalizbe"><strong>prop:B_close_diagonalizbe</strong></a> | 
+   <a href="#cap-prop:G_rational_Stable"><strong>prop:G_rational_Stable</strong></a> | 
    <a href="#cap-prop:linear_ind"><strong>prop:linear_ind</strong></a> | 
+   <a href="#cap-prop:stab_rou_necen_suff"><strong>prop:stab_rou_necen_suff</strong></a> | 
+   <a href="#cap-prop:stable_lop"><strong>prop:stable_lop</strong></a> | 
+   <a href="#cap-proposition-5"><strong>proposition-5</strong></a> | 
+   <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
+   <a href="#cap-remark-2"><strong>remark-2</strong></a> | 
    <a href="#cap-remark-3"><strong>remark-3</strong></a> | 
+   <a href="#cap-theorem-10"><strong>theorem-10</strong></a> | 
+   <a href="#cap-theorem-11"><strong>theorem-11</strong></a> | 
    <a href="#cap-thm:cayley_hamilton"><strong>thm:cayley_hamilton</strong></a>
    </div>
 
@@ -400,12 +413,44 @@
        <a href="Chapter0.html#example-11"><code class="xref">example-11</code></a> <em>(Chapter0)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-4"><td></td><td>
+       <strong>example-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#example-4"><code class="xref">example-4</code></a> <em>(Chapter2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-5"><td></td><td>
        <strong>example-5</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="Chapter0.html#example-5"><code class="xref">example-5</code></a> <em>(Chapter0)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-6"><td></td><td>
+       <strong>example-6</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#example-6"><code class="xref">example-6</code></a> <em>(Chapter2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-9"><td></td><td>
+       <strong>example-9</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#example-9"><code class="xref">example-9</code></a> <em>(Chapter2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example:RLC_circuit"><td></td><td>
+       <strong>example:RLC_circuit</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#example:RLC_circuit"><code class="xref">example:RLC_circuit</code></a> <em>(Chapter2)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:B_close_diagonalizbe"><td></td><td>
@@ -416,6 +461,14 @@
        <a href="Chapter0.html#prop:B_close_diagonalizbe"><code class="xref">prop:B_close_diagonalizbe</code></a> <em>(Chapter0)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:G_rational_Stable"><td></td><td>
+       <strong>prop:G_rational_Stable</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#prop:G_rational_Stable"><code class="xref">prop:G_rational_Stable</code></a> <em>(Chapter2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:linear_ind"><td></td><td>
        <strong>prop:linear_ind</strong></td><td></td></tr>
      <tr>
@@ -424,6 +477,46 @@
        <a href="Chapter0.html#prop:linear_ind"><code class="xref">prop:linear_ind</code></a> <em>(Chapter0)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:stab_rou_necen_suff"><td></td><td>
+       <strong>prop:stab_rou_necen_suff</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#prop:stab_rou_necen_suff"><code class="xref">prop:stab_rou_necen_suff</code></a> <em>(Chapter2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:stable_lop"><td></td><td>
+       <strong>prop:stable_lop</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#prop:stable_lop"><code class="xref">prop:stable_lop</code></a> <em>(Chapter2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-proposition-5"><td></td><td>
+       <strong>proposition-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#proposition-5"><code class="xref">proposition-5</code></a> <em>(Chapter2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-0"><td></td><td>
+       <strong>remark-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#remark-0"><code class="xref">remark-0</code></a> <em>(Chapter2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-2"><td></td><td>
+       <strong>remark-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#remark-2"><code class="xref">remark-2</code></a> <em>(Chapter2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-3"><td></td><td>
        <strong>remark-3</strong></td><td></td></tr>
      <tr>
@@ -431,6 +524,22 @@
        <td>
        <a href="Chapter0.html#remark-3"><code class="xref">remark-3</code></a> <em>(Chapter0)</em></td><td>
        <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-10"><td></td><td>
+       <strong>theorem-10</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#theorem-10"><code class="xref">theorem-10</code></a> <em>(Chapter2)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-11"><td></td><td>
+       <strong>theorem-11</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2.html#theorem-11"><code class="xref">theorem-11</code></a> <em>(Chapter2)</em></td><td>
+       <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm:cayley_hamilton"><td></td><td>
        <strong>thm:cayley_hamilton</strong></td><td></td></tr>

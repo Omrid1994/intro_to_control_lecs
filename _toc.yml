@@ -6,6 +6,7 @@ root: title
 chapters:
 - file: Chapter0
 - file: Chapter1
+- file: Chapter2
 #- file: markdown
 #- file: notebooks
 #- file: markdown-notebooks
