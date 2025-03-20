@@ -62,6 +62,7 @@ sphinx:
   extra_extensions:
     - sphinx_proof
   config:
+    numfig: true
     latex_elements:
       preamble: |
         % Your custom LaTeX commands here
