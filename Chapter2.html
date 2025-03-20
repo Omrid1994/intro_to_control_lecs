@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linear Time-Invariant Control Systems &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Challenge of Control" href="Chapter1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">The Challenge of Control</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Time-Invariant Control Systems</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Chapter2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Time-Invariant Control Systems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function">Transfer function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-lti">Stability of the LTI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#routh-stability-test">Routh Stability Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-transfer-function">Stability of the transfer function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-time-invariant-control-systems">
+<h1>Linear Time-Invariant Control Systems<a class="headerlink" href="#linear-time-invariant-control-systems" title="Link to this heading">#</a></h1>
+<p>A linear time-invariant (LTI) control system <span class="math notranslate nohighlight">\(\Sigma\)</span> is given  by the
+state-space equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+		\dot{x}(t)&amp;=Ax(t)+Bu(t),\\
+		y(t)&amp;=Cx(t)+Du(t),
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x(t)\in\mathbb{R}^n\)</span> is the state vector, <span class="math notranslate nohighlight">\(u(t)\in\mathbb{R}^m\)</span> is the input, <span class="math notranslate nohighlight">\(y(t)\in\mathbb{R}^p\)</span> is the output. The matrices <span class="math notranslate nohighlight">\(A,B,C,D\)</span> have suitable dimensions:</p>
+<div class="math notranslate nohighlight">
+\[
+    A\in\mathbb{R}^{n\times n},\;B\in\mathbb{R}^{n\times m},\;C\in\mathbb{R}^{p\times n},\;D\in\mathbb{R}^{p\times m}.
+\]</div>
+<p>The control system <span class="math notranslate nohighlight">\(\Sigma\)</span> is called single-input single-output (SISO) if <span class="math notranslate nohighlight">\(m=p=1\)</span>,  multiple-input single-output (MISO) if <span class="math notranslate nohighlight">\(m&gt;1\)</span> and <span class="math notranslate nohighlight">\(p=1\)</span>, etc.  The value <span class="math notranslate nohighlight">\(n\)</span> is called the <strong>order</strong> of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<section id="transfer-function">
+<h2>Transfer function<a class="headerlink" href="#transfer-function" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\hat{y}(s)\)</span> denote the Laplace transform of the output of <span class="math notranslate nohighlight">\(\Sigma\)</span>, that is, <span class="math notranslate nohighlight">\(\hat y(s)=\int_0^\infty e^{-st}y(t)dt\)</span>.
+Let <span class="math notranslate nohighlight">\(\hat{u}(s)\)</span> denote the Laplace transform of the input of <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+The transfer function of <span class="math notranslate nohighlight">\(\Sigma\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-transfer-function">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-transfer-function" title="Link to this equation">#</a></span>\[	G(s):= \frac{\hat y(s)}{\hat u(s)}=C(sI_n-A)^{-1}B+D, \]</div>
+<p>and this is well defined for any <span class="math notranslate nohighlight">\(s\notin\sigma(A)\)</span>, where <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denotes the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Recall that the inverse of a square invertible matrix <span class="math notranslate nohighlight">\(H\)</span> satisfies <span class="math notranslate nohighlight">\(H^{-1}=\frac{1}{\det(H)}\text{adj}(H)\)</span>, where <span class="math notranslate nohighlight">\(\text{adj}(H)\)</span> is the adjugate matrix of <span class="math notranslate nohighlight">\(H\)</span>. Every entry of <span class="math notranslate nohighlight">\(\text{adj}(H) \)</span> is the determinant  of an <span class="math notranslate nohighlight">\((n-1)\times (n-1)\)</span> submatrix of <span class="math notranslate nohighlight">\(H\)</span>. Thus,</p>
+<div class="math notranslate nohighlight" id="equation-eq-gs-adjugate">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-gs-adjugate" title="Link to this equation">#</a></span>\[	G(s)=C \frac{1}{\det(s I_n-A)}\text{adj}(s I_n-A )B+D.\]</div>
+<p>A transfer function <span class="math notranslate nohighlight">\(Q=Q(s)\)</span> is called  rational if it is the ratio of two polynomials in <span class="math notranslate nohighlight">\(s\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is rational. A rational transfer function <span class="math notranslate nohighlight">\(Q\)</span> is called proper if <span class="math notranslate nohighlight">\(\lim_{s\to\infty}Q(s)\)</span> exists and is finite, and strictly proper if this limit is zero. By <a class="reference internal" href="#equation-eq-gs-adjugate">(11)</a>, <span class="math notranslate nohighlight">\(\lim_{s\to \infty} G(s)=D\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is proper. It is strictly proper if <span class="math notranslate nohighlight">\(D=0\)</span>.</p>
+<p>Write the rational transfer function <span class="math notranslate nohighlight">\(G\)</span> as the ratio of two polynomials</p>
+<div class="math notranslate nohighlight">
+\[
+G(s)=\frac{N(s)}{D(s)}.
+\]</div>
+<p>Then the zeros of <span class="math notranslate nohighlight">\(G\)</span> are the values <span class="math notranslate nohighlight">\(s\)</span> such that <span class="math notranslate nohighlight">\(N(s)=0\)</span>, and the poles of <span class="math notranslate nohighlight">\(G\)</span> are the values <span class="math notranslate nohighlight">\(s\)</span> such that <span class="math notranslate nohighlight">\(D(s)=0\)</span>.</p>
+<p>By <a class="reference internal" href="#equation-eq-gs-adjugate">(11)</a>, the  poles of <span class="math notranslate nohighlight">\(G\)</span> are a subset of <span class="math notranslate nohighlight">\(\sigma(A)\)</span>.</p>
+<p>The system <span class="math notranslate nohighlight">\(\Sigma\)</span> is called minimal if there does not exist an LTI system with a smaller order than <span class="math notranslate nohighlight">\(n\)</span> that gives the same transfer function. If the system <span class="math notranslate nohighlight">\(\Sigma\)</span> is minimal then the  poles of <span class="math notranslate nohighlight">\(G\)</span> are  the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Not every transfer function is rational. For example, suppose that a system is described by the input-output relation <span class="math notranslate nohighlight">\(y(t)=u(t-\tau)\)</span>, with <span class="math notranslate nohighlight">\(\tau&gt;0\)</span>, that is, the output is equal to the input delayed by <span class="math notranslate nohighlight">\(\tau\)</span> seconds.
+Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    G(s) &amp; = \frac{\hat{y}(s)}{\hat{u}(s) }\\
+    &amp;=\frac{e^{-\tau s}\hat{u}(s)}{\hat{u}(s)}\\
+    &amp;=e^{-\tau s}.
+\end{split}\]</div>
+</section>
+</div></section>
+<section id="stability-of-the-lti">
+<h2>Stability of the LTI<a class="headerlink" href="#stability-of-the-lti" title="Link to this heading">#</a></h2>
+<p>The system <span class="math notranslate nohighlight">\(\Sigma\)</span> is called <strong>stable</strong> if the matrix <span class="math notranslate nohighlight">\(A\)</span> is stable (see Chapter 0).
+This means that if <span class="math notranslate nohighlight">\(u=0\)</span>, then starting from an arbitrary initial state <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span>, the trajectory <span class="math notranslate nohighlight">\(x(t)=e^{At}x(0)\)</span> will tend to zero as <span class="math notranslate nohighlight">\(t\to\infty\)</span>.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(A\)</span> is stable if the real part of every eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> is negative. Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbb{C}_- &amp;: = \{s\in\mathbb{C}\;|\;\text{Re}(s)&lt;0\},\\
+    \mathbb{C}_+&amp; :=\{s\in\mathbb{C}\;|\;\text{Re}(s)&gt;0\},\\
+    i\mathbb{R}&amp;:=\{i\omega\;|\;\omega\in\mathbb{R}\}.
+\end{split}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(\mathbb{C}=\mathbb{C}_-\cup i\mathbb{R}\cup \mathbb{C}_+\)</span>. Then <span class="math notranslate nohighlight">\(\Sigma\)</span> is stable if and only if <span class="math notranslate nohighlight">\(\sigma(A)\subset\mathbb{C}_-\)</span>.
+We mention that the LTI system <span class="math notranslate nohighlight">\(\Sigma\)</span> is called marginally stable if <span class="math notranslate nohighlight">\(\sigma(A)\subset (\mathbb{C}_-\cup i\mathbb{R})\)</span>.</p>
+<div class="proof example admonition" id="example:RLC_circuit">
+<p class="admonition-title"><span class="caption-number">Example 4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the following electrical circuit:</p>
+<figure class="align-default" id="fig-rlc-circuit">
+<a class="reference internal image-reference" href="_images/RLC_low-pass_pure_white_bg.png"><img alt="_images/RLC_low-pass_pure_white_bg.png" src="_images/RLC_low-pass_pure_white_bg.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">RLC Circuit.</span><a class="headerlink" href="#fig-rlc-circuit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> is the inductance of the inductor, <span class="math notranslate nohighlight">\(C\)</span> is the capacitance of the capacitor. Let <span class="math notranslate nohighlight">\(x_1(t):=i_L(t)\)</span> be the current through the inductor, and let <span class="math notranslate nohighlight">\(x_2(t):=v_C(t)\)</span> be the voltage on  the capacitor. The input is <span class="math notranslate nohighlight">\(u(t):=V_{in}(t)\)</span>, and the output <span class="math notranslate nohighlight">\(y(t)=V_{out}(t)\)</span> is the voltage on the resistor <span class="math notranslate nohighlight">\(R_{L}\)</span>. We derive the  state-space representation of this system. We use the known properties of the electrical components:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    i_C(t)&amp;=C\frac{d }{dt}v_{C}(t)=C\dot{x}_2(t),\\
+    v_L(t)&amp;=L\frac{d }{dt}i_L(t)=L\dot{x}_1(t).
+\end{split}\]</div>
+<p>By Kirchhoff’s law of voltages, <span class="math notranslate nohighlight">\( V_{in}-v_L+v_C=0\)</span>, so <span class="math notranslate nohighlight">\(\dot{x}_1=\frac{x_2}{L}+\frac{V_{in}}{L}\)</span>.</p>
+<p>By Kirchhoff’s law of currents: <span class="math notranslate nohighlight">\(i_L+i_C+\frac{v_C}{R_L} =0 \)</span>, so <span class="math notranslate nohighlight">\(\dot x_2=- \frac{x_1}{C}-\frac{x_2}{CR_L}\)</span>.
+In matrix form, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \dot{x}_1 \\\dot{x}_2 
+    \end{bmatrix}&amp;=\begin{bmatrix}
+        0&amp; \frac{1}{L}\\
+       - \frac{1}{C}&amp;-\frac{1}{CR_L}
+    \end{bmatrix}\begin{bmatrix}
+        x_1 \\x_2 
+    \end{bmatrix}+\begin{bmatrix}
+        \frac{1}{L}\\0
+    \end{bmatrix}u,\\
+    y &amp;=\begin{bmatrix}0&amp;-1\end{bmatrix}\begin{bmatrix}
+        x_1 \\x_2 
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>This is in the form <span class="math notranslate nohighlight">\(\Sigma\)</span> with <span class="math notranslate nohighlight">\(n=2\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        A=\begin{bmatrix}
+        0&amp; \frac{1}{L}\\
+        -\frac{1}{C}&amp;-\frac{1}{CR_L}
+    \end{bmatrix},\;B=\begin{bmatrix}
+        \frac{1}{L}\\0
+    \end{bmatrix},\;C=\begin{bmatrix}0&amp;-1\end{bmatrix},\;D=0.
+\end{split}\]</div>
+<p>Since the input and output are one-dimensional, the system is SISO. The transfer function is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+      G(s) 
+        &amp;=C(sI-A)^{-1}B+D\\
+        &amp;=\begin{bmatrix}0&amp;-1\end{bmatrix} \begin{bmatrix} s&amp; -\frac{1}{L}\\ 
+                         \frac1{C} &amp;s+\frac1{CR_L} \end{bmatrix}^{-1} \begin{bmatrix}
+                             \frac1{L}\\0
+                         \end{bmatrix} \\\end{split}\\\begin{split}                         &amp;=\begin{bmatrix}0&amp;-1\end{bmatrix} 
+                         \frac{ \begin{bmatrix} s+\frac1{CR_L}&amp;  \frac{1}{L}\\ 
+                         -\frac1{C} &amp; s \end{bmatrix} }{s^2+\frac{s}{CR_L}+\frac1{LC} } \begin{bmatrix}
+                             \frac1{L}\\0
+                         \end{bmatrix} \\
+                         &amp;= \frac{ \frac1{CL}}{s^2+ \frac{s}{CR_L}+ \frac1{LC}}.
+\end{split}\end{aligned}\end{align} \]</div>
+</section>
+</div><div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>For the system in <a class="reference internal" href="#example:RLC_circuit">Example 4</a>, what is the relation between the  poles of <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(\sigma(A)\)</span>? Is the system <span class="math notranslate nohighlight">\(\Sigma\)</span> stable?</p>
+</div>
+</section>
+<section id="routh-stability-test">
+<h2>Routh Stability Test<a class="headerlink" href="#routh-stability-test" title="Link to this heading">#</a></h2>
+<p>The eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> can be computed numerically using  various software packages, for example MATLAB. Nevertheless, it is useful to have   simple criteria to check if <span class="math notranslate nohighlight">\(\sigma(A)\subset\mathbb{C}_-\)</span>. Recall that <span class="math notranslate nohighlight">\(\sigma(A)\)</span> consist of the zeros of the characteristic polynomial:</p>
+<div class="math notranslate nohighlight">
+\[
+    p(s):=\det(sI_n-A) =s^n+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\dots+a_1s+a_0.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(A\)</span> is real, the coefficients <span class="math notranslate nohighlight">\(a_j\)</span> are real.</p>
+<p>A necessary (but not sufficient) condition for stability is</p>
+<div class="math notranslate nohighlight" id="equation-eq-nece-cond">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-nece-cond" title="Link to this equation">#</a></span>\[  \text{If $A$ is stable, then $a_j&gt;0$   for } j=0,\dots,n-1.\]</div>
+<div class="proof remark admonition" id="remark-2">
+<p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is of order <span class="math notranslate nohighlight">\(n=1\)</span> or <span class="math notranslate nohighlight">\(n=2\)</span>, then this condition is also sufficient.</p>
+</section>
+</div><p>What happens when <span class="math notranslate nohighlight">\(n&gt;2\)</span>?  Luckily, Routh and Hurwitz worked out algorithms that are simple and can determine the stability of <span class="math notranslate nohighlight">\(A\)</span> without computing its eigenvalues.</p>
+<p>Generate the following table:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|cccc}
+    s^n     &amp; a_n     &amp; a_{n-2} &amp; a_{n-4} &amp; \dots \\
+    s^{n-1} &amp; a_{n-1} &amp; a_{n-3} &amp; a_{n-5} &amp; \dots \\
+    s^{n-2}&amp;c_1&amp;c_2&amp;c_3&amp;\dots\\
+    s^{n-3}&amp;d_1&amp;d_2&amp;\dots&amp;\dots\\
+    \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots\\
+    s^1&amp;j_1\\
+    s^0&amp;k_1
+\end{array}
+\end{split}\]</div>
+<p>If <span class="math notranslate nohighlight">\(n\)</span> is even [odd] then the first row consists of the coefficients of all even [odd] powers, and the second row consists of the coefficients of all odd [even] powers. All other values are calculated recursively.</p>
+<div class="math notranslate nohighlight">
+\[
+c_1 = \frac{a_{n-1} a_{n-2} - a_n a_{n-3}}{a_{n-1}}; \quad
+c_2 = \frac{a_{n-1} a_{n-4} - a_n a_{n-5}}{a_{n-1}}; \quad
+c_3 = \frac{a_{n-1} a_{n-6} - a_n a_{n-7}}{a_{n-1}},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_1 = \frac{c_1 a_{n-3} - a_{n-1} c_2}{c_1}; \quad
+d_2 = \frac{c_1 a_{n-5} - a_{n-1} c_3}{c_1}; \quad
+d_3 = \frac{c_1 a_{n-7} - a_{n-1} c_4}{c_1}.
+\]</div>
+<p>We carry on in this way, computing new rows, which get shorter and shorter. Note that the table has in total <span class="math notranslate nohighlight">\(n+1\)</span> rows. The last row will contain only one element that is possibly non-zero.</p>
+<div class="proof proposition admonition" id="prop:stab_rou_necen_suff">
+<p class="admonition-title"><span class="caption-number">Proposition 3 </span></p>
+<section class="proposition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(A\)</span> is stable if and only if:</p>
+<ol class="arabic simple">
+<li><p>the necessary condition <a class="reference internal" href="#equation-eq-nece-cond">(12)</a> holds, and</p></li>
+<li><p>all the numbers in the first column of the Routh table are positive.</p></li>
+</ol>
+</section>
+</div><div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 5 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the polynomial</p>
+<div class="math notranslate nohighlight">
+\[
+        p(s)=s^3+a_2s^2+a_1s+a_0.
+\]</div>
+<p>The Routh table looks like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|cccc}
+    s^3&amp;1&amp;a_1\\
+    s^2&amp;a_2&amp;a_0\\
+    s^1&amp;b_1\\
+    s^0&amp;c_1
+\end{array}
+\end{split}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    b_1&amp;=-\frac{a_0-a_1a_2}{a_2},\\
+    c_1&amp;=-\frac{-a_0b_1}{b_1}=a_0.
+\end{split}\]</div>
+<p>Thus, we conclude that if <span class="math notranslate nohighlight">\(n=3\)</span> then <span class="math notranslate nohighlight">\(A\)</span> is stable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+    a_2&gt;0,\;a_0&gt;0\text{ and }a_1a_2&gt;a_0.
+\]</div>
+<p>(Note that this implies that <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, so the necessary condition holds).</p>
+</section>
+</div><p>If <span class="math notranslate nohighlight">\(A\)</span> is not stable, then the Routh table gives us some information in addition to instability:</p>
+<div class="proof proposition admonition" id="proposition-5">
+<p class="admonition-title"><span class="caption-number">Proposition 4 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is unstable and all the numbers in the first column of the Routh table are non-zero, then the number of unstable eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> (i.e. the eigenvalues in <span class="math notranslate nohighlight">\( \mathbb{C}_+\)</span>) is equal to the number of sign variations in the first column of the Routh table.</p>
+</section>
+</div><div class="proof example admonition" id="example-6">
+<p class="admonition-title"><span class="caption-number">Example 6 </span></p>
+<section class="example-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(A=\begin{bmatrix}
+        -1 &amp;0 &amp;0\\ 0&amp;4&amp;0\\0&amp;0&amp;3
+    \end{bmatrix}\)</span>.
+Note that <span class="math notranslate nohighlight">\(A\)</span> has two unstable eigenvalues. The characteristic polynomial of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        p(s)&amp;=\det(sI_3-A)\\
+        &amp;=(s+1)(s-4)(s-3)\\
+        &amp;=s^3-6s^2+5s+12.
+\end{split}\]</div>
+<p>The Routh table in this case is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|cccc}
+    s^3&amp;1&amp; 5 \\
+    s^2&amp;-6&amp;12\\
+    s^1&amp;7\\
+    s^0&amp;12
+\end{array}
+\end{split}\]</div>
+<p>so the first column includes two sign variations, as expected.</p>
+</section>
+</div><p>For an intuitive proof of the Routh stability test, see <span id="id1">[<a class="reference internal" href="#id3" title="Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. IEEE Transactions on Automatic Control, 45(8):1651-1653, 2000. doi:10.1109/9.871749.">Margaliot and Langholz, 2000</a>]</span>.</p>
+</section>
+<section id="stability-of-the-transfer-function">
+<h2>Stability of the transfer function<a class="headerlink" href="#stability-of-the-transfer-function" title="Link to this heading">#</a></h2>
+<p>A transfer function <span class="math notranslate nohighlight">\(G\)</span> is called stable if it is bounded and analytic on <span class="math notranslate nohighlight">\(\mathbb{C}_+\)</span>.</p>
+<div class="proof proposition admonition" id="prop:G_rational_Stable">
+<p class="admonition-title"><span class="caption-number">Proposition 5 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(G\)</span> is rational, then <span class="math notranslate nohighlight">\(G\)</span> is stable if and only if it is proper and all its poles are in <span class="math notranslate nohighlight">\(\mathbb{C}_-\)</span>.</p>
+</section>
+</div><div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Show that if <span class="math notranslate nohighlight">\(G\)</span> has a pole on <span class="math notranslate nohighlight">\(i\mathbb{R}\)</span>, then <span class="math notranslate nohighlight">\(|G(s)|\)</span> tends to <span class="math notranslate nohighlight">\(\infty\)</span> if <span class="math notranslate nohighlight">\(s\)</span> tends to this pole from the right, hence <span class="math notranslate nohighlight">\(G\)</span> is not stable in this case.</p>
+</div>
+<div class="proof proposition admonition" id="prop:stable_lop">
+<p class="admonition-title"><span class="caption-number">Proposition 6 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(\Sigma\)</span> is a stable finite-dimensional LTI system, then its transfer function is stable.</p>
+</section>
+</div><p>This follows from the fact that any pole of <span class="math notranslate nohighlight">\(G\)</span> is an eigenvalue of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The converse of <a class="reference internal" href="#prop:stable_lop">Proposition 6</a> is not true. For example, if <span class="math notranslate nohighlight">\(A\)</span> is unstable and <span class="math notranslate nohighlight">\(C=0\)</span> (or <span class="math notranslate nohighlight">\(B=0\)</span>) then <span class="math notranslate nohighlight">\(G(s)=D\)</span>, so  <span class="math notranslate nohighlight">\(G(s)\)</span> is  stable.</p>
+<div class="proof example admonition" id="example-9">
+<p class="admonition-title"><span class="caption-number">Example 7 </span></p>
+<section class="example-content" id="proof-content">
+<p>The following are stable transfer functions:
+<span class="math notranslate nohighlight">\( \frac{s-1}{s+1}\)</span>,
+<span class="math notranslate nohighlight">\(\frac{s}{s^2+5s+7}\)</span>,
+<span class="math notranslate nohighlight">\(e^{-3s}\)</span>,
+<span class="math notranslate nohighlight">\(\frac{2s-7}{s^3+3s^2+2s+5}\)</span>,
+<span class="math notranslate nohighlight">\(\frac{(s-7)(s+3)}{(s+1)(s+7)}\)</span>,
+<span class="math notranslate nohighlight">\(\frac{1}{2s-e^{-2s}}\)</span>.</p>
+</section>
+</div><p>Here are some unstable transfer functions:</p>
+<div class="math notranslate nohighlight">
+\[
+        s,\;\frac{2s}{s-7},\;\frac{s+3}{s(s+7)},\;e^{2s},\;\frac{s^2+2s+2}{s+5},\;\frac{2s}{s^2+9}.
+\]</div>
+<p>Stability of <span class="math notranslate nohighlight">\(G\)</span> has some important consequences. To explain this, recall that <span class="math notranslate nohighlight">\(u(t):\mathbb{R}_+\rightarrow\mathbb{R}^m\)</span> has finite energy if</p>
+<div class="math notranslate nohighlight">
+\[
+        \int_0^\infty\big|u(t)\big|^2dt&lt;\infty.
+\]</div>
+<p>This integral is then called the energy of <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<div class="proof theorem admonition" id="theorem-10">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(G(s)\)</span> is a stable transfer function, <span class="math notranslate nohighlight">\(u\)</span> is a signal with finite energy, and <span class="math notranslate nohighlight">\(y\)</span> is a signal defined via its Laplace transform by</p>
+<div class="math notranslate nohighlight">
+\[
+        \hat{y}(s)=G(s)\hat{u}(s),
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(y\)</span> has finite energy. Conversely, if <span class="math notranslate nohighlight">\(G(s)\)</span> is a transfer function with the above property, then <span class="math notranslate nohighlight">\(G(s)\)</span> is stable.</p>
+</section>
+</div><div class="proof theorem admonition" id="theorem-11">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\Sigma\)</span> is SISO and that <span class="math notranslate nohighlight">\(G\)</span> is stable. Then for <span class="math notranslate nohighlight">\(u(t)=\cos(\omega t) \)</span> the output will converge to</p>
+<div class="math notranslate nohighlight">
+\[
+y_{\text{steady-state}}(t)= c \cos(\omega t+\phi ),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c =|G(i\omega)|\)</span>, and <span class="math notranslate nohighlight">\(\phi =\text{arg}(G(i\omega))\)</span>.</p>
+</section>
+</div><p>This implies that the system <em>entrains</em> to the periodic excitation.</p>
+<p>In particular, if we take <span class="math notranslate nohighlight">\(\omega=0\)</span> then for the input <span class="math notranslate nohighlight">\(u(t)=\cos(\omega t)\equiv 1\)</span> the output converges to</p>
+<div class="math notranslate nohighlight">
+\[
+y_{\text{steady-state}}(t)= c \cos(\omega t+\phi )\equiv c \cos( \phi ),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c =|G(0)|\)</span>, and is  called the <em>DC gain</em> of the system.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. <em>IEEE Transactions on Automatic Control</em>, 45(8):1651–1653, 2000. <a class="reference external" href="https://doi.org/10.1109/9.871749">doi:10.1109/9.871749</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Challenge of Control</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function">Transfer function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-lti">Stability of the LTI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#routh-stability-test">Routh Stability Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-transfer-function">Stability of the transfer function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
