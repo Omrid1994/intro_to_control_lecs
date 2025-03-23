@@ -1,4 +1,4 @@
-# Linear Time-Invariant Control Systems
+# Chapter 2: Linear Time-Invariant Control Systems
 
 
 A linear time-invariant (LTI) control system $\Sigma$ is given  by the

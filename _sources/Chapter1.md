@@ -1,4 +1,4 @@
-# The Challenge of Control
+# Chapter 1: The Challenge of Control
 
 What is control theory all about? Consider a dynamical system with an input $u(t)\in\mathbb{R}^m$ and an output $y(t)\in\mathbb{R}^p$. Roughly speaking, the input is what we can control and the output is what we can measure. For example, in a model of a moving vehicle the input may be the pressures on the gas pedal and the brakes pedal, whereas the output may be the speed of the vehicle. The system to be controlled is called the plant.  
 
