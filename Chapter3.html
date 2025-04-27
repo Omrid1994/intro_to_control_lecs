@@ -1,0 +1,1039 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3: What is a Control System &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 2: Linear Time-Invariant Control Systems" href="Chapter2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3: What is a Control System</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Chapter3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3: What is a Control System</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-standard-feedback-connection-of-two-lti-systems">The Standard Feedback Connection of Two LTI Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-feedback-system">Stability of the Feedback System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w-stability">W-Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-control-of-a-first-order-system">An Example: Control of a First Order System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proportional-control">Proportional Control</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-constant-reference-and-disturbance">Eliminating the Steady-State Error for Constant Reference and Disturbance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-control-and-second-order-systems">Integral Control and  Second Order Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-critically-damped-case">The critically damped case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-ramp-inputs">Eliminating the Steady-State Error for Ramp  Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-sinusoidal-inputs">Eliminating the Steady-State Error for Sinusoidal Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-model-principle">Internal Model Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-what-is-a-control-system">
+<h1>Chapter 3: What is a Control System<a class="headerlink" href="#chapter-3-what-is-a-control-system" title="Link to this heading">#</a></h1>
+<p>The general structure of a feedback connection  is as follows:</p>
+<figure class="align-default" id="fig-damp-spring">
+<a class="reference internal image-reference" href="_images/plant_controller.png"><img alt="_images/plant_controller.png" src="_images/plant_controller.png" style="width: 90%;" /></a>
+</figure>
+<p>In general,  signals can be</p>
+<ul class="simple">
+<li><p>Continuous-time, that is, functions defined on <span class="math notranslate nohighlight">\([0,\infty)\)</span>.</p></li>
+<li><p>Discrete-time, that is, functions defined on <span class="math notranslate nohighlight">\(\{0,1,2,\dots\}\)</span>.</p></li>
+</ul>
+<p>In this course,  all signals are continuous-time.</p>
+<section id="the-standard-feedback-connection-of-two-lti-systems">
+<span id="section-closed-loop-lti"></span><h2>The Standard Feedback Connection of Two LTI Systems<a class="headerlink" href="#the-standard-feedback-connection-of-two-lti-systems" title="Link to this heading">#</a></h2>
+<p>We consider only the single input-single output (SISO) case.</p>
+<figure class="align-default" id="fig-closed-loop">
+<a class="reference internal image-reference" href="_images/closed_loop1.png"><img alt="_images/closed_loop1.png" src="_images/closed_loop1.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">The feedback connection of two SISO linear systems with transfer functions “Plant” and “Controller”.</span><a class="headerlink" href="#fig-closed-loop" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We list each element in <a class="reference internal" href="#fig-closed-loop"><span class="std std-numref">Fig. 3</span></a>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the transfer function of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> is the transfer function of the controller.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the <b>disturbance</b> acting on the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u\)</span> is the <b>input</b> signal of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the <b>output</b> signal of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the <b>reference</b> signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e=r-y\)</span> is the <b>tracking error</b>.</p></li>
+</ul>
+<p>We assume zero initial conditions, and denote the transfer function of the Plant by <span class="math notranslate nohighlight">\(P\)</span>, and the transfer function of the Controller by <span class="math notranslate nohighlight">\(C\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \hat{d}(s)\\\hat{r}(s)
+    \end{bmatrix}=\begin{bmatrix}
+        1&amp;-C(s)\\
+        P(s)&amp;1
+    \end{bmatrix}\begin{bmatrix}
+        \hat{u}(s)\\\hat{e}(s)
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>This implies that</p>
+<div class="math notranslate nohighlight" id="equation-eq-closed-loop-trasnferfunctions">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-closed-loop-trasnferfunctions" title="Link to this equation">#</a></span>\[\begin{split}\begin{bmatrix}
+        \hat{u}\\\hat{e}
+    \end{bmatrix}&amp;=\begin{bmatrix}
+        1&amp;-C\\
+        P&amp;1
+    \end{bmatrix}^{-1}\begin{bmatrix}
+        \hat{d}\\\hat{r}
+    \end{bmatrix}\nonumber\\
+    &amp;=\begin{bmatrix}
+        (1+PC)^{-1}&amp;C(1+PC)^{-1}\\
+        -P(1+PC)^{-1}&amp;(1+PC)^{-1}
+    \end{bmatrix}\begin{bmatrix}
+        \hat{d}\\\hat{r}
+    \end{bmatrix}.\end{split}\]</div>
+<p>We call <span class="math notranslate nohighlight">\(PC\)</span> the <b>loop gain</b>. We define  <span class="math notranslate nohighlight">\(S:=(1+PC)^{-1}\)</span>,  and refer to this as the sensitivity function. Note that <span class="math notranslate nohighlight">\(S\)</span> is the  transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(e\)</span> (or from <span class="math notranslate nohighlight">\(d\)</span> to <span class="math notranslate nohighlight">\(u\)</span>).</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)C(s)=\frac{n(s)}{d(s)},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n(s)\)</span> and <span class="math notranslate nohighlight">\(d(s)\)</span> are polynomials, then</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\Big(1+\frac{n(s)}{d(s)}\Big)^{-1}=\frac{d(s)}{d(s)+n(s)}.
+\]</div>
+<p>Thus, we see that  the poles of <span class="math notranslate nohighlight">\(PC\)</span> become zeros of <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</section>
+</div><p>We would like to have good tracking in spite of the disturbances, i.e., to make <span class="math notranslate nohighlight">\(e\)</span> small. Since</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{e} =-PS\hat{d} +S\hat{r} ,
+\]</div>
+<p>this can be achieved by making <span class="math notranslate nohighlight">\(S\)</span> as small as possible, but  without destroying the stability of the closed-loop system.</p>
+</section>
+<section id="stability-of-the-feedback-system">
+<h2>Stability of the Feedback System<a class="headerlink" href="#stability-of-the-feedback-system" title="Link to this heading">#</a></h2>
+<p>The feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is called  <b>stable</b> if the transfer function from <span class="math notranslate nohighlight">\((d,r)\)</span> to <span class="math notranslate nohighlight">\((u,e)\)</span> is stable, i.e., if all four entries of the matrix in <a class="reference internal" href="#equation-eq-closed-loop-trasnferfunctions">(16)</a> are stable. Note that two entries are equal, so that we have three different transfer functions  to check. Stability of the feedback connection means that if the inputs <span class="math notranslate nohighlight">\((d,r)\)</span> have finite energy, then all the signals in the diagram have finite energy.</p>
+<p>In terms of state space systems, the interpretation of the stability concept defined for state-space systems is: If <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are the transfer functions of a minimal plant and a minimal controller, then also the feedback system is minimal. Hence, if its transfer function <span class="math notranslate nohighlight">\(\begin{bmatrix}
+        (1+PC)^{-1}&amp;C(1+PC)^{-1}\\
+        -P(1+PC)^{-1}&amp;(1+PC)^{-1}
+    \end{bmatrix}\)</span> is stable, then also the system is stable.</p>
+<p>To state a condition for stability, we require the concept of zero-pole cancellation.
+We say that there is  zero-pole cancellation at <span class="math notranslate nohighlight">\(z\)</span> in the product <span class="math notranslate nohighlight">\(PC\)</span> if <span class="math notranslate nohighlight">\(z\)</span> is a pole of <span class="math notranslate nohighlight">\(P\)</span> (or <span class="math notranslate nohighlight">\(C\)</span>) and a zero of <span class="math notranslate nohighlight">\(C\)</span> (or <span class="math notranslate nohighlight">\(P\)</span>).
+The pole-zero cancellation is called stable if <span class="math notranslate nohighlight">\(z\in\mathbb{C}_-\)</span> and unstable, otherwise.</p>
+<div class="proof example admonition" id="example:zp1">
+<p class="admonition-title"><span class="caption-number">Example 8 </span></p>
+<section class="example-content" id="proof-content">
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{s}{(s+1)(s-2)},\quad  C(s)=5\frac{s+1}{s^2+1},
+\]</div>
+<p>then there is a pole-zero cancellation at <span class="math notranslate nohighlight">\(z=-1\)</span> in the product <span class="math notranslate nohighlight">\(PC\)</span>. Since <span class="math notranslate nohighlight">\(z=-1\in\mathbb{C}_-\)</span>, this is a stable cancellation.</p>
+</section>
+</div><div class="proof example admonition" id="example:zp2">
+<p class="admonition-title"><span class="caption-number">Example 9 </span></p>
+<section class="example-content" id="proof-content">
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{2s}{s^2+1},\quad
+    C(s)=\frac{s^2+1}{(s+2)(s+100)},
+\]</div>
+<p>then there are unstable pole-zero cancellations at <span class="math notranslate nohighlight">\(z=i\)</span> and at <span class="math notranslate nohighlight">\(z=-i\)</span>.</p>
+</section>
+</div><div class="proof proposition admonition" id="prop:stable_closed_loop">
+<p class="admonition-title"><span class="caption-number">Proposition 7 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is stable if and only if the following two conditions hold:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(S=(1+PC)^{-1}\)</span> is stable.</p></li>
+<li><p>There is no unstable pole-zero cancellation in the product <span class="math notranslate nohighlight">\(PC\)</span>.</p></li>
+</ol>
+</section>
+</div><div class="proof example admonition" id="example:zp3">
+<p class="admonition-title"><span class="caption-number">Example 10 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{3s}{s-1},\quad (s)=\frac{1}{s-1}.
+\]</div>
+<p>Obviously, there is no unstable pole-zero cancellation in <span class="math notranslate nohighlight">\(PC\)</span> (in fact, there is no pole-zero cancellation at all). We compute</p>
+<div class="math notranslate nohighlight">
+\[
+    \big(1+P(s)C(s)\big)^{-1}=\frac{s^2-2s+1}{s^2+s+1},
+\]</div>
+<p>which is stable, so that the feedback connection is stable. Note that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are not stable. Thus, a controller can be used to stabilize an unstable plant.</p>
+</section>
+</div></section>
+<section id="w-stability">
+<h2>W-Stability<a class="headerlink" href="#w-stability" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is called  <span class="math notranslate nohighlight">\(w\)</span>-stable if</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|P(\infty)  C(\infty)\big|&lt;1.
+\]</div>
+</section>
+</div><p>If this condition does not hold, then a very small change in <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> can cause all signals in the interconnection to tend to <span class="math notranslate nohighlight">\(\infty\)</span> very fast.</p>
+<div class="proof example admonition" id="example-6">
+<p class="admonition-title"><span class="caption-number">Example 11 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{5s}{s+1},\quad C(s)=\frac{s+2}{s-1}.
+\]</div>
+<p>We have <span class="math notranslate nohighlight">\(P(\infty)=5\)</span>, <span class="math notranslate nohighlight">\(C(\infty)=1\)</span>, so <span class="math notranslate nohighlight">\(\big|P(\infty)C(\infty)\big|=5\)</span> and the feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is not <span class="math notranslate nohighlight">\(w\)</span>-stable. It is easy to check that this feedback connection is stable using <a class="reference internal" href="#prop:stable_closed_loop">Proposition 7</a>. Indeed, there are no zero-pole cancellations in <span class="math notranslate nohighlight">\(PC\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=-\frac{s^2-1}{4s^2+10s+1},
+\]</div>
+<p>is stable.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-7">
+<p class="admonition-title"><span class="caption-number">Remark 5 </span></p>
+<section class="remark-content" id="proof-content">
+<p>When we design a feedback connection, we always require that it should be both stable and <span class="math notranslate nohighlight">\(w\)</span>-stable.</p>
+</section>
+</div><p>Indeed, in any engineering application, we must take into account that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are mathematical models and the real systems may be somewhat different, and we  cannot allow any signal to grow without bound.</p>
+<div class="proof remark admonition" id="remark-8">
+<p class="admonition-title"><span class="caption-number">Remark 6 </span></p>
+<section class="remark-content" id="proof-content">
+<p>A transfer function is called  strictly proper if <span class="math notranslate nohighlight">\(G(\infty)=0\)</span>. Equivalently, the degree of the numerator is less than the degree of the denominator. If <span class="math notranslate nohighlight">\(P\)</span> or <span class="math notranslate nohighlight">\(C\)</span> are strictly proper, then obviously the feedback connection is <span class="math notranslate nohighlight">\(w\)</span>-stable (as in <a class="reference internal" href="#example:zp1">Example 8</a>, <a class="reference internal" href="#example:zp2">Example 9</a>, <a class="reference internal" href="#example:zp3">Example 10</a>).</p>
+</section>
+</div><p>The stability of <span class="math notranslate nohighlight">\(S\)</span> is one condition for stability of the feedback system (see <a class="reference internal" href="#prop:stable_closed_loop">Proposition 7</a>).</p>
+<section id="an-example-control-of-a-first-order-system">
+<span id="sec-control-first-order"></span><h3>An Example: Control of a First Order System<a class="headerlink" href="#an-example-control-of-a-first-order-system" title="Link to this heading">#</a></h3>
+<p>Suppose that  the plant is given by</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R}.
+\]</div>
+<p>We want the control system in <a class="reference internal" href="#fig-1order-sys-cont"><span class="std std-numref">Fig. 4</span></a> to be stable,  and the output <span class="math notranslate nohighlight">\(y\)</span> of the plant should be close to the reference signal <span class="math notranslate nohighlight">\(r\)</span> (i.e., <span class="math notranslate nohighlight">\(e\)</span> should be small).</p>
+<figure class="align-default" id="fig-1order-sys-cont">
+<a class="reference internal image-reference" href="_images/1order_system.png"><img alt="_images/1order_system.png" src="_images/1order_system.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Feedback control of a  first order system.</span><a class="headerlink" href="#fig-1order-sys-cont" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The signal <span class="math notranslate nohighlight">\(d\)</span> is a disturbance. Since the plant is strictly proper, <span class="math notranslate nohighlight">\(w\)</span>-stability is not a problem. Usually, <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are positive, but this need not be the case. The most important class of reference signals are steps (i.e., we would like a constant output <span class="math notranslate nohighlight">\(y\)</span>).</p>
+</section>
+<section id="proportional-control">
+<h3>Proportional Control<a class="headerlink" href="#proportional-control" title="Link to this heading">#</a></h3>
+<p>This is one possible type of control, not the best, but very simple:</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K,\quad K\in\mathbb{R}.
+\]</div>
+<p>The controller represents constant gain. We examine the performance of the closed-loop system. We compute its sensitivity:</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\Big(1+\frac{kK}{1+Ts}\Big)^{-1}=\frac{1+Ts}{1+kK+Ts}.
+\]</div>
+<p>This is the transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(e\)</span>. For stability (since there are no pole-zero cancellations), we need that <span class="math notranslate nohighlight">\(S\)</span> should be stable. Its pole is at</p>
+<div class="math notranslate nohighlight">
+\[
+    s_0=-\frac{1+kK}{T}.
+\]</div>
+<p>The stability condition is <span class="math notranslate nohighlight">\(s_0&lt;0\)</span>. In particular, if <span class="math notranslate nohighlight">\(T&gt;0\)</span> (stable plant) then we need <span class="math notranslate nohighlight">\(1+kK&gt;0\)</span> (otherwise, we need <span class="math notranslate nohighlight">\(1+kK&lt;0)\)</span>. The transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    G(s)&amp;=1-S(s)\\\
+    &amp;=\frac{kK}{1+Ts}S(s)\\&amp;=\frac{kK}{1+kK}\cdot\frac{1}{1+\tau s},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau:=\frac{T}{1+kK}\)</span> is called the  time-constant of <span class="math notranslate nohighlight">\(G\)</span>. From this we can easily compute the step response of <span class="math notranslate nohighlight">\(G\)</span> (i.e., the function <span class="math notranslate nohighlight">\(y(t)\)</span> when <span class="math notranslate nohighlight">\(r(t)=1\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+    y_{step}(t)=\frac{kK}{1+kK}\big(1-e^{-\frac{t}{\tau}}\big).
+\]</div>
+<figure class="align-default" id="fig-1order-step-res">
+<a class="reference internal image-reference" href="_images/1order_step_response.png"><img alt="_images/1order_step_response.png" src="_images/1order_step_response.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Step response of a first order system with <span class="math notranslate nohighlight">\(k=1,\;K=2\)</span>.</span><a class="headerlink" href="#fig-1order-step-res" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As expected, for large <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y_{\text{step}}(t)\)</span> approaches <span class="math notranslate nohighlight">\(G(0)\)</span>. The error,</p>
+<div class="math notranslate nohighlight">
+\[
+    e_{\text{step}}(t)=\underbrace{1}_{r(t)}-y_{\text{step}}(t),
+\]</div>
+<p>converges to <span class="math notranslate nohighlight">\(1-G(0)=S(0),\)</span> i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+    e_{\text{step}}(\infty)=\frac{1}{1+kK}.
+\]</div>
+<p>The derivative of <span class="math notranslate nohighlight">\(y_{\text{step}}(t)\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span> (its slope) is</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{dt}y_{\text{step}}(0)=\frac{G(0)}{\tau}=\frac{1+kK}{T}\cdot G(0)=\frac{kK}{T}.
+\]</div>
+<p>The smaller the time constant <span class="math notranslate nohighlight">\(\tau\)</span>, the faster the step response <span class="math notranslate nohighlight">\(y_{\text{step}}(t)\)</span> will approach its final value (which is <span class="math notranslate nohighlight">\(G(0)\)</span>).</p>
+<p>Our aim is to make <span class="math notranslate nohighlight">\(e_{\text{step}}(\infty)\)</span> small (small stationary error) and <span class="math notranslate nohighlight">\(\tau\)</span> small (fast response of the control system). From the formulas, it is clear that both aims can be achieved by choosing <span class="math notranslate nohighlight">\(|K|\)</span> large. The correct sign of <span class="math notranslate nohighlight">\(K\)</span> depends on the sign of <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, for example, if <span class="math notranslate nohighlight">\(T&gt;0\)</span> and <span class="math notranslate nohighlight">\(k&gt;0\)</span> then also <span class="math notranslate nohighlight">\(K&gt;0\)</span>. In the graphs below, we show various graphs of possible <span class="math notranslate nohighlight">\(y_{\text{step}}(t)\)</span> as <span class="math notranslate nohighlight">\(|K|\)</span> increases.</p>
+<figure class="align-default" id="fig-1order-k">
+<a class="reference internal image-reference" href="_images/1order_step_response_K.png"><img alt="_images/1order_step_response_K.png" src="_images/1order_step_response_K.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Step response of a first order system with <span class="math notranslate nohighlight">\(k=1,\;T=5\)</span>.</span><a class="headerlink" href="#fig-1order-k" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, there are also disadvantages with a large controller gain <span class="math notranslate nohighlight">\(K\)</span>:</p>
+<ul class="simple">
+<li><p>The control input <span class="math notranslate nohighlight">\(u(t)\)</span> becomes large for small values of <span class="math notranslate nohighlight">\(t\)</span>. Indeed</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    u(0)=Ke(0)=KS(\infty)=K.
+\]</div>
+<p>Often, it is not permissible to apply large <span class="math notranslate nohighlight">\(u\)</span> values to the plant (something could be damaged).</p>
+<ul class="simple">
+<li><p>If the transfer function of the plant <span class="math notranslate nohighlight">\(\frac{k}{1+Ts}\)</span> is just an approximation, and in reality, there are more poles present (which is almost always the case), then the high gain <span class="math notranslate nohighlight">\(K\)</span> can lead to instability of the feedback system. (This phenomenon can be better understood after studying the Nyquist test for stability of feedback systems).</p></li>
+</ul>
+<p>Thus, a sensible compromise should be found between the need to increase <span class="math notranslate nohighlight">\(K\)</span> and the need to avoid the two problems above.</p>
+</section>
+</section>
+<section id="eliminating-the-steady-state-error-for-constant-reference-and-disturbance">
+<span id="sec-eliminate-constant"></span><h2>Eliminating the Steady-State Error for Constant Reference and Disturbance<a class="headerlink" href="#eliminating-the-steady-state-error-for-constant-reference-and-disturbance" title="Link to this heading">#</a></h2>
+<p>We saw in Section <a class="reference internal" href="#sec-control-first-order"><span class="std std-ref">An Example: Control of a First Order System</span></a> that if we apply proportional control to a first order system and the reference <span class="math notranslate nohighlight">\(r\)</span> and/or the disturbance <span class="math notranslate nohighlight">\(d\)</span> converge to   non-zero constants, then also the error <span class="math notranslate nohighlight">\(e\)</span>, given by <span class="math notranslate nohighlight">\(\hat{e}(s)=S\hat{r}(s)-PS\hat{d}(s)\)</span> converges (as <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span>) to a non-zero value <span class="math notranslate nohighlight">\(e_{ss}\)</span> called the  steady-state error.</p>
+<p>Our goal now is to  achieve <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> for any <span class="math notranslate nohighlight">\(d,r\)</span> that converge to constant values, by using a different controller <span class="math notranslate nohighlight">\(C\)</span>. If <span class="math notranslate nohighlight">\(r\)</span> converges to a constant as <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span>, for example, if <span class="math notranslate nohighlight">\(r\)</span> is a step and similarly for <span class="math notranslate nohighlight">\(d\)</span>, then denoting <span class="math notranslate nohighlight">\(r_{ss}:=\lim_{t\rightarrow \infty} r(t)\)</span>, <span class="math notranslate nohighlight">\(d_{ss}:=\lim_{t\rightarrow\infty}d(t)\)</span>, and using  the final value theorem gives</p>
+<div class="math notranslate nohighlight" id="equation-eq-limess">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-limess" title="Link to this equation">#</a></span>\[\begin{split}    e_{ss}&amp;=\lim_{t\rightarrow\infty}e(t)\\
+          &amp;=\lim_{s\rightarrow0}s\hat{e}(s)
+          \nonumber \\ &amp;=\lim_{s\rightarrow0}S(s)s\hat{r}(s)-\lim_{s\rightarrow0}P(s)S(s)s\hat{d}(s)\nonumber \\
+          &amp;=S(0)r_{ss}-P(0)S(0)d_{ss}.\nonumber\end{split}\]</div>
+<p>In order to obtain <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> (for all <span class="math notranslate nohighlight">\(r_{ss},\;d_{ss}\)</span>), we need <span class="math notranslate nohighlight">\(S(0)=0\)</span>. It is easy to see that the zeros of <span class="math notranslate nohighlight">\(S\)</span> are the poles of the loop gain <span class="math notranslate nohighlight">\(PC\)</span>. Thus, for <span class="math notranslate nohighlight">\(e_{ss}=0\)</span>, <span class="math notranslate nohighlight">\(C\)</span> should have a pole at <span class="math notranslate nohighlight">\(s=0\)</span>.</p>
+<div class="proof remark admonition" id="remark-9">
+<p class="admonition-title"><span class="caption-number">Remark 7 </span></p>
+<section class="remark-content" id="proof-content">
+<p>In the above discussion, we had in mind the first order system. However, the arguments and conclusions remain valid for any rational transfer function <span class="math notranslate nohighlight">\(P\)</span>.</p>
+</section>
+</div><p>There is a little problem that has to be clarified if <span class="math notranslate nohighlight">\(P\)</span> has a pole at <span class="math notranslate nohighlight">\(s=0\)</span>. In this case, <span class="math notranslate nohighlight">\(PC\)</span> will have a higher order pole at <span class="math notranslate nohighlight">\(s=0\)</span>, and we still have</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{s\rightarrow0}P(s)S(s)=0,
+\]</div>
+<p>so that scheme will work also in this case.</p>
+<p>Naturally, the other requirements for a controller must be satisfied as well: stability (as otherwise the limit in <a class="reference internal" href="#equation-eq-limess">(17)</a> may not exist) and also <span class="math notranslate nohighlight">\(w\)</span>-stability. This implies the following: If <span class="math notranslate nohighlight">\(P(0)=0\)</span>, then we cannot achieve <span class="math notranslate nohighlight">\(e_{ss}=0\)</span>.
+Indeed, in this case  there would be a pole-zero cancellation at <span class="math notranslate nohighlight">\(s=0\)</span> in the product <span class="math notranslate nohighlight">\(PC\)</span>, and according to <a class="reference internal" href="#prop:stable_closed_loop">Proposition 7</a> the feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> would not be stable in this case.</p>
+<div class="proof example admonition" id="example-10">
+<p class="admonition-title"><span class="caption-number">Example 12 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the circuit below, with input <span class="math notranslate nohighlight">\(u\)</span> (a voltage) and output <span class="math notranslate nohighlight">\(y\)</span> (also a voltage).</p>
+<figure class="align-default" id="fig-circuit">
+<a class="reference internal image-reference" href="_images/circuit_for_example.png"><img alt="_images/circuit_for_example.png" src="_images/circuit_for_example.png" style="width: 70%;" /></a>
+</figure>
+<p>The transfer function <span class="math notranslate nohighlight">\(P(s):=\frac{\hat y(s)}{\hat u(s)}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{RCs}{1+RCs}.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(P(0)=0,\)</span> we cannot achieve <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> for constant <span class="math notranslate nohighlight">\(r\neq0\)</span>. We also give a physical explanation: to obtain <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> we would need <span class="math notranslate nohighlight">\(\lim_{t\rightarrow\infty}y(t)=r\)</span>. Denoting the input current of the circuit by <span class="math notranslate nohighlight">\(j\)</span> we would then have</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{t\rightarrow\infty}j(t)=\frac{r}{R}\neq0.
+\]</div>
+<p>Such a current would cause the voltage on the capacitor <span class="math notranslate nohighlight">\(v_c(t)=\frac{1}{C}\int_0^t j(\sigma)d\sigma\)</span> to tend (linearly) to <span class="math notranslate nohighlight">\(\infty\)</span>. Hence, <span class="math notranslate nohighlight">\(\lim_{t\rightarrow \infty}u(t)=\infty\)</span>, which shows that the control system would need to be unstable.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-11">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(P\)</span> is such that <span class="math notranslate nohighlight">\(P(0)=\infty\)</span> (i.e, <span class="math notranslate nohighlight">\(P\)</span> has a pole at <span class="math notranslate nohighlight">\(s=0\)</span>) and <span class="math notranslate nohighlight">\(C\)</span> does not have a pole at <span class="math notranslate nohighlight">\(s=0\)</span>, and if the feedback system is stable, then with <span class="math notranslate nohighlight">\(\lim_{t\rightarrow\infty}r(t)=r_{ss}\)</span> and <span class="math notranslate nohighlight">\(\lim_{t\rightarrow\infty}d(t)=0\)</span> we obtain again <span class="math notranslate nohighlight">\(e_{ss}=0\)</span>.</p>
+</section>
+</div></section>
+<section id="integral-control-and-second-order-systems">
+<h2>Integral Control and  Second Order Systems<a class="headerlink" href="#integral-control-and-second-order-systems" title="Link to this heading">#</a></h2>
+<p>This is a particular controller that eliminates the steady-state error. Consider</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{k}{1+Ts},\quad C(s)=\frac{K_i}{s}.
+\]</div>
+<p>We compute the sensitivity transfer function</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{Ts^2+s}{Ts^2+s+kK_i}.
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(S(0)=0\)</span>. We see that <span class="math notranslate nohighlight">\(S\)</span> is stable if <span class="math notranslate nohighlight">\(T&gt;0\)</span> and <span class="math notranslate nohighlight">\(kK_i&gt;0\)</span>. The first condition means that the plant must be stable. The second condition can be satisfied by choosing correctly the sign of <span class="math notranslate nohighlight">\(K_i\)</span> (should be the same as the sign of <span class="math notranslate nohighlight">\(k\)</span>). There are no pole-zero cancellations between <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, so that if <span class="math notranslate nohighlight">\(S\)</span> is stable, then also the feedback system is stable. <span class="math notranslate nohighlight">\(w\)</span>-stability is not a problem at all, since <span class="math notranslate nohighlight">\(P(\infty)=C(\infty)=0\)</span>.</p>
+<p>We now calculate the system response   in more detail. The transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=1-S(s)=\frac{kK_i}{Ts^2+s+kK_i}.
+\]</div>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_n^2:=\frac{kK_i}{T},\quad \xi:=\frac{1}{2\sqrt{kK_iT}}.
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{\omega_n^2}{s^2+2\xi\omega_n s +\omega_n^2}.
+\]</div>
+<p>We have <span class="math notranslate nohighlight">\(\omega_n,\;\xi&gt;0\)</span>. Usually, <span class="math notranslate nohighlight">\(K_i\)</span> is chosen such that <span class="math notranslate nohighlight">\(\xi\leq 1\)</span>. If this is the case, then <span class="math notranslate nohighlight">\(G(s)\)</span> has two complex conjugate poles, <span class="math notranslate nohighlight">\(s_0\)</span> and <span class="math notranslate nohighlight">\(s_0^*\)</span>. If we denote by <span class="math notranslate nohighlight">\(\varphi\)</span> the angle between these poles and the negative real axis (<span class="math notranslate nohighlight">\(\varphi\in[0,\pi/2)\)</span>), then</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_n=|s_0|,\quad\xi=\cos\varphi.
+\]</div>
+<figure class="align-default" id="fig-1order-pole">
+<a class="reference internal image-reference" href="_images/2ordersystempoles.png"><img alt="_images/2ordersystempoles.png" src="_images/2ordersystempoles.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Pole location of second order system.</span><a class="headerlink" href="#fig-1order-pole" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If <span class="math notranslate nohighlight">\(\xi=1\)</span>, then <span class="math notranslate nohighlight">\(s_0=s_0^*\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{\omega_n^2}{(s+\omega_n)^2},
+\]</div>
+<p>that is, a double real pole at <span class="math notranslate nohighlight">\(-\omega_n\)</span>. For <span class="math notranslate nohighlight">\(\xi&gt;1\)</span> we have two distinct real poles.</p>
+<p>We return to the case <span class="math notranslate nohighlight">\(\xi&lt;1\)</span>. The impulse response corresponding to <span class="math notranslate nohighlight">\(G\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    g(t)=\frac{\omega_n}{\sqrt{1-\xi^2}}e^{-\xi\omega_n t}\sin\big(\sqrt{1-\xi^2}\omega_n t\big).
+\]</div>
+<p><span class="math notranslate nohighlight">\(\xi\)</span> is called the  damping ratio of <span class="math notranslate nohighlight">\(G\)</span>. The corresponding step response is</p>
+<div class="math notranslate nohighlight" id="equation-eq-freq-step-resp">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-freq-step-resp" title="Link to this equation">#</a></span>\[\begin{split}    y_{\text{step}}(t)&amp;=
+    \int_0^t g(\sigma)d\sigma
+   \nonumber  \\&amp;=
+    1-\frac{e^{-\xi\omega_n t}}{\sqrt{1-\xi^2}}\sin\big(\sqrt{1-\xi^2}\omega_n t+\varphi\big).\end{split}\]</div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/second_order_step_response.png"><img alt="_images/second_order_step_response.png" src="_images/second_order_step_response.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Second order step response for <span class="math notranslate nohighlight">\(\omega_n=2,\;\xi=0.2\)</span>.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If we denote by <span class="math notranslate nohighlight">\(t_p,\;t'_p,\;t''_p,\cdots\)</span> the times of the peaks (local maximums) of <span class="math notranslate nohighlight">\(y_{\text{step}}(t)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    t_p=\frac{\pi}{\omega_n\sqrt{1-\xi^2}},\quad t'_p=\frac{3\pi}{\omega_n\sqrt{1-\xi^2}},\quad t''_p=\frac{5\pi}{\omega_n\sqrt{1-\xi^2}},\cdots.
+\]</div>
+<p>the peak values are</p>
+<div class="math notranslate nohighlight">
+\[
+    y_{\text{step}}(t_p)=1+\sigma,\quad y_{\text{step}}(t'_p)=1+\sigma^3,\quad y_{\text{step}}(t''_p)=1+\sigma^5,\cdots.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the  overshoot of the step response <span class="math notranslate nohighlight">\(y_{\text{step}}\)</span>, given by</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma=e^{-\frac{\pi\xi}{\sqrt{1-\xi^2}}}.
+\]</div>
+<p>Note that if <span class="math notranslate nohighlight">\(\xi\)</span> is close to zero, then <span class="math notranslate nohighlight">\(\sigma\)</span> is close to <span class="math notranslate nohighlight">\(1\)</span> and the oscillations die very slowly, i.e., <span class="math notranslate nohighlight">\(y_{\text{step}}(t'_p)\)</span> is almost as high as <span class="math notranslate nohighlight">\(y_{\text{step}}(t_p)\)</span>, etc.  As <span class="math notranslate nohighlight">\(\xi\)</span> gets bigger, <span class="math notranslate nohighlight">\(\sigma\)</span> gets smaller and the oscillations die more quickly.</p>
+<p>The  logarithmic decrement of <span class="math notranslate nohighlight">\(y_{\text{step}}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \log( \frac{y_{\text{step}}(t_p)-1}{y_{\text{step}}(t'_p)-1})&amp;=-2\log(\sigma)\\&amp;=2\pi\xi/\sqrt{1-\xi^2}.
+\end{split}\]</div>
+<p>This  can be measured experimentally with relative ease, and permits the computation of <span class="math notranslate nohighlight">\(\xi\)</span>.</p>
+<p>By <a class="reference internal" href="#equation-eq-freq-step-resp">(18)</a>, the frequency of the oscillations is</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_d:=\omega_n\sqrt{1-\xi^2}.
+\]</div>
+<p>This is called the damped natural frequency of <span class="math notranslate nohighlight">\(G\)</span>. As <span class="math notranslate nohighlight">\(\xi\)</span> gets bigger, the frequency decreases. When <span class="math notranslate nohighlight">\(\xi \approx 1\)</span> the frequency of the oscillations is almost <span class="math notranslate nohighlight">\(\omega_n\)</span>, which is called  the natural frequency of <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<section id="the-critically-damped-case">
+<h3>The critically damped case<a class="headerlink" href="#the-critically-damped-case" title="Link to this heading">#</a></h3>
+<p>This is the case when <span class="math notranslate nohighlight">\(\xi=1\)</span>.  We then have the impulse response</p>
+<div class="math notranslate nohighlight">
+\[
+    g(t)=\omega_n^2 te^{-\omega_n t},
+\]</div>
+<p>and the step response</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    y_{\text{step}}(t)&amp;= \int_0^t g(\sigma)d\sigma\\
+    &amp;=1-(1+\omega_n t)e^{-\omega_n t}.
+\end{split}\]</div>
+<figure class="align-default" id="fig-1order-crit">
+<a class="reference internal image-reference" href="_images/2order_system_crit_damped.png"><img alt="_images/2order_system_crit_damped.png" src="_images/2order_system_crit_damped.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Second order system with <span class="math notranslate nohighlight">\(\xi=1\)</span> (critically damped) for different values of <span class="math notranslate nohighlight">\(\omega_n\)</span>.</span><a class="headerlink" href="#fig-1order-crit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In this case, there is no overshoot (<span class="math notranslate nohighlight">\(\sigma=0\)</span>) and sometimes this is considered the most desirable situation.</p>
+<p>For <span class="math notranslate nohighlight">\(\xi&gt;1\)</span> there is also no overshoot, but the response becomes slower (the step response rises slower at the beginning). In practical designs, we usually choose <span class="math notranslate nohighlight">\(0.7\leq\xi\leq1\)</span>.</p>
+</section>
+</section>
+<section id="eliminating-the-steady-state-error-for-ramp-inputs">
+<h2>Eliminating the Steady-State Error for Ramp  Inputs<a class="headerlink" href="#eliminating-the-steady-state-error-for-ramp-inputs" title="Link to this heading">#</a></h2>
+<p>Sometimes it is required to achieve <span class="math notranslate nohighlight">\(e_{ss}=\lim_{t\rightarrow\infty}e(t)=0,\)</span> where <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are of the form</p>
+<div class="math notranslate nohighlight">
+\[
+    r(t)=at+b.
+\]</div>
+<p>For this, it will be enough to solve the problem corresponding to <span class="math notranslate nohighlight">\(r(t)=t\)</span> (this is called the ramp input) and <span class="math notranslate nohighlight">\(d=0\)</span>. Note that in this case <span class="math notranslate nohighlight">\(\hat{r}(s)=\frac{1}{s^2}\)</span>. By the final value theorem,</p>
+<div class="math notranslate nohighlight">
+\[
+    e_{ss}=\lim_{s\rightarrow 0}s\hat{e}(s)=\lim_{s\rightarrow0}sS(s)\frac{1}{s^2} = \lim_{s\rightarrow0} S(s)\frac{1}{s}.
+\]</div>
+<p>To obtain <span class="math notranslate nohighlight">\(e_{ss}=0\)</span>, <span class="math notranslate nohighlight">\(S\)</span> should have a double zero at <span class="math notranslate nohighlight">\(s=0\)</span>. Assuming that <span class="math notranslate nohighlight">\(P(0)\neq0\)</span>, this is possible if <span class="math notranslate nohighlight">\(C\)</span> has a double pole at <span class="math notranslate nohighlight">\(s=0\)</span>. Thus,  to eliminate the steady-state error  for a ramp input, <span class="math notranslate nohighlight">\(C\)</span> should have a double (or higher) pole at <span class="math notranslate nohighlight">\(s=0\)</span>. If <span class="math notranslate nohighlight">\(P(0)=0\)</span>, then the steady state error for ramp input cannot be eliminated.</p>
+</section>
+<section id="eliminating-the-steady-state-error-for-sinusoidal-inputs">
+<h2>Eliminating the Steady-State Error for Sinusoidal Inputs<a class="headerlink" href="#eliminating-the-steady-state-error-for-sinusoidal-inputs" title="Link to this heading">#</a></h2>
+<p>Now consider the problem to achieve <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> when <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are of the form</p>
+<div class="math notranslate nohighlight">
+\[
+    r(t)=R\cos(\omega_0 t+\psi),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_0&gt;0\)</span> is known, and <span class="math notranslate nohighlight">\(R,\;\psi\)</span> can be any real numbers, not known in advance. For this, it will be enough to solve the problem corresponding to <span class="math notranslate nohighlight">\(r(t)=\cos(\omega_0 t)\)</span> and <span class="math notranslate nohighlight">\(d=0\)</span>. Note that since <span class="math notranslate nohighlight">\(S\)</span> represents a  stable LTI system, <span class="math notranslate nohighlight">\(e\)</span> will converge to</p>
+<div class="math notranslate nohighlight">
+\[
+    e(t)=A (\omega_0) \cos(\omega_0 t+\varphi (\omega_0) ), 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+    A ( \omega_0 ) =\big|S( i \omega_0)\big|,\;\varphi ( \omega_0 ) =\arg\big(S( i \omega_0)\big).
+\]</div>
+<p>Hence, to obtain <span class="math notranslate nohighlight">\(\lim_{t\rightarrow\infty}e(t)=0\)</span>, we need <span class="math notranslate nohighlight">\(S( i \omega_0)=0\)</span>. For this,  <span class="math notranslate nohighlight">\(C\)</span> should have a pole at <span class="math notranslate nohighlight">\(i \omega_0\)</span>. By symmetry, <span class="math notranslate nohighlight">\(C\)</span> must have a pole also at <span class="math notranslate nohighlight">\(-j\omega_0\)</span>. It will not work if <span class="math notranslate nohighlight">\(P( i \omega_0)=0\)</span>.</p>
+<div class="proof example admonition" id="example-12">
+<p class="admonition-title"><span class="caption-number">Example 13 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{k}{1+Ts},\quad C(s)=\frac{Ks}{s^2+\omega_0^2},
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(k,\;T,\;K,\;\omega_0\)</span> all positive. Then the feedback system of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is stable (check this!) and <span class="math notranslate nohighlight">\(e_{ss}=0\)</span> for <span class="math notranslate nohighlight">\(r,\;d\)</span> sinusoidal signals of angular frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> (check this!).</p>
+</section>
+</div></section>
+<section id="internal-model-principle">
+<h2>Internal Model Principle<a class="headerlink" href="#internal-model-principle" title="Link to this heading">#</a></h2>
+<p>The following table summarizes our findings in this chapter.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="id6">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Controllers needed to achieve zero steady-state error</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input <span class="math notranslate nohighlight">\(r\)</span></p></th>
+<th class="head text-left"><p>Laplace Transform of Input <span class="math notranslate nohighlight">\(\hat{r}\)</span></p></th>
+<th class="head text-left"><p>Structure Needed in Controller <span class="math notranslate nohighlight">\(C(s)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Step</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{r}(s) = \dfrac{1}{s}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{1}{s}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Ramp</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{r}(s) = \dfrac{1}{s^2}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{1}{s^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Sinusoidal</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\hat{r}(s) = \dfrac{1}{s^2+\omega_0^2}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\dfrac{1}{s^2+\omega_0^2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We conclude that the controller must encapsulate the form of the input for which we require zero steady state error. This is known as the internal model principle <span id="id2">[<a class="reference internal" href="markdown.html#id4" title="M. Bin, J. Huang, A. Isidori, L. Marconi, M. Mischiati, and E. D. Sontag. Internal models in control, bioengineering, and neuroscience. Annual Review of Control, Robotics, and Autonomous Systems, 5:20.1-20.25, 2022.">Bin <em>et al.</em>, 2022</a>]</span>.</p>
+<p>This raises interesting questions. For example, if we apply a reverse engineering  process to  decipher a biological controller in our cells, can we determine for what types of inputs/disturbances this controller was designed?</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>M. Bin, J. Huang, A. Isidori, L. Marconi, M. Mischiati, and E. D. Sontag. Internal models in control, bioengineering, and neuroscience. <em>Annual Review of Control, Robotics, and Autonomous Systems</em>, 5:20.1–20.25, 2022.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. <em>IEEE Transactions on Automatic Control</em>, 45(8):1651–1653, 2000. <a class="reference external" href="https://doi.org/10.1109/9.871749">doi:10.1109/9.871749</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 2: Linear Time-Invariant Control Systems</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-standard-feedback-connection-of-two-lti-systems">The Standard Feedback Connection of Two LTI Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-of-the-feedback-system">Stability of the Feedback System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w-stability">W-Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-control-of-a-first-order-system">An Example: Control of a First Order System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proportional-control">Proportional Control</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-constant-reference-and-disturbance">Eliminating the Steady-State Error for Constant Reference and Disturbance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-control-and-second-order-systems">Integral Control and  Second Order Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-critically-damped-case">The critically damped case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-ramp-inputs">Eliminating the Steady-State Error for Ramp  Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-the-steady-state-error-for-sinusoidal-inputs">Eliminating the Steady-State Error for Sinusoidal Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-model-principle">Internal Model Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
