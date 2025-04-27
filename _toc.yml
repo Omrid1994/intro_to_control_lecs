@@ -7,11 +7,4 @@ chapters:
 - file: Chapter0
 - file: Chapter1
 - file: Chapter2
-#- file: markdown
-#- file: notebooks
-#- file: markdown-notebooks
-#- file: intropage
-#- file: rec1
-#- file: finalplot
-#- file: plotplot1
-#- file: hope
+- file: Chapter3

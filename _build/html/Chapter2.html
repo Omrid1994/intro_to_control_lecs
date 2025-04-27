@@ -66,6 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 3: What is a Control System" href="Chapter3.html" />
     <link rel="prev" title="Chapter 1: The Challenge of Control" href="Chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
 </ul>
 
     </div>
@@ -403,19 +405,19 @@ state-space equations:</p>
 Let <span class="math notranslate nohighlight">\(\hat{u}(s)\)</span> denote the Laplace transform of the input of <span class="math notranslate nohighlight">\(\Sigma\)</span>.
 The transfer function of <span class="math notranslate nohighlight">\(\Sigma\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-transfer-function">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-transfer-function" title="Link to this equation">#</a></span>\[	G(s):= \frac{\hat y(s)}{\hat u(s)}=C(sI_n-A)^{-1}B+D, \]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-transfer-function" title="Link to this equation">#</a></span>\[	G(s):= \frac{\hat y(s)}{\hat u(s)}=C(sI_n-A)^{-1}B+D, \]</div>
 <p>and this is well defined for any <span class="math notranslate nohighlight">\(s\notin\sigma(A)\)</span>, where <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denotes the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>Recall that the inverse of a square invertible matrix <span class="math notranslate nohighlight">\(H\)</span> satisfies <span class="math notranslate nohighlight">\(H^{-1}=\frac{1}{\det(H)}\text{adj}(H)\)</span>, where <span class="math notranslate nohighlight">\(\text{adj}(H)\)</span> is the adjugate matrix of <span class="math notranslate nohighlight">\(H\)</span>. Every entry of <span class="math notranslate nohighlight">\(\text{adj}(H) \)</span> is the determinant  of an <span class="math notranslate nohighlight">\((n-1)\times (n-1)\)</span> submatrix of <span class="math notranslate nohighlight">\(H\)</span>. Thus,</p>
 <div class="math notranslate nohighlight" id="equation-eq-gs-adjugate">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-gs-adjugate" title="Link to this equation">#</a></span>\[	G(s)=C \frac{1}{\det(s I_n-A)}\text{adj}(s I_n-A )B+D.\]</div>
-<p>A transfer function <span class="math notranslate nohighlight">\(Q=Q(s)\)</span> is called  rational if it is the ratio of two polynomials in <span class="math notranslate nohighlight">\(s\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is rational. A rational transfer function <span class="math notranslate nohighlight">\(Q\)</span> is called proper if <span class="math notranslate nohighlight">\(\lim_{s\to\infty}Q(s)\)</span> exists and is finite, and strictly proper if this limit is zero. By <a class="reference internal" href="#equation-eq-gs-adjugate">(11)</a>, <span class="math notranslate nohighlight">\(\lim_{s\to \infty} G(s)=D\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is proper. It is strictly proper if <span class="math notranslate nohighlight">\(D=0\)</span>.</p>
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-gs-adjugate" title="Link to this equation">#</a></span>\[	G(s)=C \frac{1}{\det(s I_n-A)}\text{adj}(s I_n-A )B+D.\]</div>
+<p>A transfer function <span class="math notranslate nohighlight">\(Q=Q(s)\)</span> is called  rational if it is the ratio of two polynomials in <span class="math notranslate nohighlight">\(s\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is rational. A rational transfer function <span class="math notranslate nohighlight">\(Q\)</span> is called proper if <span class="math notranslate nohighlight">\(\lim_{s\to\infty}Q(s)\)</span> exists and is finite, and strictly proper if this limit is zero. By <a class="reference internal" href="#equation-eq-gs-adjugate">(14)</a>, <span class="math notranslate nohighlight">\(\lim_{s\to \infty} G(s)=D\)</span>, so <span class="math notranslate nohighlight">\(G\)</span> is proper. It is strictly proper if <span class="math notranslate nohighlight">\(D=0\)</span>.</p>
 <p>Write the rational transfer function <span class="math notranslate nohighlight">\(G\)</span> as the ratio of two polynomials</p>
 <div class="math notranslate nohighlight">
 \[
 G(s)=\frac{N(s)}{D(s)}.
 \]</div>
 <p>Then the zeros of <span class="math notranslate nohighlight">\(G\)</span> are the values <span class="math notranslate nohighlight">\(s\)</span> such that <span class="math notranslate nohighlight">\(N(s)=0\)</span>, and the poles of <span class="math notranslate nohighlight">\(G\)</span> are the values <span class="math notranslate nohighlight">\(s\)</span> such that <span class="math notranslate nohighlight">\(D(s)=0\)</span>.</p>
-<p>By <a class="reference internal" href="#equation-eq-gs-adjugate">(11)</a>, the  poles of <span class="math notranslate nohighlight">\(G\)</span> are a subset of <span class="math notranslate nohighlight">\(\sigma(A)\)</span>.</p>
+<p>By <a class="reference internal" href="#equation-eq-gs-adjugate">(14)</a>, the  poles of <span class="math notranslate nohighlight">\(G\)</span> are a subset of <span class="math notranslate nohighlight">\(\sigma(A)\)</span>.</p>
 <p>The system <span class="math notranslate nohighlight">\(\Sigma\)</span> is called minimal if there does not exist an LTI system with a smaller order than <span class="math notranslate nohighlight">\(n\)</span> that gives the same transfer function. If the system <span class="math notranslate nohighlight">\(\Sigma\)</span> is minimal then the  poles of <span class="math notranslate nohighlight">\(G\)</span> are  the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="proof remark admonition" id="remark-0">
 <p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
@@ -519,7 +521,7 @@ In matrix form, we have</p>
 <p>Since <span class="math notranslate nohighlight">\(A\)</span> is real, the coefficients <span class="math notranslate nohighlight">\(a_j\)</span> are real.</p>
 <p>A necessary (but not sufficient) condition for stability is</p>
 <div class="math notranslate nohighlight" id="equation-eq-nece-cond">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-nece-cond" title="Link to this equation">#</a></span>\[  \text{If $A$ is stable, then $a_j&gt;0$   for } j=0,\dots,n-1.\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-nece-cond" title="Link to this equation">#</a></span>\[  \text{If $A$ is stable, then $a_j&gt;0$   for } j=0,\dots,n-1.\]</div>
 <div class="proof remark admonition" id="remark-2">
 <p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
 <section class="remark-content" id="proof-content">
@@ -558,7 +560,7 @@ d_3 = \frac{c_1 a_{n-7} - a_{n-1} c_4}{c_1}.
 <section class="proposition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(A\)</span> is stable if and only if:</p>
 <ol class="arabic simple">
-<li><p>the necessary condition <a class="reference internal" href="#equation-eq-nece-cond">(12)</a> holds, and</p></li>
+<li><p>the necessary condition <a class="reference internal" href="#equation-eq-nece-cond">(15)</a> holds, and</p></li>
 <li><p>all the numbers in the first column of the Routh table are positive.</p></li>
 </ol>
 </section>
@@ -624,7 +626,7 @@ Note that <span class="math notranslate nohighlight">\(A\)</span> has two unstab
 \end{split}\]</div>
 <p>so the first column includes two sign variations, as expected.</p>
 </section>
-</div><p>For an intuitive proof of the Routh stability test, see <span id="id1">[<a class="reference internal" href="#id3" title="Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. IEEE Transactions on Automatic Control, 45(8):1651-1653, 2000. doi:10.1109/9.871749.">Margaliot and Langholz, 2000</a>]</span>.</p>
+</div><p>For an intuitive proof of the Routh stability test, see <span id="id1">[<a class="reference internal" href="markdown.html#id3" title="Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. IEEE Transactions on Automatic Control, 45(8):1651-1653, 2000. doi:10.1109/9.871749.">Margaliot and Langholz, 2000</a>]</span>.</p>
 </section>
 <section id="stability-of-the-transfer-function">
 <h2>Stability of the transfer function<a class="headerlink" href="#stability-of-the-transfer-function" title="Link to this heading">#</a></h2>
@@ -699,8 +701,12 @@ y_{\text{steady-state}}(t)= c \cos(\omega t+\phi )\equiv c \cos( \phi ),
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>M. Bin, J. Huang, A. Isidori, L. Marconi, M. Mischiati, and E. D. Sontag. Internal models in control, bioengineering, and neuroscience. <em>Annual Review of Control, Robotics, and Autonomous Systems</em>, 5:20.1–20.25, 2022.</p>
+</div>
 <div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
 <p>Michael Margaliot and Gideon Langholz. An intuitive proof of the routh stability test. <em>IEEE Transactions on Automatic Control</em>, 45(8):1651–1653, 2000. <a class="reference external" href="https://doi.org/10.1109/9.871749">doi:10.1109/9.871749</a>.</p>
 </div>
 </div>
@@ -746,6 +752,15 @@ y_{\text{steady-state}}(t)= c \cos(\omega t+\phi )\equiv c \cos( \phi ),
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Chapter 1: The Challenge of Control</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Chapter3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3: What is a Control System</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -66,7 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Challenge of Control" href="Chapter1.html" />
+    <link rel="next" title="Chapter 1: The Challenge of Control" href="Chapter1.html" />
     <link rel="prev" title="Intro to Control" href="title.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,8 +173,9 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 0: Matrix Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">The Challenge of Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Linear Time-Invariant Control Systems\label{sec:LTI}</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
 </ul>
 
     </div>
@@ -467,8 +468,8 @@ A A^{-1} =I_n.
 <p class="admonition-title">Solution</p>
 <p>Let <span class="math notranslate nohighlight">\(\lambda=i\)</span> and <span class="math notranslate nohighlight">\(v=\begin{bmatrix}1\\-i\end{bmatrix}
    \)</span>. Then</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}         Av&amp;=\begin{bmatrix}
+<div class="math notranslate nohighlight" id="equation-chapter0-0">
+<span class="eqno">(2)<a class="headerlink" href="#equation-chapter0-0" title="Link to this equation">#</a></span>\[\begin{split}         Av&amp;=\begin{bmatrix}
              0&amp;-1\\1&amp;0 
          \end{bmatrix}
          \begin{bmatrix}
@@ -502,15 +503,15 @@ implies that</p>
 <p>where <span class="math notranslate nohighlight">\(\iff\)</span> stands  for if and only if (iff).
 <a class="reference internal" href="#equation-eq-eigenvalue-equation">(1)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-eigenvalue-equation2">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-eigenvalue-equation2" title="Link to this equation">#</a></span>\[    \big(\lambda I_n-A\big)v=0.\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-eigenvalue-equation2" title="Link to this equation">#</a></span>\[    \big(\lambda I_n-A\big)v=0.\]</div>
 <p>Thus, the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are the values <span class="math notranslate nohighlight">\(\lambda\)</span> such that <span class="math notranslate nohighlight">\(\lambda I_n-A\)</span> is a singular matrix, i.e. the roots of the equation</p>
 <div class="math notranslate nohighlight" id="equation-eq-det-lambda-i-a-0">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-det-lambda-i-a-0" title="Link to this equation">#</a></span>\[    \det\big(\lambda I_n-A\big)=0.\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-det-lambda-i-a-0" title="Link to this equation">#</a></span>\[    \det\big(\lambda I_n-A\big)=0.\]</div>
 <p>Note that this equation admits <span class="math notranslate nohighlight">\(n\)</span> solutions <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_n\in\mathbb{C}\)</span>.</p>
 </section>
 </div><div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
-<p>Solve equation <a class="reference internal" href="#equation-eq-det-lambda-i-a-0">(3)</a> for <span class="math notranslate nohighlight">\(A=\begin{bmatrix}0&amp;-1\\1&amp;0\end{bmatrix}\)</span>.</p>
+<p>Solve equation <a class="reference internal" href="#equation-eq-det-lambda-i-a-0">(4)</a> for <span class="math notranslate nohighlight">\(A=\begin{bmatrix}0&amp;-1\\1&amp;0\end{bmatrix}\)</span>.</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
@@ -606,15 +607,15 @@ However, every matrix is arbitrarily close to a matrix that can be diagonalized.
 <section class="definition-content" id="proof-content">
 <p>The <em>characteristic polynomial</em> of an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-char-poly">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-def-char-poly" title="Link to this equation">#</a></span>\[    p_A(\lambda) : =\det(\lambda I_n-A).\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-def-char-poly" title="Link to this equation">#</a></span>\[    p_A(\lambda) : =\det(\lambda I_n-A).\]</div>
 </section>
 </div><p>Note that <span class="math notranslate nohighlight">\(p_A(\lambda)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span>  in <span class="math notranslate nohighlight">\(\lambda\)</span>, so it can be written as</p>
-<div class="math notranslate nohighlight">
-\[    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1 \lambda+c_0.\]</div>
-<p>In particular, <span class="math notranslate nohighlight">\(p_A(0)=c_0\)</span> and using <a class="reference internal" href="#equation-eq-def-char-poly">(4)</a> gives <span class="math notranslate nohighlight">\(c_0=\det(-A)=(-1)^n\det(A)\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-chapter0-1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-chapter0-1" title="Link to this equation">#</a></span>\[    p_A(\lambda)=\lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1 \lambda+c_0.\]</div>
+<p>In particular, <span class="math notranslate nohighlight">\(p_A(0)=c_0\)</span> and using <a class="reference internal" href="#equation-eq-def-char-poly">(5)</a> gives <span class="math notranslate nohighlight">\(c_0=\det(-A)=(-1)^n\det(A)\)</span>.</p>
 <p>Replacing the scalar variable <span class="math notranslate nohighlight">\(\lambda\)</span> with the matrix <span class="math notranslate nohighlight">\(A\)</span>, one can define an analogous <em>matrix polynomial</em> expression,</p>
-<div class="math notranslate nohighlight">
-\[    p_A(A)=A^n+c_{n-1}A^{n-1}+\dots+c_1 A+c_0 I_n.\]</div>
+<div class="math notranslate nohighlight" id="equation-chapter0-2">
+<span class="eqno">(7)<a class="headerlink" href="#equation-chapter0-2" title="Link to this equation">#</a></span>\[    p_A(A)=A^n+c_{n-1}A^{n-1}+\dots+c_1 A+c_0 I_n.\]</div>
 <div class="proof theorem admonition" id="thm:cayley_hamilton">
 <p class="admonition-title"><span class="caption-number">Theorem 1 </span> (The Cayley-Hamilton Theorem)</p>
 <section class="theorem-content" id="proof-content">
@@ -631,10 +632,10 @@ However, every matrix is arbitrarily close to a matrix that can be diagonalized.
 </div>
 <p>One implication of the Cayley-Hamilton Theorem is that</p>
 <div class="math notranslate nohighlight" id="equation-eq-expressan">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-expressan" title="Link to this equation">#</a></span>\[A^n=-c_{n-1}A^{n-1}-\dots-c_1 A-c_0 I_n,\]</div>
-<p>that is, we can express <span class="math notranslate nohighlight">\(A^n\)</span> as a weighted sum of matrices in the set <span class="math notranslate nohighlight">\(\mathcal A:=\{A^0,\dots,A^{n-1}\}\)</span>. Multiplying <a class="reference internal" href="#equation-eq-expressan">(5)</a> by <span class="math notranslate nohighlight">\(A\)</span> gives</p>
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-expressan" title="Link to this equation">#</a></span>\[A^n=-c_{n-1}A^{n-1}-\dots-c_1 A-c_0 I_n,\]</div>
+<p>that is, we can express <span class="math notranslate nohighlight">\(A^n\)</span> as a weighted sum of matrices in the set <span class="math notranslate nohighlight">\(\mathcal A:=\{A^0,\dots,A^{n-1}\}\)</span>. Multiplying <a class="reference internal" href="#equation-eq-expressan">(8)</a> by <span class="math notranslate nohighlight">\(A\)</span> gives</p>
 <div class="math notranslate nohighlight" id="equation-eq-recurrence">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eq-recurrence" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-recurrence" title="Link to this equation">#</a></span>\[\begin{aligned}
 A^{n+1} &amp;= -c_{n-1}A^{n} - \dots - c_1 A^2 - c_0 A,
 \end{aligned}\]</div>
 <p>and since we can express <span class="math notranslate nohighlight">\(A^n\)</span> as a weighted sum of matrices in <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>, we conclude that we can express <span class="math notranslate nohighlight">\(A^{n+1}\)</span> a as weighted sum of matrices in <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>.
@@ -647,14 +648,14 @@ Continuing in this fashion we conclude that we can express any <span class="math
 <section class="definition-content" id="proof-content">
 <p>The matrix exponential of <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>, denoted <span class="math notranslate nohighlight">\(e^A\)</span> or <span class="math notranslate nohighlight">\(\exp(A)\)</span>,  is the <span class="math notranslate nohighlight">\(n\times n\)</span> matrix defined by</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-exp-matrix">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-def-exp-matrix" title="Link to this equation">#</a></span>\[    e^A=\sum_{k=0}^\infty \frac{A^k}{k!}, \]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-def-exp-matrix" title="Link to this equation">#</a></span>\[    e^A=\sum_{k=0}^\infty \frac{A^k}{k!}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(A^0:=I_n\)</span>.</p>
 </section>
 </div><p>Consider the following linear time-invariant (LTI) system</p>
 <div class="math notranslate nohighlight" id="equation-eq-homo-lti">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-homo-lti" title="Link to this equation">#</a></span>\[\begin{split}    \dot{x}(t)&amp;=Ax(t),\\
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-homo-lti" title="Link to this equation">#</a></span>\[\begin{split}    \dot{x}(t)&amp;=Ax(t),\\
      x(0)&amp;=x_0,\nonumber\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x_0\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>. The solution of <a class="reference internal" href="#equation-eq-homo-lti">(8)</a> at time <span class="math notranslate nohighlight">\(t\)</span>
+<p>where <span class="math notranslate nohighlight">\(x_0\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>. The solution of <a class="reference internal" href="#equation-eq-homo-lti">(11)</a> at time <span class="math notranslate nohighlight">\(t\)</span>
 is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -676,10 +677,10 @@ is</p>
 <p>Thus, <span class="math notranslate nohighlight">\(z(t)\)</span> satisfies the same differential equation as <span class="math notranslate nohighlight">\(x(t)\)</span>, with the same initial condition. By uniqueness of the solution of the LTI, this implies that <span class="math notranslate nohighlight">\(x(t)=z(t)=e^{At}x_0\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(D=\text{diag}(\lambda_1,\dots,\lambda_n)\)</span> denote the <span class="math notranslate nohighlight">\(n\times n\)</span> diagonal matrix with diagonal entries <span class="math notranslate nohighlight">\(\lambda_i\)</span>. Its exponential is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-exp-diag">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-exp-diag" title="Link to this equation">#</a></span>\[e^{D} = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-exp-diag" title="Link to this equation">#</a></span>\[e^{D} = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).\]</div>
 <p>(prove this).</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable,
-that is, there exists an invertible matrix <span class="math notranslate nohighlight">\(T\in\mathbb{C}^{n\times n}\)</span>   such that <span class="math notranslate nohighlight">\( D:=T^{-1}AT=\text{diag}(\lambda_1,\dots,\lambda_n)\)</span>. Then <span class="math notranslate nohighlight">\(A=TDT^{-1}\)</span> yields <span class="math notranslate nohighlight">\(A^2=TD^2T^{-1}\)</span>, and continuing in this way gives <span class="math notranslate nohighlight">\(A^k=TD^k T^{-1}\)</span> for any integer <span class="math notranslate nohighlight">\(k\geq 0\)</span>. Now Eq. <a class="reference internal" href="#equation-eq-def-exp-matrix">(7)</a> yields</p>
+that is, there exists an invertible matrix <span class="math notranslate nohighlight">\(T\in\mathbb{C}^{n\times n}\)</span>   such that <span class="math notranslate nohighlight">\( D:=T^{-1}AT=\text{diag}(\lambda_1,\dots,\lambda_n)\)</span>. Then <span class="math notranslate nohighlight">\(A=TDT^{-1}\)</span> yields <span class="math notranslate nohighlight">\(A^2=TD^2T^{-1}\)</span>, and continuing in this way gives <span class="math notranslate nohighlight">\(A^k=TD^k T^{-1}\)</span> for any integer <span class="math notranslate nohighlight">\(k\geq 0\)</span>. Now Eq. <a class="reference internal" href="#equation-eq-def-exp-matrix">(10)</a> yields</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     e^{At}&amp;= Te^{Dt}T^{-1}\\
@@ -808,7 +809,7 @@ Since</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Challenge of Control</p>
+        <p class="prev-next-title">Chapter 1: The Challenge of Control</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

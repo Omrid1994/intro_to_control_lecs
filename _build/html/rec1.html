@@ -173,8 +173,9 @@
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">The Challenge of Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Linear Time-Invariant Control Systems\label{sec:LTI}</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
 </ul>
 
     </div>
@@ -399,8 +400,8 @@
 <section id="transfer-functions">
 <h2>Transfer Functions<a class="headerlink" href="#transfer-functions" title="Link to this heading">#</a></h2>
 <p>A general solution of a second-order differential equation with constant coefficients:</p>
-<div class="math notranslate nohighlight">
-\[\ddot{y} + a \dot{y} + b y = 0,\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-0">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-0" title="Link to this equation">#</a></span>\[\ddot{y} + a \dot{y} + b y = 0,\]</div>
 <p>is:</p>
 <div class="math notranslate nohighlight" id="equation-my-label">
 <span class="eqno">()<a class="headerlink" href="#equation-my-label" title="Link to this equation">#</a></span>\[y(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t}.\]</div>
@@ -426,19 +427,19 @@
 </div>
 <section id="important-laplace-transformations">
 <h3>Important Laplace Transformations<a class="headerlink" href="#important-laplace-transformations" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\mathcal{L}\{\delta(t-t_0)\}=e^{-st_0},\quad \mathcal{L}\{1(t)\}=\frac{1}{s},\quad \mathcal{L}\{u(t-\tau)\}=U(s)e^{-s\tau},\quad \mathcal{L}\{e^{at}\}=\frac{1}{s-a}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-1">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-1" title="Link to this equation">#</a></span>\[\mathcal{L}\{\delta(t-t_0)\}=e^{-st_0},\quad \mathcal{L}\{1(t)\}=\frac{1}{s},\quad \mathcal{L}\{u(t-\tau)\}=U(s)e^{-s\tau},\quad \mathcal{L}\{e^{at}\}=\frac{1}{s-a}.\]</div>
 <p>For zero initial conditions:</p>
-<div class="math notranslate nohighlight">
-\[\mathcal{L}\{f^{(n)}(t)\}=s^n\mathcal{L}\{f(t)\}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-2">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-2" title="Link to this equation">#</a></span>\[\mathcal{L}\{f^{(n)}(t)\}=s^n\mathcal{L}\{f(t)\}.\]</div>
 </section>
 </section>
 <section id="stability-theorems-for-transfer-functions">
 <h2>Stability Theorems for Transfer Functions<a class="headerlink" href="#stability-theorems-for-transfer-functions" title="Link to this heading">#</a></h2>
 <p><strong>Frequency Domain Criterion:</strong> A (rational) transfer function is stable if and only if all its poles are on the left-hand side of the complex plane.</p>
 <p><strong>Time Domain Criterion:</strong> The transfer function is stable if and only if for the impulse response <span class="math notranslate nohighlight">\(h(t)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\int_0^{\infty} |h(t)| dt &lt; \infty\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-3">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-3" title="Link to this equation">#</a></span>\[\int_0^{\infty} |h(t)| dt &lt; \infty\]</div>
 <section id="exercise-damped-and-driven-harmonic-oscillator">
 <h3>Exercise – Damped and Driven Harmonic Oscillator<a class="headerlink" href="#exercise-damped-and-driven-harmonic-oscillator" title="Link to this heading">#</a></h3>
 <p>Consider the damped and driven harmonic oscillator with mass <span class="math notranslate nohighlight">\(m=1\)</span>:</p>
@@ -454,8 +455,8 @@
 </figcaption>
 </figure>
 <p>Let <span class="math notranslate nohighlight">\(\gamma=4\)</span>, <span class="math notranslate nohighlight">\(\omega^2=3\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>. Define:</p>
-<div class="math notranslate nohighlight">
-\[X(s) = \mathcal{L}\{x(t)\},\quad U(s)=\mathcal{L}\{u(t)\}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-4">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-4" title="Link to this equation">#</a></span>\[X(s) = \mathcal{L}\{x(t)\},\quad U(s)=\mathcal{L}\{u(t)\}.\]</div>
 <ol class="arabic simple">
 <li><p>Find the transfer function <span class="math notranslate nohighlight">\(G(s)=\frac{X(s)}{U(s)}\)</span> of the system. What are the poles and zeros of <span class="math notranslate nohighlight">\(G(s)\)</span>?</p></li>
 <li><p>Find the impulse response of the system:</p></li>
@@ -469,97 +470,97 @@
 <li><p>Transfer Function Derivation</p></li>
 </ol>
 <p>Applying the <strong>Laplace Transform</strong>:</p>
-<div class="math notranslate nohighlight">
-\[s^2X(s) + 2\gamma sX(s) + \omega^2 X(s) = asU(s) - bU(s).\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-5">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-5" title="Link to this equation">#</a></span>\[s^2X(s) + 2\gamma sX(s) + \omega^2 X(s) = asU(s) - bU(s).\]</div>
 <p>Factoring:</p>
-<div class="math notranslate nohighlight">
-\[X(s)(s^2 + 2\gamma s + \omega^2) = U(s)(as - b).\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-6">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-6" title="Link to this equation">#</a></span>\[X(s)(s^2 + 2\gamma s + \omega^2) = U(s)(as - b).\]</div>
 <p>Thus, the <strong>transfer function</strong> is:</p>
-<div class="math notranslate nohighlight">
-\[\boxed{G(s) = \frac{X(s)}{U(s)} = \frac{as-b}{s^2 + 2\gamma s + \omega^2}}\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-7">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-7" title="Link to this equation">#</a></span>\[\boxed{G(s) = \frac{X(s)}{U(s)} = \frac{as-b}{s^2 + 2\gamma s + \omega^2}}\]</div>
 <p>Note that the numerator corresponds to the excitation, and the denominator corresponds to the system itself.</p>
 <p>There is a zero at <span class="math notranslate nohighlight">\(s = \frac{a}{b}\)</span>. The poles are:</p>
-<div class="math notranslate nohighlight">
-\[s^2 + 2\gamma s + \omega^2 = 0 \rightarrow s_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega^2}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-8">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-8" title="Link to this equation">#</a></span>\[s^2 + 2\gamma s + \omega^2 = 0 \rightarrow s_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega^2}.\]</div>
 <p>The solution of <a class="reference internal" href="#equation-eq-spring-damper">()</a> is:</p>
-<div class="math notranslate nohighlight">
-\[y(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-9">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-9" title="Link to this equation">#</a></span>\[y(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},\]</div>
 <p>where</p>
-<div class="math notranslate nohighlight">
-\[\lambda_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega^2}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-10">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-10" title="Link to this equation">#</a></span>\[\lambda_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega^2}.\]</div>
 <p>Note that the poles of~<span class="math notranslate nohighlight">\(G(s)\)</span> correspond to the time-domain solution of <a class="reference internal" href="#equation-eq-spring-damper">()</a>.
 Substituting the values, we have:</p>
-<div class="math notranslate nohighlight">
-\[G(s) = \frac{X(s)}{U(s)} = \frac{2(s - 1.5)}{(s + 1)(s + 3)}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-11">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-11" title="Link to this equation">#</a></span>\[G(s) = \frac{X(s)}{U(s)} = \frac{2(s - 1.5)}{(s + 1)(s + 3)}.\]</div>
 <p>The zero is at <span class="math notranslate nohighlight">\(s = 1.5\)</span>, and the poles are at <span class="math notranslate nohighlight">\(s = -1, -3\)</span>.</p>
 <ol class="arabic simple" start="2">
 <li><p>Impulse Input</p></li>
 </ol>
 <p>In this case, <span class="math notranslate nohighlight">\(u(t) = \delta(t)\)</span>, so <span class="math notranslate nohighlight">\(U(s) = 1\)</span>. We have:</p>
-<div class="math notranslate nohighlight">
-\[\frac{X(s)}{U(s)} = G(s) \rightarrow X(s) = G(s) U(s) \underbrace{=}_{U(s)=1} G(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-12">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-12" title="Link to this equation">#</a></span>\[\frac{X(s)}{U(s)} = G(s) \rightarrow X(s) = G(s) U(s) \underbrace{=}_{U(s)=1} G(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)}.\]</div>
 <p>The impulse response is:</p>
-<div class="math notranslate nohighlight">
-\[h(t) := \mathcal{L}^{-1} \{ G(s) \}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-13">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-13" title="Link to this equation">#</a></span>\[h(t) := \mathcal{L}^{-1} \{ G(s) \}.\]</div>
 <p>Partial fraction decomposition gives:</p>
-<div class="math notranslate nohighlight">
-\[G(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)} = -\frac{2.5}{s + 1} + \frac{4.5}{s + 3}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-14">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-14" title="Link to this equation">#</a></span>\[G(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)} = -\frac{2.5}{s + 1} + \frac{4.5}{s + 3}.\]</div>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Click here for the derivation of the fraction decomposition.</p>
 <p>We decompose the function:</p>
-<div class="math notranslate nohighlight">
-\[\frac{2(s - 1.5)}{(s + 1)(s + 3)} = \frac{A}{s + 1} + \frac{B}{s + 3}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-15">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-15" title="Link to this equation">#</a></span>\[\frac{2(s - 1.5)}{(s + 1)(s + 3)} = \frac{A}{s + 1} + \frac{B}{s + 3}.\]</div>
 <p>Multiplying both sides by <span class="math notranslate nohighlight">\((s + 1)(s + 3)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[2s - 3 = s(A + B) + 3A + B.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-16">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-16" title="Link to this equation">#</a></span>\[2s - 3 = s(A + B) + 3A + B.\]</div>
 <p>Comparing coefficients:</p>
-<div class="math notranslate nohighlight">
-\[2 = A + B, \quad -3 = 3A + B.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-17">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-17" title="Link to this equation">#</a></span>\[2 = A + B, \quad -3 = 3A + B.\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[B = 2 - A, \quad -3 = 3A + (2 - A).\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-18">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-18" title="Link to this equation">#</a></span>\[B = 2 - A, \quad -3 = 3A + (2 - A).\]</div>
 <p>Rearranging:</p>
-<div class="math notranslate nohighlight">
-\[-3 = 3A + 2 - A \Rightarrow A = -2.5, \quad B = 4.5.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-19">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-19" title="Link to this equation">#</a></span>\[-3 = 3A + 2 - A \Rightarrow A = -2.5, \quad B = 4.5.\]</div>
 </div>
 <p>Thus, the inverse Laplace transform is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}h(t) &amp;= \mathcal{L}^{-1} \{ G(s) \} \\
+<div class="math notranslate nohighlight" id="equation-rec1-20">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-20" title="Link to this equation">#</a></span>\[\begin{split}h(t) &amp;= \mathcal{L}^{-1} \{ G(s) \} \\
 &amp;=-2.5\mathcal{L}^{-1}\Big\{\frac{1}{s+1}\Big\}+4.5\mathcal{L}^{-1}\Big\{\frac{1}{s+3}\Big\}\\
 &amp;= -2.5 e^{-t} + 4.5 e^{-3t}, \quad t \geq 0.\end{split}\]</div>
 <ol class="arabic simple" start="3">
 <li><p>Step Input</p></li>
 </ol>
 <p>In this case, <span class="math notranslate nohighlight">\(u(t) = 1(t)\)</span>, thus <span class="math notranslate nohighlight">\(U(s) = \frac{1}{s}\)</span>. We have:</p>
-<div class="math notranslate nohighlight">
-\[X(s) = G(s) U(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)} \cdot \frac{1}{s}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-21">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-21" title="Link to this equation">#</a></span>\[X(s) = G(s) U(s) = \frac{2(s - 1.5)}{(s + 1)(s + 3)} \cdot \frac{1}{s}.\]</div>
 <p>Partial fraction decomposition gives:</p>
-<div class="math notranslate nohighlight">
-\[X(s) = \frac{2.5}{s + 1} - \frac{1.5}{s + 3} - \frac{1}{s}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-22">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-22" title="Link to this equation">#</a></span>\[X(s) = \frac{2.5}{s + 1} - \frac{1.5}{s + 3} - \frac{1}{s}.\]</div>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Click here for the derivation of the fraction decomposition.</p>
 <p>We further decompose:</p>
-<div class="math notranslate nohighlight">
-\[\frac{2(s - 1.5)}{(s + 1)(s + 3)} \cdot \frac{1}{s} = \frac{A}{s + 1} + \frac{B}{s + 3} + \frac{C}{s}.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-23">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-23" title="Link to this equation">#</a></span>\[\frac{2(s - 1.5)}{(s + 1)(s + 3)} \cdot \frac{1}{s} = \frac{A}{s + 1} + \frac{B}{s + 3} + \frac{C}{s}.\]</div>
 <p>Multiplying both sides by <span class="math notranslate nohighlight">\((s + 1)(s + 3)s\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[2s - 3 = A(s^2 + 3s) + B(s^2 + s) + C(s^2 + 4s + 3).\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-24">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-24" title="Link to this equation">#</a></span>\[2s - 3 = A(s^2 + 3s) + B(s^2 + s) + C(s^2 + 4s + 3).\]</div>
 <p>Comparing coefficients:</p>
-<div class="math notranslate nohighlight">
-\[0 = A + B + C, \quad 2 = 3A + B + 4C, \quad -3 = 3C.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-25">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-25" title="Link to this equation">#</a></span>\[0 = A + B + C, \quad 2 = 3A + B + 4C, \quad -3 = 3C.\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(C\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[C = -1.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-26">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-26" title="Link to this equation">#</a></span>\[C = -1.\]</div>
 <p>Substituting into the other equations:</p>
-<div class="math notranslate nohighlight">
-\[0 = A + B - 1, \quad 2 = 3A + B - 4.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-27">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-27" title="Link to this equation">#</a></span>\[0 = A + B - 1, \quad 2 = 3A + B - 4.\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[A = 2.5, \quad B = -1.5, \quad C = -1.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-28">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-28" title="Link to this equation">#</a></span>\[A = 2.5, \quad B = -1.5, \quad C = -1.\]</div>
 </div>
 <p>The inverse Laplace transform gives::</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}x(t)&amp;=2.5\mathcal{L}^{-1}\Big\{\frac{1}{s+1}\Big\}-1.5\mathcal{L}^{-1}\Big\{\frac{1}{s+3}\Big\}-\mathcal{L}^{-1}\Big\{\frac{1}{s}\Big\}\\
+<div class="math notranslate nohighlight" id="equation-rec1-29">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-29" title="Link to this equation">#</a></span>\[\begin{split}x(t)&amp;=2.5\mathcal{L}^{-1}\Big\{\frac{1}{s+1}\Big\}-1.5\mathcal{L}^{-1}\Big\{\frac{1}{s+3}\Big\}-\mathcal{L}^{-1}\Big\{\frac{1}{s}\Big\}\\
     &amp;=2.5e^{-t}-1.5e^{-3t}-1,\;t\geq0.\end{split}\]</div>
 <p>4.We saw that all poles have a negative real part, so the transfer function is stable. Moreover, according to the time domain theorem, the impulse response is a decreasing exponential, so it is easy to confirm that the integral is finite.</p>
 </section>
@@ -575,11 +576,11 @@ Substituting the values, we have:</p>
 <section id="routh-hurwitz-criterion">
 <h2>Routh-Hurwitz Criterion<a class="headerlink" href="#routh-hurwitz-criterion" title="Link to this heading">#</a></h2>
 <p>We saw in class that the system is stable if the matrix is <strong>Hurwitz</strong>, that is, the real part of every eigenvalue is negative. The <strong>Routh-Hurwitz criterion</strong> helps us determine if a polynomial is stable or not. Consider the following polynomial:</p>
-<div class="math notranslate nohighlight">
-\[P(s) = a_n s^n + a_{n-1} s^{n-1} + \dots + a_1 s + a_0.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-30">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-30" title="Link to this equation">#</a></span>\[P(s) = a_n s^n + a_{n-1} s^{n-1} + \dots + a_1 s + a_0.\]</div>
 <p>We build the following table:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-31">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-31" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^n     &amp; b_n     &amp; b_{n-2} &amp; b_{n-4} &amp; \dots \\
     s^{n-1} &amp; b_{n-1} &amp; b_{n-3} &amp; b_{n-5} &amp; \dots \\
     s^{n-2} &amp; c_1 &amp; c_2 &amp; c_3 &amp; \cdots \\
@@ -589,12 +590,12 @@ Substituting the values, we have:</p>
     s^0 &amp; k_1
 \end{array}\end{split}\]</div>
 <p>If <span class="math notranslate nohighlight">\(n\)</span> is even (odd), then the first row consists of the coefficients of all even (odd) powers, and the second row consists of the coefficients of all odd (even) powers. All other values are calculated recursively.</p>
-<div class="math notranslate nohighlight">
-\[c_1 = \frac{b_{n-1} b_{n-2} - b_n b_{n-3}}{b_{n-1}}, \quad
+<div class="math notranslate nohighlight" id="equation-rec1-32">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-32" title="Link to this equation">#</a></span>\[c_1 = \frac{b_{n-1} b_{n-2} - b_n b_{n-3}}{b_{n-1}}, \quad
 c_2 = \frac{b_{n-1} b_{n-4} - b_n b_{n-5}}{b_{n-1}}, \quad
 c_3 = \frac{b_{n-1} b_{n-6} - b_n b_{n-7}}{b_{n-1}}\]</div>
-<div class="math notranslate nohighlight">
-\[d_1 = \frac{c_1 b_{n-3} - b_{n-1} c_2}{c_1}, \quad
+<div class="math notranslate nohighlight" id="equation-rec1-33">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-33" title="Link to this equation">#</a></span>\[d_1 = \frac{c_1 b_{n-3} - b_{n-1} c_2}{c_1}, \quad
 d_2 = \frac{c_1 b_{n-5} - b_{n-1} c_3}{c_1}, \quad
 d_3 = \frac{c_1 b_{n-7} - b_{n-1} c_4}{c_1}\]</div>
 <div class="tip admonition">
@@ -625,19 +626,19 @@ d_3 = \frac{c_1 b_{n-7} - b_{n-1} c_4}{c_1}\]</div>
 <section id="exercise-1-zero-element-in-the-first-column">
 <h3>Exercise 1 - zero element in the first column<a class="headerlink" href="#exercise-1-zero-element-in-the-first-column" title="Link to this heading">#</a></h3>
 <p>Consider the polynomial:</p>
-<div class="math notranslate nohighlight">
-\[P(s) = s^5 + s^4+ 2s^3+ 2s^2 + 3s + 15.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-34">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-34" title="Link to this equation">#</a></span>\[P(s) = s^5 + s^4+ 2s^3+ 2s^2 + 3s + 15.\]</div>
 <p>Find the number of right-handed roots of <span class="math notranslate nohighlight">\(P(s)\)</span> using the Routh-Hurwitz table.
 The Routh table will be:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-35">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-35" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^5 &amp; 1 &amp; 2 &amp; 3 \\
     s^4 &amp; 1 &amp; 2 &amp; 15 \\
     s^3 &amp; 0 &amp; -12
 \end{array}\end{split}\]</div>
 <p>We replace <span class="math notranslate nohighlight">\(0\)</span> by <span class="math notranslate nohighlight">\(\varepsilon\)</span>, and continue:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-36">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-36" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^5 &amp; 1 &amp; 2 &amp; 3 \\
     s^4 &amp; 1 &amp; 2 &amp; 15 \\
     s^3 &amp; \varepsilon &amp; -12 \\
@@ -648,18 +649,18 @@ The Routh table will be:</p>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Click here for the derivation of the table elements</p>
 <p>In this case:</p>
-<div class="math notranslate nohighlight">
-\[d_1 = \frac{2\varepsilon+12}{\varepsilon}&gt;0, \quad
+<div class="math notranslate nohighlight" id="equation-rec1-37">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-37" title="Link to this equation">#</a></span>\[d_1 = \frac{2\varepsilon+12}{\varepsilon}&gt;0, \quad
 d_2 = \frac{15\varepsilon}{\varepsilon}=15.\]</div>
 <p>Moreover,</p>
-<div class="math notranslate nohighlight">
-\[e_1 = \frac{\frac{-24\varepsilon-144}{\varepsilon}-15\varepsilon}{\frac{2\varepsilon+12}{\varepsilon}} = -\frac{15\varepsilon^2+24\varepsilon+144}{2\varepsilon+12}&lt;0.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-38">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-38" title="Link to this equation">#</a></span>\[e_1 = \frac{\frac{-24\varepsilon-144}{\varepsilon}-15\varepsilon}{\frac{2\varepsilon+12}{\varepsilon}} = -\frac{15\varepsilon^2+24\varepsilon+144}{2\varepsilon+12}&lt;0.\]</div>
 <p>Finally, we have:</p>
-<div class="math notranslate nohighlight">
-\[f_1 = \frac{e_1 d_2 - d_1 \cdot 0}{e_1} = \frac{e_1 d_2}{e_1} = d_2 = 15.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-39">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-39" title="Link to this equation">#</a></span>\[f_1 = \frac{e_1 d_2 - d_1 \cdot 0}{e_1} = \frac{e_1 d_2}{e_1} = d_2 = 15.\]</div>
 <p>To conclude:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-40">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-40" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^5 &amp; 1 &amp; 2 &amp; 3 \\
     s^4 &amp; 1 &amp; 2 &amp; 15 \\
     s^3 &amp; \varepsilon&gt;0 &amp; -12 \\
@@ -673,12 +674,12 @@ d_2 = \frac{15\varepsilon}{\varepsilon}=15.\]</div>
 <section id="exercise-row-of-zeros">
 <h3>Exercise - row of zeros<a class="headerlink" href="#exercise-row-of-zeros" title="Link to this heading">#</a></h3>
 <p>Consider the polynomial:</p>
-<div class="math notranslate nohighlight">
-\[P(s) = s^6 + s^5 - 2s^4 - 3s^3 - 7s^2 - 4s - 4.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-41">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-41" title="Link to this equation">#</a></span>\[P(s) = s^6 + s^5 - 2s^4 - 3s^3 - 7s^2 - 4s - 4.\]</div>
 <p>We find the number of right-handed roots of <span class="math notranslate nohighlight">\(P(s)\)</span>.</p>
 <p>The Routh table will be:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-42">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-42" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^6 &amp; 1 &amp; -2 &amp; -7 &amp; -4 \\
     s^5 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
     s^4 &amp; c_1 &amp; c_2 &amp; c_3 \\
@@ -687,30 +688,30 @@ d_2 = \frac{15\varepsilon}{\varepsilon}=15.\]</div>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Click here for the derivation of the table elements</p>
 <p>Here:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}c_1 &amp;= \frac{b_5b_4 - b_6b_3}{b_5} = \frac{1 \cdot -2 - (1 \cdot -3)}{1} = \frac{1}{1} = 1, \\
+<div class="math notranslate nohighlight" id="equation-rec1-43">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-43" title="Link to this equation">#</a></span>\[\begin{split}c_1 &amp;= \frac{b_5b_4 - b_6b_3}{b_5} = \frac{1 \cdot -2 - (1 \cdot -3)}{1} = \frac{1}{1} = 1, \\
 c_2 &amp;= \frac{b_5b_2 - b_6b_1}{b_5} = \frac{1 \cdot -7 - (1 \cdot -4)}{1} = \frac{-3}{1} = -3, \\
 c_3 &amp;= \frac{b_1b_0 - b_6 \cdot 0}{b_5} = \frac{-4}{1} = -4, \\
 d_1 &amp;= \frac{c_1b_3 - b_6c_2}{c_1} = \frac{1 \cdot -3 - (1 \cdot -3)}{1} = 0, \\
 d_2 &amp;= \frac{c_1b_1 - b_5c_2}{c_1} = \frac{1 \cdot -4 - (1 \cdot -4)}{1} = 0.\end{split}\]</div>
 </div>
 <p>We have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-44">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-44" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^6 &amp; 1 &amp; -2 &amp; -7 &amp; -4 \\
     s^5 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
     s^4 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
     s^3 &amp; 0 &amp; 0
 \end{array}\end{split}\]</div>
 <p>Since we obtained a row of zeros, we use the coefficients of the row <span class="math notranslate nohighlight">\(s^4\)</span> to generate a new polynomial:</p>
-<div class="math notranslate nohighlight">
-\[p(s) = s^4 - 3s^2 - 4s^0.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-45">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-45" title="Link to this equation">#</a></span>\[p(s) = s^4 - 3s^2 - 4s^0.\]</div>
 <p>Differentiating with respect to <span class="math notranslate nohighlight">\(s\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[p'(s) = 4s^3 - 6s.\]</div>
+<div class="math notranslate nohighlight" id="equation-rec1-46">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-46" title="Link to this equation">#</a></span>\[p'(s) = 4s^3 - 6s.\]</div>
 <p>We replace the coefficients of <span class="math notranslate nohighlight">\(p'(s)\)</span> with the zeros in the Routh table:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-47">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-47" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^6 &amp; 1 &amp; -2 &amp; -7 &amp; -4 \\
     s^5 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
     s^4 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
@@ -722,14 +723,14 @@ d_2 &amp;= \frac{c_1b_1 - b_5c_2}{c_1} = \frac{1 \cdot -4 - (1 \cdot -4)}{1} = 0
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Click here for the derivation of the table elements</p>
 <p>Here,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}e_1 &amp;= \frac{d_1c_2 - c_1d_2}{d_1} = \frac{4 \cdot -3 - (1 \cdot -6)}{4} = -\frac{6}{4}, \\
+<div class="math notranslate nohighlight" id="equation-rec1-48">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-48" title="Link to this equation">#</a></span>\[\begin{split}e_1 &amp;= \frac{d_1c_2 - c_1d_2}{d_1} = \frac{4 \cdot -3 - (1 \cdot -6)}{4} = -\frac{6}{4}, \\
 e_2 &amp;= \frac{d_1c_3 - c_1d_3}{d_1} = \frac{-4 \cdot 4}{4} = -4, \\
 f_1 &amp;= \frac{e_1d_2 - e_2d_1}{e_1} = \frac{-(6/4) \cdot -6 - (4 \cdot -4)}{-6/4} = -\frac{50}{3}, \\
 g_1 &amp;= \frac{f_1e_2 - f_2e_1}{f_1} = \frac{-50/3 \cdot -4}{-50/3} = -4.\end{split}\]</div>
 <p>Thus, the final Routh table is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{c|cccc}
+<div class="math notranslate nohighlight" id="equation-rec1-49">
+<span class="eqno">()<a class="headerlink" href="#equation-rec1-49" title="Link to this equation">#</a></span>\[\begin{split}\begin{array}{c|cccc}
     s^6 &amp; 1 &amp; -2 &amp; -7 &amp; -4 \\
     s^5 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
     s^4 &amp; 1 &amp; -3 &amp; -4 &amp; 0 \\
