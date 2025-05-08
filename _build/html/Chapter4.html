@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4: PID Controllers &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 3: What is a Control System" href="Chapter3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4: PID Controllers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Chapter4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4: PID Controllers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pi-controllers">PI  Controllers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-controllers">PD Controllers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-pid-controllers">
+<h1>Chapter 4: PID Controllers<a class="headerlink" href="#chapter-4-pid-controllers" title="Link to this heading">#</a></h1>
+<p>In this chapter, we discuss PID (proportional-integral-derivative) controllers.</p>
+<section id="pi-controllers">
+<h2>PI  Controllers<a class="headerlink" href="#pi-controllers" title="Link to this heading">#</a></h2>
+<p>We have seen   that  in order to eliminate the steady-state error for a constant reference <span class="math notranslate nohighlight">\(r\)</span> (or constant disturbance <span class="math notranslate nohighlight">\(d\)</span>), the controller <span class="math notranslate nohighlight">\(C\)</span> should have a pole at <span class="math notranslate nohighlight">\(s=0\)</span>. A PI  (proportional-integral) controller has the transfer function</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    C(s)=K_p+\frac{K_i}{s},\quad K_p,K_i\in\mathbb{R},
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_p\)</span> is the proportional term, and <span class="math notranslate nohighlight">\(\frac{K_i}{s}\)</span> is the integral term. The constants <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_i\)</span> must be tuned according to the plant and the control objectives. In the time domain, if <span class="math notranslate nohighlight">\(e(t)\)</span> denotes the error signal and <span class="math notranslate nohighlight">\(v(t)\)</span> denotes the controller output, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    v(t)=K_pe(t)+K_i\int_0^t e(\tau)d\tau.
+\end{align*}\]</div>
+<p>Such controllers are used to combine the advantages of proportional and of integral controllers. Since there are two parameters to tune, we have more freedom of choice and can achieve better performance.
+Since <span class="math notranslate nohighlight">\(C\)</span> has a pole at zero, if the feedback system is stable then the  steady-state error corresponding to step reference and disturbance signals will be  zero.</p>
+<p>For concreteness, we now study in detail the case where  the plant is a first order system:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    P(s)=\frac{k}{1+Ts} . 
+\end{align*}\]</div>
+<p>Then the loop-gain is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    P(s)C(s)=\frac{k(K_i+K_ps)}{s(1+Ts)},
+\end{align*}\]</div>
+<figure class="align-default" id="fig-1order">
+<a class="reference internal image-reference" href="_images/PI_CLOSED_LOOP.png"><img alt="_images/PI_CLOSED_LOOP.png" src="_images/PI_CLOSED_LOOP.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Closed-loop system for PI controller and a first order plant.</span><a class="headerlink" href="#fig-1order" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>and the sensitivity <span class="math notranslate nohighlight">\(S=(1+PC)^{-1}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-sense-p1p2">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-sense-p1p2" title="Link to this equation">#</a></span>\[    S(s)=\frac{s(1+Ts)}{Ts^2+(1+kK_p)s+kK_i}.\]</div>
+<p>As expected, we have <span class="math notranslate nohighlight">\(S(0)=0\)</span>, so that the steady state error is zero. Note that, compared to integral control of a first-order system, the difference is the appearance of the term <span class="math notranslate nohighlight">\(kK_p\)</span> in the coefficient of <span class="math notranslate nohighlight">\(s\)</span> in the denominator.</p>
+<p>We now analyze  stability. If <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_i\)</span> are of the same sign (usually they are both positive), then there cannot be an unstable pole-zero cancellation in <span class="math notranslate nohighlight">\(PC\)</span>. Thus, the feedback system is stable if <span class="math notranslate nohighlight">\(S\)</span> is stable, which is the case if</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\frac{1+kK_p}{T}&gt;0,\quad \frac{kK_i}{T}&gt;0}
+\]</div>
+<p>Introduce the parameters</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_n^2:=\frac{kK_i}{T},\quad\xi:=\frac{1+kK_p}{2\sqrt{kK_iT}}.
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight" id="equation-eq-s-pi">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-s-pi" title="Link to this equation">#</a></span>\[    S(s)=\frac{s^2+\frac{1}{T}s}{s^2+2\xi\omega_n s+\omega_n^2}.\]</div>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 9 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that here we can easily achieve <span class="math notranslate nohighlight">\(\xi=1\)</span> and large <span class="math notranslate nohighlight">\(\omega_n\)</span>, as we have more freedom than with an integral controller only.</p>
+</section>
+</div><p>The transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=1-S(s).
+\]</div>
+<p>Denoting <span class="math notranslate nohighlight">\(z:=\frac{K_i}{K_p}\)</span>, this can be written  as</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{s+z}{s^2+2\xi\omega_n s+\omega_n^2}\cdot\frac{\omega_n^2}{z}.
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(G(0)=1\)</span>, and <span class="math notranslate nohighlight">\(G\)</span> has a zero at <span class="math notranslate nohighlight">\(-z\)</span>. The presence of this zero makes the formula for the step response <span class="math notranslate nohighlight">\(y_{step}(t)\)</span>  more complicated, so we omit to write it. Compared to the step response which we would have if there were no zero, i.e., compared to</p>
+<div class="math notranslate nohighlight">
+\[
+    G_0(s)=\frac{\omega_n^2}{s^2+2\xi\omega_ns+\omega_n^2}.
+\]</div>
+<p>(which corresponds to <span class="math notranslate nohighlight">\(z\rightarrow\infty\)</span>, <span class="math notranslate nohighlight">\(K_p\rightarrow0\)</span>, i.e. just integral control)
+the step response raises more quickly, and has a higher overshoot, as shown below:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/step_response_PI.png"><img alt="_images/step_response_PI.png" src="_images/step_response_PI.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Step response of <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(G_0\)</span>.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It is important to understand how the poles of <span class="math notranslate nohighlight">\(S\)</span> (which are also the poles of <span class="math notranslate nohighlight">\(G\)</span>) depend on the parameters <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_i\)</span>. Denote the poles by <span class="math notranslate nohighlight">\(p_1,p_2\in \mathbb{C}\)</span>.
+From  and ,  we see that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    p_1+p_2&amp;=-2\xi \omega_n = -\frac{1+kK_p}{T},\\ p_1p_2&amp;=\omega_n^2 = \frac{kK_i}{T}.
+\end{split}\]</div>
+<p>Thus, the average of the poles is always <span class="math notranslate nohighlight">\(-\frac{1+kK_p}{2T}\)</span>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\xi&gt;1\)</span> then the poles are real and located symmetrically left and right  to the average.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\xi=1\)</span> then <span class="math notranslate nohighlight">\(p_1=p_2=-\omega_n\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\xi&lt;1\)</span> then the poles are complex conjugate and located symmetrically above and below the average in the complex plane (see Fig. <span class="xref std std-ref">fig:1order</span>).</p></li>
+</ul>
+<p>Suppose that we fix <span class="math notranslate nohighlight">\(K_p\)</span> and change <span class="math notranslate nohighlight">\(K_i\)</span> from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>. For <span class="math notranslate nohighlight">\(K_i=0\)</span> (this corresponds to <span class="math notranslate nohighlight">\(\xi=\infty\)</span>, i.e. unstable system) one pole is at <span class="math notranslate nohighlight">\(0\)</span> and the other is at <span class="math notranslate nohighlight">\(-\frac{1+kK_p}{T}\)</span>. As we increase <span class="math notranslate nohighlight">\(K_i\)</span>, the two poles move closer, until they meet for <span class="math notranslate nohighlight">\(K_i=\frac{(1+kK_p)^2}{4kT}\)</span>
+(this corresponds to <span class="math notranslate nohighlight">\(\xi=1\)</span>). As we further increase <span class="math notranslate nohighlight">\(K_i\)</span>
+the eigenvalues become complex conjugate.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/LEC4PIC.png"><img alt="_images/LEC4PIC.png" src="_images/LEC4PIC.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Pole locations of <span class="math notranslate nohighlight">\(G(s)\)</span> as we increase <span class="math notranslate nohighlight">\(K_i\)</span> from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This behavior is summarized in the diagram in Fig. <span class="xref std std-ref">fig:1order</span>. The center point of this diagram is the average <span class="math notranslate nohighlight">\(-\frac{1+kK_p}{2T}\)</span>. It can be shifted  to the left by increasing <span class="math notranslate nohighlight">\(K_p\)</span> making the poles ``more stable’’. However, we cannot increase <span class="math notranslate nohighlight">\(K_p\)</span> arbitrarily much, because for a step reference signal (and <span class="math notranslate nohighlight">\(d=0\)</span>), we have</p>
+<div class="math notranslate nohighlight">
+\[
+    u(0)=C(\infty)e(0)=K_p, 
+\]</div>
+<p>and we   cannot impose too large <span class="math notranslate nohighlight">\(u(0)\)</span>. After choosing <span class="math notranslate nohighlight">\(K_p\)</span> we can choose <span class="math notranslate nohighlight">\(K_i\)</span> such that <span class="math notranslate nohighlight">\(\xi=1\)</span>.</p>
+</section>
+<section id="pd-controllers">
+<h2>PD Controllers<a class="headerlink" href="#pd-controllers" title="Link to this heading">#</a></h2>
+<p>A PD (proportional-derivative) controller has the transfer function</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K_p+K_ds,\quad K_p, K_d\in\mathbb{R},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_p\)</span> is the proportional term, and <span class="math notranslate nohighlight">\(K_ds\)</span> is the derivative term. The coefficients <span class="math notranslate nohighlight">\(K_p,K_d\)</span> must be tuned to achieve the desired performance of the feedback system. In the time domain, if <span class="math notranslate nohighlight">\(e(t)\)</span> is the error signal and <span class="math notranslate nohighlight">\(v(t)\)</span> is the controller output, then</p>
+<div class="math notranslate nohighlight">
+\[
+    v(t)=K_pe(t)+K_d\dot{e}(t).
+\]</div>
+<p>Note that the gain <span class="math notranslate nohighlight">\(|C(j\omega)|=\sqrt{K_p^2+\omega^2K_d^2}\)</span> tends to infinity as <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span> (this controller is not proper). Such a behavior is difficult (or impossible) to achieve in practice, so that we often use an approximate realization of the PD controller:</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K_p+\frac{K_ds}{1+Ts},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(T&gt;0\)</span> is small. Then for low frequencies (i.e., for <span class="math notranslate nohighlight">\(|s|\ll\frac{1}{T}\)</span>) we have <span class="math notranslate nohighlight">\(C(s)\)</span> approximately equal to <span class="math notranslate nohighlight">\(K_p+K_ds\)</span>.</p>
+<p>If the measurement of <span class="math notranslate nohighlight">\(e\)</span> includes noise (which is typically a high frequency signal) then calculating <span class="math notranslate nohighlight">\(\dot e\)</span> may increase the noise.
+Sometimes we have access to a measurement in the plant that makes it unnecessary to calculate  <span class="math notranslate nohighlight">\(\dot{e}\)</span>. For example, if  the plant <span class="math notranslate nohighlight">\(P\)</span> can be factored as <span class="math notranslate nohighlight">\(P(s)=P_0(s)\frac{m}{s+p}\)</span></p>
+<figure class="align-default" id="fig-p-decom">
+<a class="reference internal image-reference" href="_images/P_decompose.png"><img alt="_images/P_decompose.png" src="_images/P_decompose.png" style="width: 90%;" /></a>
+</figure>
+<p>and we can measure both <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, then we can compute <span class="math notranslate nohighlight">\(\dot{y}\)</span> without having to differentiate, from <span class="math notranslate nohighlight">\(\dot{y}+py=mq\)</span>. If <span class="math notranslate nohighlight">\(\dot{r}\)</span> is given (this is reasonable, since we generate <span class="math notranslate nohighlight">\(r\)</span>) then</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{e}=\dot{r}-\dot{y}=\dot{r}+py-mq.
+\]</div>
+<p>Thus, we can build the equivalent of a PD controller as follows:</p>
+<figure class="align-default" id="fig-p-d">
+<a class="reference internal image-reference" href="_images/PD_controller.png"><img alt="_images/PD_controller.png" src="_images/PD_controller.png" style="width: 90%;" /></a>
+</figure>
+<p>For example, if <span class="math notranslate nohighlight">\(q\)</span> represents a speed that can be measured directly, and <span class="math notranslate nohighlight">\(y\)</span> is the corresponding position, then we can use this arrangement with <span class="math notranslate nohighlight">\(p=0\)</span> and <span class="math notranslate nohighlight">\(m=1\)</span>.</p>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 10 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that if in the block diagram we replace <span class="math notranslate nohighlight">\(\dot{r}\)</span> with <span class="math notranslate nohighlight">\(0\)</span> (i.e., we do not supply <span class="math notranslate nohighlight">\(\dot{r}\)</span>), then this will have no effect on the location of the poles of the feedback system.</p>
+</section>
+</div><p>Consider now a second-order plant controlled with a PD controller:</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/PD_closed_loop.png"><img alt="_images/PD_closed_loop.png" src="_images/PD_closed_loop.png" style="width: 90%;" /></a>
+</figure>
+<p>It is easy to check that the closed-loop transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=1-S(s)=\frac{kK_ds+kK_p}{s^2+(a_1+kK_d)s+(a_0+kK_p)}.
+\]</div>
+<p>We see that by changing <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_d\)</span>, we can move the two poles of <span class="math notranslate nohighlight">\(G\)</span> anywhere we want (the only restriction being that if the poles are non-real, they must be complex conjugate). As explained before, to have a small overshoot and a small settling time, a good choice is to take the poles equal and of large absolute value. Thus, we would choose <span class="math notranslate nohighlight">\(K_p\)</span> large and then <span class="math notranslate nohighlight">\(K_d\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    a_1+kK_d=2\sqrt{a_0+kK_p}.
+\]</div>
+<p>PD controllers are a good choice   when the plant can be approximated well by a second-order plant. This means that</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{k}{s^2+a_1s+a_0}+Q(s),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(|Q(j\omega)|\)</span> is small in the frequency range of interest. Usually, <span class="math notranslate nohighlight">\(Q(s)\)</span> contains the poles with large negative real part. ``Small’’  is a relative concept, of course. If <span class="math notranslate nohighlight">\(P\)</span> can be decomposed as above, then the poles of the first term (i.e., the zeros of <span class="math notranslate nohighlight">\(s^2+a_1s+a_2\)</span>) are called the  dominant poles of <span class="math notranslate nohighlight">\(P\)</span>. We mention that in industry we often encounter  PID controllers  (an obvious combination of PI and PD described in this chapter).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3: What is a Control System</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pi-controllers">PI  Controllers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-controllers">PD Controllers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
