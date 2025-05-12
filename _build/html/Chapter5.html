@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5: Root Locus Plots &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 4: PID Controllers" href="Chapter4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter4.html">Chapter 4: PID Controllers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 5: Root Locus Plots</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Chapter5.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5: Root Locus Plots</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-plotting-the-root-locus">Rules for Plotting the Root Locus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-1-number-of-branches">Rule <span class="math notranslate nohighlight">\(1\)</span>: Number of branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-2-locus-on-real-axis">Rule <span class="math notranslate nohighlight">\(2\)</span>: Locus on real axis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-3-starting-and-ending-points-of-root-locus">Rule <span class="math notranslate nohighlight">\(3\)</span>: Starting and ending points of root locus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-4-angle-of-asymptotes">Rule <span class="math notranslate nohighlight">\(4\)</span>: Angle of asymptotes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-5-centroid-of-asymptotes">Rule <span class="math notranslate nohighlight">\(5\)</span>: Centroid of asymptotes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-6-location-of-break-points">Rule <span class="math notranslate nohighlight">\(6\)</span>: Location of break points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-root-locus-plots">Examples of Root Locus Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-with-several-parameters">Root locus with  Several Parameters</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-root-locus-plots">
+<h1>Chapter 5: Root Locus Plots<a class="headerlink" href="#chapter-5-root-locus-plots" title="Link to this heading">#</a></h1>
+<p>Consider the standard feedback configuration with plant <span class="math notranslate nohighlight">\(P\)</span> and controller <span class="math notranslate nohighlight">\(C\)</span>, with sensitivity <span class="math notranslate nohighlight">\(S=(1+PC)^{-1}\)</span>. We often want to know how the poles of <span class="math notranslate nohighlight">\(S\)</span> would change if we changed one of the gain parameters in the controller.</p>
+<p>To investigate this problem, write:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)C(s)=k\frac{n(s)}{d(s)}.
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    n(s)&amp;=s^w+b_{w-1}s^{w-1}+\dots+b_1s+b_0,\\
+    d(s)&amp;=s^m+a_{m-1}s^{m-1}+\dots+a_1s+a_0,
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(b_j\)</span> and <span class="math notranslate nohighlight">\(a_j\)</span> are real coefficients,  and <span class="math notranslate nohighlight">\(m\geq w\)</span>. Note that we assume that both <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are monic polynomials. Then</p>
+<div class="math notranslate nohighlight" id="equation-eq-sasdandn">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-sasdandn" title="Link to this equation">#</a></span>\[    S(s)=\frac{d(s)}{d(s)+kn(s)},\]</div>
+<p>so the problem described earlier is equivalent to plotting the roots of</p>
+<div class="math notranslate nohighlight" id="equation-eq-dkns">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-dkns" title="Link to this equation">#</a></span>\[d(s)+kn(s)=0\]</div>
+<p>as a function of <span class="math notranslate nohighlight">\(k\)</span>. Such a plot, for either   all <span class="math notranslate nohighlight">\(k&gt;0\)</span> or  for  all <span class="math notranslate nohighlight">\(k&lt;0\)</span> is called  <strong>the root locus of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span></strong>.
+A key point is the fact that the roots of <a class="reference internal" href="#equation-eq-dkns">(22)</a> in the complex plane  are continuous functions of <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>We begin with a simple example where we have a closed-form expression for the location of the roots.</p>
+<div class="proof example admonition" id="exa:canonic_RL">
+<p class="admonition-title"><span class="caption-number">Example 14 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the case where</p>
+<div class="math notranslate nohighlight" id="equation-eq-lec5-ex1">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-lec5-ex1" title="Link to this equation">#</a></span>\[        \frac{n(s)}{d(s)}=\frac{s+3}{s(s+2)}.\]</div>
+<p>Then <span class="math notranslate nohighlight">\(d(s)+kn(s)=s^2+(2+k)s+3k\)</span>, so the poles of <span class="math notranslate nohighlight">\(S\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[
+  s_{1}(k)=\frac{-(2+k) +  \sqrt{k^2-8k+4}}{2},\quad 
+  s_{2}(k)=\frac{-(2+k) -  \sqrt{k^2-8k+4}}{2}.
+\]</div>
+<p>The Root Locus plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span> is:</p>
+<figure class="align-default" id="fig-rlex1positive">
+<a class="reference internal image-reference" href="_images/rec5_ex1_positivek.png"><img alt="_images/rec5_ex1_positivek.png" src="_images/rec5_ex1_positivek.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-lec5-ex1">(23)</a> for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</span><a class="headerlink" href="#fig-rlex1positive" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Root Locus plot for <span class="math notranslate nohighlight">\(k&lt;0\)</span> is:</p>
+<figure class="align-default" id="fig-rlex1negative">
+<a class="reference internal image-reference" href="_images/rec5_ex1_negativek.png"><img alt="_images/rec5_ex1_negativek.png" src="_images/rec5_ex1_negativek.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-lec5-ex1">(23)</a> for <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</span><a class="headerlink" href="#fig-rlex1negative" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><section id="rules-for-plotting-the-root-locus">
+<h2>Rules for Plotting the Root Locus<a class="headerlink" href="#rules-for-plotting-the-root-locus" title="Link to this heading">#</a></h2>
+<p>In 1942, W. R. Evans worked out an ingenious  list of  rules  that enable an engineer to construct the root locus plots, based on the polynomials <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, without using a computer. Learning and applying all these rules requires a lot of effort and training, but it is   less relevant today, because a computer can plot the root locus of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span> quickly  and accurately (all the plots in this chapter were generated using Matlab’s ``rlocus’’ command). Thus, we shall present here only <span class="math notranslate nohighlight">\(6\)</span> rules and some examples, which would enable the student to draw  the shape of the root locus plot for simple systems.
+We first describe  these <span class="math notranslate nohighlight">\(6\)</span> rules and demonstrate each one using <a class="reference internal" href="#exa:canonic_RL">Example 14</a>.</p>
+<section id="rule-1-number-of-branches">
+<h3>Rule <span class="math notranslate nohighlight">\(1\)</span>: Number of branches<a class="headerlink" href="#rule-1-number-of-branches" title="Link to this heading">#</a></h3>
+<p>The root locus of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span> has <span class="math notranslate nohighlight">\(m\)</span> branches, where <span class="math notranslate nohighlight">\(m\)</span> is the degree of the polynomial <span class="math notranslate nohighlight">\(d\)</span>. In other words, for each value of <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(S\)</span> has <span class="math notranslate nohighlight">\(m\)</span> poles. These poles are distributed symmetrically with respect to the real axis <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.</p>
+<p>Indeed this is clear from</p>
+<div class="math notranslate nohighlight">
+\[
+    S=\frac{d}{d+kn},
+\]</div>
+<p>which shows that the poles of <span class="math notranslate nohighlight">\(S\)</span> are the zeros of the polynomial <span class="math notranslate nohighlight">\(d+kn\)</span> and the fact that <span class="math notranslate nohighlight">\(m\geq w\)</span>.</p>
+<p>In <a class="reference internal" href="#exa:canonic_RL">Example 14</a> we have  <span class="math notranslate nohighlight">\(w=1\)</span> and <span class="math notranslate nohighlight">\(m=2\)</span>, so the plot includes two branches.</p>
+</section>
+<section id="rule-2-locus-on-real-axis">
+<h3>Rule <span class="math notranslate nohighlight">\(2\)</span>: Locus on real axis<a class="headerlink" href="#rule-2-locus-on-real-axis" title="Link to this heading">#</a></h3>
+<p>For <span class="math notranslate nohighlight">\(k&gt;0\)</span>, a real point <span class="math notranslate nohighlight">\(s\in\mathbb{R}\)</span> is included in the root locus plot if and only if the number of real poles and zeros of <span class="math notranslate nohighlight">\(n/d\)</span> to the right of <span class="math notranslate nohighlight">\(s\)</span> is odd.</p>
+<p>For <span class="math notranslate nohighlight">\(k&lt;0\)</span>, a real point <span class="math notranslate nohighlight">\(s\in\mathbb{R}\)</span> is included in the root locus plot if and only if the number of real poles and zeros of <span class="math notranslate nohighlight">\(n/d\)</span> to the right of <span class="math notranslate nohighlight">\(s\)</span> is even.</p>
+<p>A double pole (or a double zero) is counted as two poles (or zeros).</p>
+<p>We will explain this rule for the case <span class="math notranslate nohighlight">\(k&gt;0\)</span> (the case <span class="math notranslate nohighlight">\(k&lt;0\)</span> is similar).  If <span class="math notranslate nohighlight">\(s \)</span> is on the plot then <span class="math notranslate nohighlight">\(d(s )+kn(s  )=0\)</span> or</p>
+<div class="math notranslate nohighlight" id="equation-eq-knd">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-knd" title="Link to this equation">#</a></span>\[    -k=\frac{d(s)}{n(s)}.\]</div>
+<p>This is equivalent to</p>
+<div class="math notranslate nohighlight" id="equation-eq-180cond">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-180cond" title="Link to this equation">#</a></span>\[ 180^\circ = \angle \frac{d(s)}{n(s)}=  \angle \frac{(s-p_1)\dots(s-p_m)}{(s-z_1)\dots(s-z_m)},  \]</div>
+<p>where <span class="math notranslate nohighlight">\(z_1,\dots,z_m\)</span> are the roots of <span class="math notranslate nohighlight">\(n\)</span>, and <span class="math notranslate nohighlight">\(p_1,\dots,z_w\)</span> are the roots of <span class="math notranslate nohighlight">\(d\)</span>. Now suppose that <span class="math notranslate nohighlight">\(s\)</span> is a real point. Then any  complex zero of <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(d\)</span> appears with a complex conjugate and together they contribute zero degrees to <span class="math notranslate nohighlight">\(\angle \frac{d(s)}{n(s)}\)</span>. A real <span class="math notranslate nohighlight">\(p_i\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\angle (s-p_i)= \begin{cases} 
+ 0 ^\circ , &amp; p_i \text{ is on the left of } s ,\\
+ 180^\circ , &amp; p_i \text{ is on the right of } s ,
+ \end{cases}
+\end{split}\]</div>
+<p>and similarly for any real <span class="math notranslate nohighlight">\(z_i\)</span>. We conclude that <a class="reference internal" href="#equation-eq-180cond">(25)</a> holds if and only if there is an odd number of poles or zeros of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span> to the right of <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>Note that every real point is on the root locus of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span>, either on the plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span> or on the plot for <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</p>
+<p>In <a class="reference internal" href="#exa:canonic_RL">Example 14</a> the real poles and zeros of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span> are: <span class="math notranslate nohighlight">\(-3\)</span>, <span class="math notranslate nohighlight">\(-2\)</span>, and <span class="math notranslate nohighlight">\(0\)</span>. For <span class="math notranslate nohighlight">\(k&gt;0\)</span>, the RL plot includes the points in <span class="math notranslate nohighlight">\((-2,0)\cup (-\infty,-3)\)</span>. For <span class="math notranslate nohighlight">\(k&lt;0\)</span>, the RL plot includes the points in <span class="math notranslate nohighlight">\((-3,-2)\cup (0,\infty)\)</span>.</p>
+</section>
+<section id="rule-3-starting-and-ending-points-of-root-locus">
+<h3>Rule <span class="math notranslate nohighlight">\(3\)</span>: Starting and ending points of root locus<a class="headerlink" href="#rule-3-starting-and-ending-points-of-root-locus" title="Link to this heading">#</a></h3>
+<p>The root locus starts for <span class="math notranslate nohighlight">\(k=0\)</span> at the poles of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span>. For <span class="math notranslate nohighlight">\(|k|\to \infty\)</span> it ends either at zeros of <span class="math notranslate nohighlight">\(n/d\)</span> or at an infinite distance from the origin.</p>
+<p>To explain this rule, note that for <span class="math notranslate nohighlight">\(k=0\)</span>, <span class="math notranslate nohighlight">\(d(s)+kn(s)=0\)</span> becomes <span class="math notranslate nohighlight">\(d(s)=0\)</span>, so the roots are the roots to <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\(|k|\to \infty\)</span>, Eq. <a class="reference internal" href="#equation-eq-knd">(24)</a> implies that <span class="math notranslate nohighlight">\(s\)</span> is a zero of <span class="math notranslate nohighlight">\(n\)</span>  but if the number of branches <span class="math notranslate nohighlight">\(m\)</span> is larger than <span class="math notranslate nohighlight">\(w \)</span> then we must also have <span class="math notranslate nohighlight">\(m-w\)</span> branches such that <span class="math notranslate nohighlight">\(|s|\to\infty\)</span>. Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq-lim-s-inf">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-lim-s-inf" title="Link to this equation">#</a></span>\[\begin{split}    \lim_{|s|\to \infty }\frac{n(s)}{d(s)} &amp; =
+    \lim_{|s|\to \infty }\frac{\prod_{i=1}^w (s-z_i) }{\prod_{j=1}^m (s-p_j)}\nonumber  \\
+    &amp;\approx \frac{1}{s^{m-w}}.\end{split}\]</div>
+<p>Thus, <a class="reference internal" href="#equation-eq-knd">(24)</a> becomes</p>
+<div class="math notranslate nohighlight">
+\[
+-k\approx s^{m-w}. 
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(k\to \infty\)</span> this gives</p>
+<div class="math notranslate nohighlight">
+\[
+|s^{m-w}|\to \infty, \quad \angle s^{m-w}= 180^\circ  (1+2 h) \text{ with } h=0,\pm1,\pm2,\dots,
+\]</div>
+<p>that is, <span class="math notranslate nohighlight">\(|s|\to \infty\)</span>, with angles <span class="math notranslate nohighlight">\( \angle s=\frac{ 180^\circ  (1+2 h) }{m-w}\)</span>, with <span class="math notranslate nohighlight">\(h=0,\pm1,\pm2,\dots\)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\(k\to -\infty\)</span>, we get</p>
+<div class="math notranslate nohighlight">
+\[
+|s^{m-w}|\to \infty, \quad \angle s^{m-w}= 180^\circ  ( 2 h  )\text{ with } h=0,\pm1,\pm2,\dots,
+\]</div>
+<p>that is, <span class="math notranslate nohighlight">\(|s|\to \infty\)</span>, with angles <span class="math notranslate nohighlight">\( \angle s=\frac{ 180^\circ   ( 2 h)  }{m-w}\)</span>, with <span class="math notranslate nohighlight">\(h=0,\pm1,\pm2,\dots\)</span>.</p>
+<p>In <a class="reference internal" href="#exa:canonic_RL">Example 14</a> this rule implies that the plot starts for <span class="math notranslate nohighlight">\(k=0\)</span> at the poles <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(-2\)</span>,  and ends at the single zero <span class="math notranslate nohighlight">\(-3\)</span> and at <span class="math notranslate nohighlight">\(-\infty\)</span> for <span class="math notranslate nohighlight">\(k\to \infty \)</span> [<span class="math notranslate nohighlight">\(+\infty\)</span> for <span class="math notranslate nohighlight">\(k\to-\infty\)</span>].</p>
+</section>
+<section id="rule-4-angle-of-asymptotes">
+<h3>Rule <span class="math notranslate nohighlight">\(4\)</span>: Angle of asymptotes<a class="headerlink" href="#rule-4-angle-of-asymptotes" title="Link to this heading">#</a></h3>
+<p>The <span class="math notranslate nohighlight">\(m-w\)</span> poles of <span class="math notranslate nohighlight">\(S\)</span> that tend to <span class="math notranslate nohighlight">\(\infty\)</span> do so along <span class="math notranslate nohighlight">\(m-w\)</span> straight asymptotes. The angles of these asymptotes are</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{  180^\circ}{m-w}\ell,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ell\)</span> are odd numbers if <span class="math notranslate nohighlight">\(k&gt;0\)</span>, and <span class="math notranslate nohighlight">\(\ell\)</span> are even numbers if <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</p>
+<p>For example, if <span class="math notranslate nohighlight">\(m-w=1\)</span> and <span class="math notranslate nohighlight">\(k&gt;0\)</span>, then there will be only one asymptote, the negative real axis. If <span class="math notranslate nohighlight">\(m-w=3\)</span> and <span class="math notranslate nohighlight">\(k&gt;0\)</span>, then the angles of the asymptotes will be <span class="math notranslate nohighlight">\(60^\circ\)</span>, <span class="math notranslate nohighlight">\(180^\circ\)</span>, and <span class="math notranslate nohighlight">\(300^\circ\)</span>. Note that the angle between two adjacent asymptotes is always <span class="math notranslate nohighlight">\(\frac{360^\circ}{m-w}\)</span>.</p>
+<p>In <a class="reference internal" href="#exa:canonic_RL">Example 14</a> we have <span class="math notranslate nohighlight">\(w=1\)</span> and <span class="math notranslate nohighlight">\(m=2\)</span>, so <span class="math notranslate nohighlight">\(m-w=1\)</span> and there will be a single asymptote with angle</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    180^\circ, &amp;\text{if } k&gt;0,\\
+    0^\circ, &amp;\text{if } k&lt;0.
+\end{cases}
+\end{split}\]</div>
+</section>
+<section id="rule-5-centroid-of-asymptotes">
+<h3>Rule <span class="math notranslate nohighlight">\(5\)</span>: Centroid of asymptotes<a class="headerlink" href="#rule-5-centroid-of-asymptotes" title="Link to this heading">#</a></h3>
+<p>All the asymptotes of the root locus meet in one point <span class="math notranslate nohighlight">\(\gamma\)</span> on the real axis, given by</p>
+<div class="math notranslate nohighlight">
+\[
+    \gamma=\frac{\sum_{j=1}^m p_j-\sum_{j=1}^wz_j}{m-w},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_1,p_2,...,p_m\)</span> are the poles of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span>, and <span class="math notranslate nohighlight">\(z_1,z_2,...,z_w\)</span> are the zeros of <span class="math notranslate nohighlight">\(\frac{n}{d}\)</span>.</p>
+<p>To derive this rule, we improve the accuracy of the calculation in <a class="reference internal" href="#equation-eq-lim-s-inf">(26)</a> as follows:</p>
+<div class="math notranslate nohighlight" id="equation-eq-nudpo">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-nudpo" title="Link to this equation">#</a></span>\[\begin{split}    \lim_{|s|\to \infty }\frac{n(s)}{d(s)} &amp; =
+    \lim_{|s|\to \infty }\frac{\prod_{i=1}^w (s-z_i) }{\prod_{j=1}^m (s-p_j)}\nonumber  \nonumber\\
+    &amp;\approx \frac{s^w-s^{w-1}\sum_{i=1}^w z_i}{s^m-s^{m-1}\sum_{j=1}^m p_j}\nonumber \\
+    &amp;=  \frac{1-s^{-1}\sum_{i=1}^w z_i}{s^{m-w}-s^{m-w-1}\sum_{j=1}^m p_j}.\end{split}\]</div>
+<p>Using the identity <span class="math notranslate nohighlight">\(1-x=\frac1{1+x}-\frac{x^2}{1+x}\)</span>, we get   that for <span class="math notranslate nohighlight">\(x\approx 0\)</span> we have <span class="math notranslate nohighlight">\(1-x\approx\frac1{1+x}\)</span>. Applying this to the numerator of <a class="reference internal" href="#equation-eq-nudpo">(27)</a> yields</p>
+<div class="math notranslate nohighlight">
+\[
+	\lim_{|s|\to \infty }\frac{n(s)}{d(s)} \approx  \frac1{(s^{\beta }-s^{\beta -1}\sum_{j=1}^m p_j)(1+s^{-1}\sum_{i=1}^w z_i)}.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta:=m-w\)</span>. Keeping only the two higher-order terms in the dominator gives</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{|s|\to \infty }\frac{n(s)}{d(s)} 
+    \approx  \frac1{s^{\beta}-\alpha s^{\beta -1} }.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha:=\sum_{j=1}^m p_j-\sum_{i=1}^w z_i\)</span>. Using the fact that</p>
+<div class="math notranslate nohighlight">
+\[
+(s-\sigma)^\beta=s^\beta-\beta \sigma s^{\beta -1}+...
+\]</div>
+<p>yields</p>
+<div class="math notranslate nohighlight">
+\[  
+    \lim_{|s|\to \infty }\frac{n(s)}{d(s)} 
+    \approx  \frac1{ (s-\frac{\alpha}{\beta})^\beta}.
+\]</div>
+<p>Thus, for <span class="math notranslate nohighlight">\(|s|\to\infty\)</span>, Eq. <a class="reference internal" href="#equation-eq-knd">(24)</a> becomes</p>
+<div class="math notranslate nohighlight">
+\[
+-k\approx (s-\frac{\alpha}{\beta})^\beta . 
+\]</div>
+<p>This is the equation for a set of vectors that intersect the real axis at the point <span class="math notranslate nohighlight">\( \frac{\sum_{j=1}^m p_j-\sum_{i=1}^w z_i}{m-w}\)</span>.</p>
+</section>
+<section id="rule-6-location-of-break-points">
+<h3>Rule <span class="math notranslate nohighlight">\(6\)</span>: Location of break points<a class="headerlink" href="#rule-6-location-of-break-points" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(z\in\mathbb{C}\)</span> is a point on the root locus where two or more branches  come together, then</p>
+<div class="math notranslate nohighlight" id="equation-eq-dnzero">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-dnzero" title="Link to this equation">#</a></span>\[  0=  d'(z)n(z)-n'(z)d(z).\]</div>
+<p>In <a class="reference internal" href="#exa:canonic_RL">Example 14</a>, we have <span class="math notranslate nohighlight">\(n(s)=s+3\)</span>, <span class="math notranslate nohighlight">\(d(s)=s(s+2)\)</span>, so <span class="math notranslate nohighlight">\(n'(s)=1\)</span>,  <span class="math notranslate nohighlight">\(d'(s)=2s +2\)</span> and <a class="reference internal" href="#equation-eq-dnzero">(28)</a> yields</p>
+<div class="math notranslate nohighlight">
+\[
+0=(2s+2)(s+3)- s(s+2)=s^2+6s+6. 
+\]</div>
+<p>Thus,   break points (if they exist) must be  located at <span class="math notranslate nohighlight">\(-3+\sqrt{3} \approx    -1.268 \)</span> and <span class="math notranslate nohighlight">\(-3-\sqrt{3}\approx  -4.732\)</span> (see <a class="reference internal" href="#fig-rlex1positive"><span class="std std-numref">Fig. 13</span></a>).</p>
+<p>To derive an intuitive explanation of this rule, note that differentiating <a class="reference internal" href="#equation-eq-knd">(24)</a> with respect to <span class="math notranslate nohighlight">\(s\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{dk}{ds}=\frac{d'(s)n(s)-n'(s)d(s)}{n^2(s)},
+\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[
+-n^2(s)=(d'(s)n(s)-n'(s)d(s))\frac{ds}{dk}.
+\]</div>
+<p>At a point <span class="math notranslate nohighlight">\(s\in\mathbb{C}\)</span> where two or more branches meet, we have that <span class="math notranslate nohighlight">\(ds/dk\)</span> is not well-defined, so we must have that <span class="math notranslate nohighlight">\(d'(s)n(s)-n'(s)d(s)=0\)</span>.</p>
+<p>Usually we apply rule <span class="math notranslate nohighlight">\(6\)</span> for two poles meeting on the real axis. We have two possible situations:</p>
+<figure class="align-default" id="fig-p-d">
+<a class="reference internal image-reference" href="_images/break_in_point.png"><img alt="_images/break_in_point.png" src="_images/break_in_point.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Break-in point.</span><a class="headerlink" href="#fig-p-d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/break_out_point.png"><img alt="_images/break_out_point.png" src="_images/break_out_point.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Break-out point.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 11 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The root locus curves never intersect each other. In other words, if a point <span class="math notranslate nohighlight">\(z\)</span> is on the root locus curves for some <span class="math notranslate nohighlight">\(k\in\mathbb{R}\)</span>, then this point cannot belong to the root locus curves for any other value <span class="math notranslate nohighlight">\(k\in\mathbb{R}\)</span>. This is clear from the formula <span class="math notranslate nohighlight">\(k=-\frac{d(z)}{n(z)}\)</span>, which determines a unique <span class="math notranslate nohighlight">\(k\)</span> for <span class="math notranslate nohighlight">\(z\)</span>. Thus we cannot have loops or intersections.</p>
+</section>
+</div></section>
+</section>
+<section id="examples-of-root-locus-plots">
+<h2>Examples of Root Locus Plots<a class="headerlink" href="#examples-of-root-locus-plots" title="Link to this heading">#</a></h2>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 15 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq-exa1rl">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-exa1rl" title="Link to this equation">#</a></span>\[    \frac{n(s)}{d(s)}=\frac{1}{(s-p_1)(s-p_2)}, \text{ with }  p_2&lt;p_1&lt;0.\]</div>
+<p>We generate a root locus plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/RL_example_1.png"><img alt="_images/RL_example_1.png" src="_images/RL_example_1.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-exa1rl">(29)</a> for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that the meeting point of the asymptotes <span class="math notranslate nohighlight">\(\gamma=\frac{p_1+p_2}{2} \)</span> coincides with the break-away point.</p>
+</section>
+</div><div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 16 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq-rk12">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-rk12" title="Link to this equation">#</a></span>\[    \frac{n(s)}{d(s)}=\frac{1}{s(s-p_1)(s-p_2)} \text{ with } p_2&lt;p_1&lt;0.\]</div>
+<p>We generate a root locus plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/RL_example_2.png"><img alt="_images/RL_example_2.png" src="_images/RL_example_2.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-rk12">(30)</a> for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>According to Rule <span class="math notranslate nohighlight">\(5\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \gamma=\frac{p_1+p_2}{3}.
+\]</div>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[
+    d(s)=s^3-(p_1+p_2)s^2+p_1p_2s,\quad n(s)=1.
+\]</div>
+<p>By Rule 6,  break-away point is the solution of <span class="math notranslate nohighlight">\(d'(s)=0\)</span>, that is,</p>
+<div class="math notranslate nohighlight">
+\[
+ 3s^2-2(p_1+p_2)s+p_1p_2=0,
+\]</div>
+<p>and this  lies in the interval <span class="math notranslate nohighlight">\([p_1,0]\)</span>. (The other solution of this equation is in the interval <span class="math notranslate nohighlight">\([p_2,p_1]\)</span> and it represents the break-away point of the root locus curve for <span class="math notranslate nohighlight">\(k&lt;0\)</span>.)</p>
+</section>
+</div><div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 17 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq-exa3rl">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-exa3rl" title="Link to this equation">#</a></span>\[    \frac{n(s)}{d(s)} =     \frac{s-z}{s(s-p)} \text{ with } z&lt;p&lt;0. \]</div>
+<p>We generate a root locus plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/RL_example_3.png"><img alt="_images/RL_example_3.png" src="_images/RL_example_3.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-exa3rl">(31)</a> for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that there is only one asymptote, one break-away point and one break-in point. We remark that the non-real part of the root locus is a circle.</p>
+</section>
+</div><div class="proof example admonition" id="example-5">
+<p class="admonition-title"><span class="caption-number">Example 18 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider</p>
+<div class="math notranslate nohighlight" id="equation-eq-rlanexa">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-rlanexa" title="Link to this equation">#</a></span>\[        \frac{n(s)}{d(s)}=\frac{s}{s^2+a^2} \text{ with } a&gt;0 . \]</div>
+<p>We generate a root locus plot for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/RL_example_4.png"><img alt="_images/RL_example_4.png" src="_images/RL_example_4.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Root locus of <a class="reference internal" href="#equation-eq-rlanexa">(32)</a> for <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><p>The root locus plot can also be used to derive  theoretical results. The next exercise demonstrates this.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Consider a plant with transfer function</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{m}{s^2(s-p)} \text{ with } p&lt;0,\; m&gt;0.
+\]</div>
+<p>Show, using root locus techniques, that we cannot stabilize this plant with a P or with a PI controller, no matter how we choose the coefficients. However, we can stabilize the plant with a PD controller,</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K_p(s-z),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p&lt;z&lt;0,\;k_p&gt;0\)</span>. Draw the root locus plot for the feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, using <span class="math notranslate nohighlight">\(k=K_pm\)</span> as the parameter of the curves. Apply the six rules to approximate the root-locus plot.</p>
+</div>
+</section>
+<section id="root-locus-with-several-parameters">
+<h2>Root locus with  Several Parameters<a class="headerlink" href="#root-locus-with-several-parameters" title="Link to this heading">#</a></h2>
+<p>If the controller has several parameters and we only want to investigate the change of the poles of <span class="math notranslate nohighlight">\(S\)</span> as one of these parameters changes, we can usually reduce this to a standard root locus problem by rearranging the block diagram. For example, if <span class="math notranslate nohighlight">\(C\)</span> is a PI controller,</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K_p+\frac{K_i}{s},
+\]</div>
+<p>and we want to see the effect of <span class="math notranslate nohighlight">\(K_i\)</span> on the poles of <span class="math notranslate nohighlight">\(S\)</span>, then we can rearrange our feedback system like this:</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="_images/RL_sys1.png"><img alt="_images/RL_sys1.png" src="_images/RL_sys1.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Possible pole locations for <span class="math notranslate nohighlight">\(G(s)\)</span></span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here we took <span class="math notranslate nohighlight">\(d=0\)</span>, and defined <span class="math notranslate nohighlight">\(\tilde{P} : =\frac{P}{1+K_p P}\)</span>. This system is not equivalent to the previous one in the sense that its sensitivity <span class="math notranslate nohighlight">\(\tilde{S}(s)=\big(1+\tilde{P}(s)\frac{K_i}{s}\big)^{-1}\)</span> is not equal to <span class="math notranslate nohighlight">\(S\)</span>. However, the poles of <span class="math notranslate nohighlight">\(\tilde{S}\)</span> and <span class="math notranslate nohighlight">\(S\)</span> are the same (verify this!).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4: PID Controllers</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-plotting-the-root-locus">Rules for Plotting the Root Locus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-1-number-of-branches">Rule <span class="math notranslate nohighlight">\(1\)</span>: Number of branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-2-locus-on-real-axis">Rule <span class="math notranslate nohighlight">\(2\)</span>: Locus on real axis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-3-starting-and-ending-points-of-root-locus">Rule <span class="math notranslate nohighlight">\(3\)</span>: Starting and ending points of root locus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-4-angle-of-asymptotes">Rule <span class="math notranslate nohighlight">\(4\)</span>: Angle of asymptotes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-5-centroid-of-asymptotes">Rule <span class="math notranslate nohighlight">\(5\)</span>: Centroid of asymptotes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-6-location-of-break-points">Rule <span class="math notranslate nohighlight">\(6\)</span>: Location of break points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-root-locus-plots">Examples of Root Locus Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-with-several-parameters">Root locus with  Several Parameters</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
