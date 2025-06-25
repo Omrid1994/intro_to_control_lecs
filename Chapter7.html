@@ -1,0 +1,1264 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 7: State-Space Analysis &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter7';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 6: Analysis and Synthesis in the Frequency Domain" href="Chapter6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter0.html">Chapter 0: Matrix Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Chapter 1: The Challenge of Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Chapter 2: Linear Time-Invariant Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Chapter 3: What is a Control System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter4.html">Chapter 4: PID Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter5.html">Chapter 5: Root Locus Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter6.html">Chapter 6: Analysis and Synthesis in the Frequency Domain</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: State-Space Analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Chapter7.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 7: State-Space Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observability">Observability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-rank-condition-for-observability">Kalman Rank Condition for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-canonical-form">Kalman Canonical Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popov-belevitch-hautus-test-for-observability">Popov-Belevitch-Hautus Test for Observability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllability">Controllability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detectability">Detectability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilizability">Stabilizability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observers">Observers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observer-based-controllers">Observer-based Controllers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-state-space-analysis">
+<h1>Chapter 7: State-Space Analysis<a class="headerlink" href="#chapter-7-state-space-analysis" title="Link to this heading">#</a></h1>
+<p>So far we considered linear control systems represented by their  transfer function. We now assume that the linear control system is described by a set of ordinary differential equations:</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-space">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-state-space" title="Link to this equation">#</a></span>\[\begin{split}\dot x(t)&amp;=Ax(t)+B u(t),\\
+y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x:[0,\infty)\to \mathbb{R}^n\)</span> is the state vector that describes the internal state of the system, <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>
+is the input, and <span class="math notranslate nohighlight">\(y:[0,\infty)\to \mathbb{R}^p\)</span> is the output. The dimensions of the matrices are then</p>
+<div class="math notranslate nohighlight">
+\[
+A\in\mathbb{R}^{n\times n},\; 
+B\in \mathbb{R}^{n\times m},\; 
+C\in \mathbb{R}^{p\times n},\; 
+D\in \mathbb{R}^{p\times m}.
+\]</div>
+<p>An important advantage  of the state space approach is that it allows the analysis of multi-input and multi-output systems.</p>
+<p>The solution of <a class="reference internal" href="#equation-eq-state-space">(41)</a> is</p>
+<div class="math notranslate nohighlight" id="equation-chapter7-0">
+<span class="eqno">(42)<a class="headerlink" href="#equation-chapter7-0" title="Link to this equation">#</a></span>\[\begin{split}    x(t)&amp;= e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds,\\
+    y(t)&amp;= C \left  (e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds \right )+Du(t),\nonumber\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e^A\)</span> is the matrix exponential of <span class="math notranslate nohighlight">\(A\)</span> (see Chapter 0).</p>
+<p>Applying a Laplace  transform to <a class="reference internal" href="#equation-eq-state-space">(41)</a> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    s \hat x(s)-x(0)&amp;=A \hat x (s)+B \hat u (s),\\
+    \hat y(s)&amp;=C\hat x(s)+D \hat u(s),
+\end{split}\]</div>
+<p>and for <span class="math notranslate nohighlight">\(x(0)=0\)</span> this yields</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat y(s)}{\hat u(s)}  = C (sI_n-A)^{-1} B+D,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(I_n\)</span> is the <span class="math notranslate nohighlight">\(n\times n\)</span> identity matrix.</p>
+<section id="observability">
+<h2>Observability<a class="headerlink" href="#observability" title="Link to this heading">#</a></h2>
+<p>Assume that we observe  the input and output on a time interval <span class="math notranslate nohighlight">\([0,T]\)</span>, for some <span class="math notranslate nohighlight">\(T&gt;0\)</span>, but we do not know <span class="math notranslate nohighlight">\(x(0)\)</span> and thus we do not know <span class="math notranslate nohighlight">\(x(t)\)</span> at any time <span class="math notranslate nohighlight">\(t\)</span>. A natural question  is: can we determine  <span class="math notranslate nohighlight">\(x(0)\)</span> (and thus <span class="math notranslate nohighlight">\(x(t)\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>) based on observing <span class="math notranslate nohighlight">\(u(t),y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>?</p>
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(41)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from observing <span class="math notranslate nohighlight">\(u(t),y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. Since we assume that the input is known, it is enough to consider the system:</p>
+<div class="math notranslate nohighlight" id="equation-eq-system-obsvr">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-system-obsvr" title="Link to this equation">#</a></span>\[\begin{split}        \dot{x}(t)&amp;=Ax(t),\\
+        y(t)&amp;=Cx(t).\nonumber\end{split}\]</div>
+<p>Note that this implies that</p>
+<div class="math notranslate nohighlight" id="equation-eq-yt-obser">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-yt-obser" title="Link to this equation">#</a></span>\[  y(t)=Ce^{At}x(0) \text{ for all } t\geq0.   \]</div>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from   observing <span class="math notranslate nohighlight">\( y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>.</p>
+</section>
+</div><p>Since the system is defined by the pair of matrices <span class="math notranslate nohighlight">\((A,C)\)</span>,  we will sometimes use the terminology <span class="math notranslate nohighlight">\((A,C)\)</span> is observable rather than <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is observable.</p>
+<p>Define the <span class="math notranslate nohighlight">\(L_2\)</span> norm of the vector <span class="math notranslate nohighlight">\(y(t)\in\mathbb{R}^p\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[
+| y(t)  |_2 : =(|y_1(t)|^2+|y_2(t)|^2+\cdots+|y_p(t)|^2)^{1/2}.
+\]</div>
+<div class="proof proposition admonition" id="prop:obser_y2">
+<p class="admonition-title"><span class="caption-number">Proposition 8 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is  observable on <span class="math notranslate nohighlight">\([0,T]\)</span> if and only if for every <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(x(0)\neq0\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> that corresponds to the initial state <span class="math notranslate nohighlight">\(x(0)\)</span> satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_0^T | y(t) |_2^2 dt&gt;0.
+\]</div>
+</section>
+</div><p>In other words, <span class="math notranslate nohighlight">\(y(t)\)</span> is not zero on   the entire time   interval <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. First assume that there exists <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\setminus\{0\}\)</span> for which <span class="math notranslate nohighlight">\(y(t)= 0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. It follows from <a class="reference internal" href="#equation-eq-yt-obser">(44)</a> that for <span class="math notranslate nohighlight">\(x(0)=0\)</span> we also have <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, so there are two different initial conditions that produce  the same output on <span class="math notranslate nohighlight">\([0,T]\)</span>, and thus  the system is not observable.<br />
+Now assume that the condition in the proposition holds. Fix <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}^n\)</span>, with <span class="math notranslate nohighlight">\(a\not =b\)</span>, and consider <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> with <span class="math notranslate nohighlight">\(x(0)=a\)</span> and with <span class="math notranslate nohighlight">\(x(0)=b\)</span>. Let <span class="math notranslate nohighlight">\(y^a(t)\)</span>, <span class="math notranslate nohighlight">\(y^b(t)\)</span> denote the corresponding outputs at time <span class="math notranslate nohighlight">\(t\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+       y^a(t)-y^b(t)&amp;=Ce^{At}a-Ce^{At}b\\
+       &amp;=Ce^{At} (a-b),
+\end{split}\]</div>
+<p>that is, the output of the system for the initial condition <span class="math notranslate nohighlight">\(x(0)=a-b\)</span>. Since the condition in the proposition holds  and <span class="math notranslate nohighlight">\(a-b\not=0\)</span>, we conclude that <span class="math notranslate nohighlight">\(y^a(t)-y^b(t)\)</span> is not identically zero on <span class="math notranslate nohighlight">\([0,T]\)</span>, the output is different for any two different initial conditions.</p>
+</div>
+<div class="proof example admonition" id="exa:simp_non_obser">
+<p class="admonition-title"><span class="caption-number">Example 29 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the system</p>
+<div class="math notranslate nohighlight" id="equation-eq-unobser-simple">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-unobser-simple" title="Link to this equation">#</a></span>\[\begin{split}  \dot x_1 &amp; =x_1-x_2,\nonumber \\
+  \dot x_2&amp;=-3 x_2 , \\
+  y&amp;=x_2.\nonumber\end{split}\]</div>
+<p>Fix <span class="math notranslate nohighlight">\(T&gt;0\)</span>.
+Consider the initial condition <span class="math notranslate nohighlight">\(x(0)=\begin{bmatrix}
+1\\0
+\end{bmatrix}\)</span>. Then <span class="math notranslate nohighlight">\(x_2(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, so <span class="math notranslate nohighlight">\(y(t)=0\)</span>
+for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. We conclude that the condition in <a class="reference internal" href="#prop:obser_y2">Proposition 8</a>
+does not hold, so the system is not observable. Indeed, the output only provides information on <span class="math notranslate nohighlight">\(x_2\)</span>, but <span class="math notranslate nohighlight">\(x_2\)</span> does not depend, and thus provides no information, on <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
+</section>
+</div><section id="kalman-rank-condition-for-observability">
+<h3>Kalman Rank Condition for Observability<a class="headerlink" href="#kalman-rank-condition-for-observability" title="Link to this heading">#</a></h3>
+<p>The next result is known as the Kalman rank condition for observability, derived by
+Rudolf E. Kalman (who is well-known also for inventing the Kalman filter). To state it, we define the observability matrix of <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal O(A,C):= \begin{bmatrix} 
+C\\ CA\\ CA^2\\ \vdots\\ CA^{n-1}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\mathcal{O}(A,C)\)</span> has dimensions <span class="math notranslate nohighlight">\((np) \times n\)</span>.</p>
+<div class="proof theorem admonition" id="theorem-3">
+<p class="admonition-title"><span class="caption-number">Theorem 7 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is observable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{rank}( \mathcal{O} (A,C))=n. 
+\]</div>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Suppose that <span class="math notranslate nohighlight">\((A,C)\)</span> is not observable. Then there there exists <span class="math notranslate nohighlight">\(x_0\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(x_0\neq0\)</span> such that <span class="math notranslate nohighlight">\(Ce^{At}x_0=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. Differentiating with respect to time, we obtain <span class="math notranslate nohighlight">\(CAe^{At}x_0=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, differentiating again we obtain <span class="math notranslate nohighlight">\(CA^2e^{At}x_0=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, etc. Taking now <span class="math notranslate nohighlight">\(t=0\)</span>, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    Cx_0=0,\;CAx_0=0,\;CA^2x_0=0,...
+\]</div>
+<p>which implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \begin{bmatrix}
+            C\\CA\\CA^2\\\vdots\\CA^{n-1}
+        \end{bmatrix}x_0=0.
+\end{split}\]</div>
+<p>This shows that the <span class="math notranslate nohighlight">\(n\)</span> columns of this matrix are linearly dependent, hence the rank of the matrix <span class="math notranslate nohighlight">\(\mathcal{O}(A,C)\)</span> is less then <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>To prove the converse implication, suppose that the rank of <span class="math notranslate nohighlight">\(\mathcal{O}(A,C)\)</span> is not <span class="math notranslate nohighlight">\(n\)</span>, hence it is <span class="math notranslate nohighlight">\(&lt;n\)</span>, so that its columns are linearly dependent. Therefore, there exists <span class="math notranslate nohighlight">\(x_0\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(x_0\neq0\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-obser-mat-dege">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-obser-mat-dege" title="Link to this equation">#</a></span>\[\begin{split}        \begin{bmatrix}
+            C\\CA\\CA^2\\\vdots\\CA^{n-1}
+        \end{bmatrix}x_0=0.\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(p_A(s):=\det(s I_n -A)\)</span> be the characteristic polynomial of <span class="math notranslate nohighlight">\(A\)</span>. Then, according to the Cayley-Hamilton theorem (see Chapter 0), we have <span class="math notranslate nohighlight">\(p_A(A)=0\)</span>. Thus, if</p>
+<div class="math notranslate nohighlight">
+\[
+        p_A(s)=s^n+a_{n-1}s^{n-1}+\cdots+a_1s+a_0,
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight" id="equation-eq-cay-hamil-a">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-cay-hamil-a" title="Link to this equation">#</a></span>\[        A^n+a_{n-1}A^{n-1}+\cdots+a_1A+a_0I_n=0.\]</div>
+<p>Multiplying with <span class="math notranslate nohighlight">\(x_0\)</span> from the right and with <span class="math notranslate nohighlight">\(C\)</span> from the left, to get</p>
+<div class="math notranslate nohighlight">
+\[
+       C A^n x_0+a_{n-1} C A^{n-1}x_0+\cdots+a_1 C Ax_0+a_0Cx_0=0.
+\]</div>
+<p>and using <a class="reference internal" href="#equation-eq-obser-mat-dege">(46)</a>  implies that <span class="math notranslate nohighlight">\(CA^nx_0=0\)</span>. Now, we multiply <a class="reference internal" href="#equation-eq-cay-hamil-a">(47)</a> with <span class="math notranslate nohighlight">\(x_0\)</span> from the right and with <span class="math notranslate nohighlight">\(CA\)</span> from the left, obtaining <span class="math notranslate nohighlight">\(CA^{n+1}x_0=0\)</span>. By induction, we obtain that</p>
+<div class="math notranslate nohighlight">
+\[
+        CA^kx_0=0\text{ for all }k\in\{0,1,\dots\}.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(y(t)=Ce^{At}x_0\)</span> has the Taylor expansion,</p>
+<div class="math notranslate nohighlight">
+\[
+        y(t)=Cx_0+tCAx_0+\frac{t^2}{2}CA^2x_0+\frac{t^3}{6}CA^3x_0+\cdots
+\]</div>
+<p>and since all the coefficients in this Taylor series are zero, as we have just shown, it follows that <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq0\)</span>. Since the initial state <span class="math notranslate nohighlight">\(x_0\neq0\)</span>, it follows that <span class="math notranslate nohighlight">\((A,C)\)</span> is not observable.</p>
+</div>
+<div class="proof remark admonition" id="remark-4">
+<p class="admonition-title"><span class="caption-number">Remark 14 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that the Kalman rank condition is independent of <span class="math notranslate nohighlight">\(T\)</span>, the length of the time interval. Thus, it does not matter how we choose <span class="math notranslate nohighlight">\(T&gt;0\)</span> in the definition of observability. Therefore, in the sequel, we do not say that “<span class="math notranslate nohighlight">\((A,C)\)</span> is observable on the  time interval <span class="math notranslate nohighlight">\([0,T]\)</span>”, but that “<span class="math notranslate nohighlight">\((A,C)\)</span> is observable”.</p>
+</section>
+</div><div class="proof example admonition" id="example-5">
+<p class="admonition-title"><span class="caption-number">Example 30 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider again the system <a class="reference internal" href="#equation-eq-unobser-simple">(45)</a> in <a class="reference internal" href="#exa:simp_non_obser">Example 29</a>. In this case, <span class="math notranslate nohighlight">\(n=2\)</span>, <span class="math notranslate nohighlight">\(p=1\)</span>,  <span class="math notranslate nohighlight">\(A=\begin{bmatrix}
+    1&amp;-1\\ 0&amp; -3
+\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(C=\begin{bmatrix}0 &amp; 1 \end{bmatrix}\)</span>. Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{O}(A,C)=\begin{bmatrix}
+    C\\CA
+\end{bmatrix}=\begin{bmatrix}
+    0&amp; 1\\0&amp;-3
+\end{bmatrix}.
+\end{split}\]</div>
+<p>We see that <span class="math notranslate nohighlight">\(\text{rank}(\mathcal{O}(A,C))=1&lt;n=2\)</span>, so the system is not observable.</p>
+</section>
+</div></section>
+<section id="kalman-canonical-form">
+<h3>Kalman Canonical Form<a class="headerlink" href="#kalman-canonical-form" title="Link to this heading">#</a></h3>
+<p>When system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is  not observable   it
+can   be decomposed into an observable part and an unobservable part. Before stating it, we recall the effect of a coordinate transformation on <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a>.
+Let <span class="math notranslate nohighlight">\(T\in\mathbb{R}^{n\times n}\)</span> be an invertible matrix, and define <span class="math notranslate nohighlight">\(z(t):=Tx(t) \)</span>.
+Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot z &amp;= T \dot x \\
+         &amp;= T A x\\
+         &amp;= TA T^{-1} z,
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    y &amp;= C x \\
+    &amp;= C T^{-1} z, 
+\end{split}\]</div>
+<p>so we get a system in the form <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> with matrices <span class="math notranslate nohighlight">\((TA T^{-1},CT^{-1})\)</span>. The observability matrix of the new system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal O(TA T^{-1},CT^{-1})&amp;= \begin{bmatrix} 
+CT^{-1}\\CT^{-1} TA T^{-1}\\C T^{-1} (TA T^{-1})^2\\ \vdots\\CT^{-1} (TA T^{-1})^{n-1}
+\end{bmatrix}\\
+&amp;=\begin{bmatrix} 
+C
+\\C A \\C  A ^{2}\\ \vdots\\C
+A ^{n-1}
+\end{bmatrix}T^{-1}\\
+&amp;=\mathcal{O}(A,C) T^{-1}.
+\end{split}\]</div>
+<p>This implies that <span class="math notranslate nohighlight">\(\text{rank}(\mathcal{O}(A,C)) = \text{rank}(\mathcal{O}(TAT^{-1},CT^{-1}))\)</span>.</p>
+<div class="proof theorem admonition" id="thm:from_x_to_z">
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(n_1:=\text{rank}(\mathcal{O}(A,C))&lt;n\)</span>. Then there exists an invertible matrix <span class="math notranslate nohighlight">\(T\in\mathbb{R}^{n\times n}\)</span> such that <span class="math notranslate nohighlight">\(z(t):=Tx(t) \)</span> satisfies</p>
+<div class="math notranslate nohighlight" id="equation-eq-z-obser">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-z-obser" title="Link to this equation">#</a></span>\[\begin{split}    \dot z(t)&amp;=\begin{bmatrix}
+        \dot z_O(t)\\ \dot z_{UO}(t)
+    \end{bmatrix}=\begin{bmatrix}
+        \bar A_{11}&amp;0 \\
+        \bar A_{21}&amp;\bar A_{22}
+    \end{bmatrix} \begin{bmatrix}
+        z_O(t)\\z_{UO}(t)
+    \end{bmatrix},\nonumber\\
+    y(t)&amp;=\begin{bmatrix}
+        \bar C &amp; 0
+    \end{bmatrix} 
+   \begin{bmatrix}
+       z_O(t)\\z_{UO}(t)
+   \end{bmatrix} ,\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(z_O(t)\in\mathbb{R}^{n_1}\)</span>, <span class="math notranslate nohighlight">\(z_{UO}(t)\in \mathbb{R}^{n-n_1}\)</span>, and the pair <span class="math notranslate nohighlight">\((\bar A_{11},\bar C) \)</span> observable.</p>
+</section>
+</div><p>Writing this explicitly gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot z_O&amp;=\bar A_{11}z_O,\\
+    \dot z_{UO}&amp;=\bar A_{21}z_O+\bar A_{22} z_{UO},\\
+    y&amp;= \bar  C z_O. 
+\end{split}\]</div>
+<p>Thus, observing the output allows to determine <span class="math notranslate nohighlight">\(z_O\)</span> (the observable part of the vector <span class="math notranslate nohighlight">\(z\)</span>), but not <span class="math notranslate nohighlight">\(z_{UO}\)</span> (the unobservable part of <span class="math notranslate nohighlight">\(z\)</span>).</p>
+</section>
+<section id="popov-belevitch-hautus-test-for-observability">
+<h3>Popov-Belevitch-Hautus Test for Observability<a class="headerlink" href="#popov-belevitch-hautus-test-for-observability" title="Link to this heading">#</a></h3>
+<p>Another important way to
+verify  observability is the
+Popov-Belevitch-Hautus (PBH)
+test for observability.</p>
+<div class="proof theorem admonition" id="theorem-7">
+<p class="admonition-title"><span class="caption-number">Theorem 9 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(PBH Test for Observability)</p>
+<p>Consider the system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a>.
+Let <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denote the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.
+Then <span class="math notranslate nohighlight">\((A,C)\)</span> is observable if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-pbh-test">
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-pbh-test" title="Link to this equation">#</a></span>\[\begin{split}        rank\begin{bmatrix}
+            \lambda I_n-A\\
+            C
+        \end{bmatrix}=n,\text{ for any }\lambda\in\sigma(A).\end{split}\]</div>
+</section>
+</div><p>Note that for <span class="math notranslate nohighlight">\(\lambda\not \in \sigma(A)\)</span>, the above rank is always <span class="math notranslate nohighlight">\(n\)</span>, because <span class="math notranslate nohighlight">\(\lambda I_n-A\)</span> is invertible.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. Suppose that <span class="math notranslate nohighlight">\((A,C)\)</span> is not observable. Then <span class="math notranslate nohighlight">\(n_1:=\text{rank}(\mathcal{O}(A,C))&lt;n\)</span>.
+Let <span class="math notranslate nohighlight">\(T\)</span> be the invertible matrix in <a class="reference internal" href="#thm:from_x_to_z">Theorem 8</a> and let <span class="math notranslate nohighlight">\(z(t):=Tx(t)\)</span>. Then <span class="math notranslate nohighlight">\(z\)</span> satisfies  <a class="reference internal" href="#equation-eq-z-obser">(48)</a>. Note that
+<span class="math notranslate nohighlight">\(\bar A_{22}\in\mathbb{R}^{ (n-n_1)\times(n-n_1)  }\)</span>. Let <span class="math notranslate nohighlight">\(\lambda  \in \mathbb{C}\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(\bar A_{22}\)</span>
+(and then also an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>). Let <span class="math notranslate nohighlight">\(v\not =0\)</span> be the corresponding eigenvector so that <span class="math notranslate nohighlight">\(\bar A_{22}v=\lambda  v\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \left(   \lambda I_n- \begin{bmatrix}
+        \bar A_{11}&amp;0 \\
+        \bar A_{21}&amp;\bar A_{22}
+        \end{bmatrix}\right ) 
+\begin{bmatrix}
+    0\\v
+\end{bmatrix} = 
+\begin{bmatrix}
+    0\\0
+\end{bmatrix},
+\end{split}\]</div>
+<p>and also</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    \bar C &amp; 0
+\end{bmatrix}\begin{bmatrix}
+    0\\v
+\end{bmatrix}= \begin{bmatrix}
+    0\\0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>This implies that <a class="reference internal" href="#equation-eq-pbh-test">(49)</a> does not hold. Conversely, suppose that <span class="math notranslate nohighlight">\(\text{rank}\begin{bmatrix}
+            \lambda I_n-A\\
+            C
+        \end{bmatrix}&lt;n\)</span> for some <span class="math notranslate nohighlight">\(\lambda\in\sigma(A)\)</span>. Thus, the columns of this matrix are linearly dependent, so   there exists <span class="math notranslate nohighlight">\(x_0\neq0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+            \begin{bmatrix}
+                \lambda I_n-A\\
+                C
+            \end{bmatrix}x_0=0.
+\end{split}\]</div>
+<p>It follows that <span class="math notranslate nohighlight">\(x_0\)</span> is an eigenvector of <span class="math notranslate nohighlight">\(A\)</span> (as <span class="math notranslate nohighlight">\(Ax_0=\lambda x_0\)</span>) and <span class="math notranslate nohighlight">\(Cx_0=0\)</span>. Hence, <span class="math notranslate nohighlight">\(e^{At}x_0=e^{\lambda t}x_0\)</span> and therefore <span class="math notranslate nohighlight">\(Ce^{At}x_0 = e^{\lambda t} Cx_0 =0\)</span> for all <span class="math notranslate nohighlight">\(t\geq0\)</span>. This implies  that <span class="math notranslate nohighlight">\((A,C)\)</span> is not observable.</p>
+</div>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 31 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider again the system <a class="reference internal" href="#equation-eq-unobser-simple">(45)</a> in <a class="reference internal" href="#exa:simp_non_obser">Example 29</a>. In this case, <span class="math notranslate nohighlight">\(n=2\)</span>, <span class="math notranslate nohighlight">\(p=1\)</span>,  <span class="math notranslate nohighlight">\(A=\begin{bmatrix}
+    1&amp;-1\\ 0&amp; -3
+\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(C=\begin{bmatrix}0 &amp; 1 \end{bmatrix}\)</span>. Here <span class="math notranslate nohighlight">\(\sigma(A)=\{1,-3\}\)</span>. Let <span class="math notranslate nohighlight">\(\lambda=1\)</span>. The corresponding eigenvector is <span class="math notranslate nohighlight">\(v=\begin{bmatrix}
+    1\\0
+\end{bmatrix}\)</span>. Note that<br />
+<span class="math notranslate nohighlight">\(            \begin{bmatrix}
+                \lambda I_2-A\\
+                C
+            \end{bmatrix} v  =0,
+\)</span>
+so the PBH test implies that the system is not observable.</p>
+</section>
+</div></section>
+</section>
+<section id="controllability">
+<h2>Controllability<a class="headerlink" href="#controllability" title="Link to this heading">#</a></h2>
+<p>Fix an initial condition <span class="math notranslate nohighlight">\(x(0)=a\)</span> and a control <span class="math notranslate nohighlight">\(u(t)\)</span>, <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, and let <span class="math notranslate nohighlight">\(x(t,u,a)\)</span> be the solution of \eqref{eq:state_space} at time <span class="math notranslate nohighlight">\(t\)</span>. We then say that the control <span class="math notranslate nohighlight">\(u\)</span>
+steers the system from <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(x(t,u,a)\)</span> in time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Assume   for a moment that <span class="math notranslate nohighlight">\(B=0\)</span>. Then clearly any control <span class="math notranslate nohighlight">\(u\)</span> steers <span class="math notranslate nohighlight">\(x(0)=a\)</span> to <span class="math notranslate nohighlight">\(x(T,u,a)=e^{AT} a\)</span> in time <span class="math notranslate nohighlight">\(T\)</span>. In other words, the control  has
+no effect on the evolution of the state vector. What happens in the general case? Is the control input ``rich enough’’ to drive the state vector from any initial condition to any desired final condition?</p>
+<div class="proof definition admonition" id="definition-9">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(41)</a> is called controllable if for any <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}^n\)</span> there exists a time <span class="math notranslate nohighlight">\(T\geq 0\)</span> and a control <span class="math notranslate nohighlight">\(u(t)\)</span>, <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, such that for <span class="math notranslate nohighlight">\(x(0)=a\)</span> the solution satisfies <span class="math notranslate nohighlight">\(x(T,u,a)=b\)</span>.</p>
+</section>
+</div><p>In other words, it is possible to steer  the state from any initial condition <span class="math notranslate nohighlight">\(a\)</span> to any desired final condition <span class="math notranslate nohighlight">\(b\)</span> in finite
+time.</p>
+<div class="proof theorem admonition" id="thm:controll">
+<p class="admonition-title"><span class="caption-number">Theorem 10 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(41)</a> is controllable if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-necc-sugg-cont">
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-necc-sugg-cont" title="Link to this equation">#</a></span>\[ \text{rank}\begin{bmatrix}
+     B&amp;AB&amp;\dots&amp;A^{n-1}B
+ \end{bmatrix}=n. \]</div>
+</section>
+</div><p>We will prove this result by transforming it to the observability problem that we already addressed.</p>
+</section>
+<section id="duality">
+<h2>Duality<a class="headerlink" href="#duality" title="Link to this heading">#</a></h2>
+<p>The dual system of  the system <a class="reference internal" href="#equation-eq-state-space">(41)</a> is the control system</p>
+<div class="math notranslate nohighlight" id="equation-eq-dual">
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-dual" title="Link to this equation">#</a></span>\[\begin{split}    \dot{\tilde x} &amp;=A^\top \tilde x+C^\top \tilde u ,\nonumber \\
+    \tilde y&amp;= B^\top \tilde x+D^\top \tilde u.\end{split}\]</div>
+<p>Note that the matrix dimensions imply that <span class="math notranslate nohighlight">\(\tilde x(t) \in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(\tilde u(t)\in\mathbb{R}^p\)</span>, and <span class="math notranslate nohighlight">\(\tilde y(t)\in\mathbb{R}^m\)</span>.</p>
+<div class="proof theorem admonition" id="thm:dula">
+<p class="admonition-title"><span class="caption-number">Theorem 11 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(41)</a> is controllable if and only if the dual system <a class="reference internal" href="#equation-eq-dual">(51)</a> is observable.</p>
+</section>
+</div><p>Note that this reduces the problem of determining controllability to the problem of determining observability.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. First, assume that <a class="reference internal" href="#equation-eq-state-space">(41)</a> is not controllable. Fix <span class="math notranslate nohighlight">\(T&gt;0\)</span>. We may assume that <span class="math notranslate nohighlight">\(x(0)=0\)</span>, and then</p>
+<div class="math notranslate nohighlight">
+\[
+x(T)=\int_0^T e^{A(t-s)}B u(s) ds. 
+\]</div>
+<p>Define</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    R(T)&amp;:= \{z | \text{ there exits a control } u \text{ that steers } x(0)=0 \text{ to }  x(T)=z \}\\
+    &amp;= \{z | \text{ there exits a control } u \text{ such that }
+    z=\int_0^T e^{A(t-s)}B u(s) ds\}.
+\end{split}\]</div>
+<p>It is not difficult to show that <span class="math notranslate nohighlight">\(R(T)\)</span> is a linear subspace.
+Since <a class="reference internal" href="#equation-eq-state-space">(41)</a>
+is not controllable, <span class="math notranslate nohighlight">\(R(T) \not =\mathbb{R}^n\)</span>,
+so there exists a vector <span class="math notranslate nohighlight">\(p\in\mathbb{R}^n\)</span>, with <span class="math notranslate nohighlight">\(p\not =0\)</span> such that <span class="math notranslate nohighlight">\(p^\top z =0 \)</span> for any <span class="math notranslate nohighlight">\(z\in\mathbb{R}(T)\)</span>. In other words, for any control <span class="math notranslate nohighlight">\(u\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    0 &amp;= p^\top \int_0^T e^{A(t-s)}B u(s) ds\\
+    &amp;= \int_0^T u^\top(s) B^\top e^{A^\top (t-s)}  ds \;  p. 
+\end{split}\]</div>
+<p>Defining a new integration variable <span class="math notranslate nohighlight">\(\tau:=T-s\)</span>, we have that
+for any control <span class="math notranslate nohighlight">\(u\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    0  = \int_0^T u^\top(T-\tau) B^\top e^{A^\top \tau}  d\tau  \;  p. 
+\]</div>
+<p>Consider now the specific  control</p>
+<div class="math notranslate nohighlight">
+\[
+u(T-\tau):=B^\top e^{A^\top \tau} p,\quad \tau\in[0,T].
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+    0  = \int_0^T  (B^\top e^{A^\top \tau} p)^\top  B^\top e^{A^\top \tau} p d \tau, 
+\]</div>
+<p>that is,</p>
+<div class="math notranslate nohighlight">
+\[
+ B^\top e^{A^\top \tau}p=0  \text{ for any } \tau\in[0,T].
+ \]</div>
+<p>We will show that this implies that the dual system is not observable. It is enough to consider the system</p>
+<div class="math notranslate nohighlight" id="equation-eq-dual-short">
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-dual-short" title="Link to this equation">#</a></span>\[\begin{split}    \dot{\tilde x} &amp;= A^\top \tilde x,\nonumber\\
+    \tilde y &amp;= B^\top \tilde x. \end{split}\]</div>
+<p>Fix <span class="math notranslate nohighlight">\(\tilde x(0)=p\)</span> and recall that <span class="math notranslate nohighlight">\(p\not =0\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \tilde y(t) &amp; = B^\top e^{A^\top t} \tilde x(0)\\
+     &amp; = B^\top e^{A^\top t}   p
+     \\&amp;=0, \text{ for all } t\in[0,T],
+\end{split}\]</div>
+<p>so the dual system is not observable.
+Thus, we showed that:</p>
+<p>system  <a class="reference internal" href="#equation-eq-state-space">(41)</a>  is not controllable implies that the dual system  <a class="reference internal" href="#equation-eq-dual">(51)</a>  is not observable.</p>
+<p>Now assume that the dual system \eqref{eq:dual} is not observable.  Then there exists <span class="math notranslate nohighlight">\(p\in\mathbb{R}^n\)</span>, with <span class="math notranslate nohighlight">\(p\not =0\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[
+B^\top e^{A^\top t} p =0 \text{ for all } t\in [0,T]. 
+\]</div>
+<p>This implies that for any control <span class="math notranslate nohighlight">\(u\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+0=\int_0^T u^\top (T-\tau) B^\top e^{A^\top \tau} p d\tau,
+\]</div>
+<p>and we already saw that this implies that for any control <span class="math notranslate nohighlight">\(u\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+0= p^\top \int_0^T 
+e^{A  (T-s)} 
+ Bu(s) ds .
+\]</div>
+<p>This implies that <a class="reference internal" href="#equation-eq-state-space">(41)</a> is not controllable. Thus, we showed
+that:</p>
+<p>the dual system  <a class="reference internal" href="#equation-eq-dual">(51)</a> is not observable implies that the
+system  <a class="reference internal" href="#equation-eq-state-space">(41)</a> is not controllable.</p>
+<p>This completes the proof of <a class="reference internal" href="#thm:dula">Theorem 11</a>.</p>
+</div>
+<p>Using duality, we can now prove <a class="reference internal" href="#thm:controll">Theorem 10</a>. Indeed, <a class="reference internal" href="#equation-eq-state-space">(41)</a> is controllable iff the dual system <a class="reference internal" href="#equation-eq-dual">(51)</a> is observable iff the Kalman observability condition holds for <a class="reference internal" href="#equation-eq-dual-short">(52)</a>, that is, iff</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{rank} \begin{bmatrix}
+    B^\top \\ B^\top A^\top \\ \vdots\\
+    B^\top(A^\top)^{n-1}
+\end{bmatrix}=n,
+\end{split}\]</div>
+<p>and applying a transpose to this condition implies that <a class="reference internal" href="#equation-eq-state-space">(41)</a> is controllable iff <a class="reference internal" href="#equation-eq-necc-sugg-cont">(50)</a> holds.</p>
+<p>Using duality and the PBH test for observability yields the following result.</p>
+<div class="proof proposition admonition" id="proposition-12">
+<p class="admonition-title"><span class="caption-number">Proposition 9 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>(PBH test for controllability) The pair <span class="math notranslate nohighlight">\((A,B)\)</span> is controllable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{rank}\begin{bmatrix}
+         \lambda I_n-A &amp; B
+     \end{bmatrix}=n \text{ for any }\lambda\in\sigma(A). 
+\]</div>
+</section>
+</div><div class="proof example admonition" id="example-13">
+<p class="admonition-title"><span class="caption-number">Example 32 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the system <a class="reference internal" href="#equation-eq-state-space">(41)</a> with <span class="math notranslate nohighlight">\(m=p=1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+    a_1&amp;0&amp;0&amp;\dots&amp;0&amp;0 \\
+    0&amp;a_2&amp;0&amp; \dots&amp;0&amp;0 \\
+    &amp;&amp;\vdots\\
+    0&amp;0&amp;\dots&amp;0&amp;0&amp;a_n
+\end{bmatrix},\;B=\begin{bmatrix}
+    1\\1\\\vdots\\1
+\end{bmatrix},\;C\in \mathbb{R}^{n\times 1}, \;D\in\mathbb{R}^{1\times 1},
+\end{split}\]</div>
+<p>and with <span class="math notranslate nohighlight">\(a_i\not = a_j\)</span> for any <span class="math notranslate nohighlight">\(i\not =j\)</span>.</p>
+<p>Then <span class="math notranslate nohighlight">\(\sigma(A)=\{a_1,\dots,a_n\}\)</span>. Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \text{rank}\begin{bmatrix}
+         a_1 I_n-A &amp; B
+     \end{bmatrix}&amp;=   \text{rank} \begin{bmatrix}0&amp;0&amp;0&amp;\dots&amp;0&amp;0 &amp;1\\
+    0&amp;a_1-a_2&amp;0&amp; \dots&amp;0&amp;0 &amp;1\\
+    &amp;&amp;\vdots\\
+    0&amp;0&amp;\dots&amp;0&amp;0&amp;a_1-a_n&amp;1
+\end{bmatrix} =n.
+    
+\end{split}\]</div>
+<p>A similar argument shows that the PBH test for controllability holds for any <span class="math notranslate nohighlight">\(\lambda=a_i\)</span>, so the system is controllable.</p>
+</section>
+</div></section>
+<section id="detectability">
+<h2>Detectability<a class="headerlink" href="#detectability" title="Link to this heading">#</a></h2>
+<p>Observability has nothing to do with stability. For example, the scalar system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot x_1&amp;=a x_1,\\
+    y&amp;=x_1
+\end{split}\]</div>
+<p>is always observable, but it may be stable or unstable depending on the sign of <span class="math notranslate nohighlight">\(a\)</span>. We now define a weaker notion than observability, called detectability.</p>
+<div class="proof definition admonition" id="def:detectable">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is called detectable if <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\( t\geq 0\)</span> implies that</p>
+<div class="math notranslate nohighlight" id="equation-eq-contoze">
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-contoze" title="Link to this equation">#</a></span>\[ \lim_{t\to\infty}x(t)= 0 .\]</div>
+</section>
+</div><p>Intuitively speaking, a system is detectable if the unobservable modes are stable.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq0 \)</span> certainly holds when <span class="math notranslate nohighlight">\(x(0)=0\)</span> and then also <span class="math notranslate nohighlight">\(x(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq 0\)</span>.
+Thus, detectability implies that when <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq0 \)</span> we may not be able to uniquely determine the initial condition <span class="math notranslate nohighlight">\(x(0)\)</span>, but
+we will be able to conclude the stability condition <a class="reference internal" href="#equation-eq-contoze">(53)</a>.</p>
+<div class="proof example admonition" id="exa:detect">
+<p class="admonition-title"><span class="caption-number">Example 33 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \dot x&amp;=\begin{bmatrix}
+            3&amp;0\\5&amp;-2
+        \end{bmatrix}x, \\
+        y&amp;=\begin{bmatrix}
+            1&amp;0
+        \end{bmatrix}x. 
+\end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(n=2\)</span>, <span class="math notranslate nohighlight">\(p=1\)</span>,  <span class="math notranslate nohighlight">\(A=\begin{bmatrix}
+            3&amp;0\\5&amp;-2
+        \end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(C=\begin{bmatrix}
+            1 &amp;0
+        \end{bmatrix}\)</span>.
+Then</p>
+<div class="math notranslate nohighlight" id="equation-eq-xintihse">
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-xintihse" title="Link to this equation">#</a></span>\[\begin{split}    x(t)&amp;= e^{At}x(0)\nonumber \\
+        &amp;=
+\begin{bmatrix}
+    e^{3t}&amp; 0\\
+    e^{3t}-e^{-2t} &amp;e^{-2t} 
+    \end{bmatrix}x(0) \nonumber \\
+    &amp;= \begin{bmatrix}
+    e^{3t}x_1(0)\\
+    (e^{3t}-e^{-2t})x_1(0)+ e^{-2t}x_2(0) 
+    \end{bmatrix} , \end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+         y(t)&amp;=C  x(t)\\
+    &amp;=e^{3t}x_1(0). 
+\end{split}\]</div>
+<p>Suppose that <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq 0\)</span>. Then <span class="math notranslate nohighlight">\(x_1(0)=0\)</span>, and <a class="reference internal" href="#equation-eq-xintihse">(54)</a> yields
+<span class="math notranslate nohighlight">\(x(t)=\begin{bmatrix}
+     0\\
+     e^{-2t}x_2(0) 
+    \end{bmatrix}\)</span>,
+so <span class="math notranslate nohighlight">\(\lim_{t\to\infty} x(t)=0\)</span>. Thus, the system is detectable.</p>
+</section>
+</div><p>The next result is easy to establish.</p>
+<div class="proof lemma admonition" id="lemma-16">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>If <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a> is observable then it is detectable.</p>
+</section>
+</div><p>An important advantage of the PBH test for observability is that it can be modified to a test for detectability.</p>
+<div class="proof theorem admonition" id="theorem-17">
+<p class="admonition-title"><span class="caption-number">Theorem 12 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(PBH Test for Detectability)</p>
+<p>Consider the system <a class="reference internal" href="#equation-eq-system-obsvr">(43)</a>.
+Let <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denote the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Then <span class="math notranslate nohighlight">\((A,C)\)</span> is detectable if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-pbh-test-detect">
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-pbh-test-detect" title="Link to this equation">#</a></span>\[\begin{split}        rank\begin{bmatrix}
+            \lambda I_n-A\\
+            C
+        \end{bmatrix}=n,\text{ for any }\lambda\in\sigma(A) \text{ with }
+        \text{Re}(\lambda)\geq  0.\end{split}\]</div>
+</section>
+</div><div class="proof example admonition" id="example-18">
+<p class="admonition-title"><span class="caption-number">Example 34 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider again  the system in <a class="reference internal" href="#exa:detect">Example 33</a>. In this case, <span class="math notranslate nohighlight">\(\sigma(A)=\{3,-2\}\)</span>, so we need to check <a class="reference internal" href="#equation-eq-pbh-test-detect">(55)</a> only for <span class="math notranslate nohighlight">\(\lambda=3\)</span>, that is, to compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{rank} \begin{bmatrix}
+3 I_2-A\\
+C
+\end{bmatrix} &amp;=\text{rank} \begin{bmatrix}
+0&amp;0\\
+-5&amp;1\\1&amp;0 
+\end{bmatrix}  
+    =2,
+\end{split}\]</div>
+<p>so the system is detectable.</p>
+</section>
+</div></section>
+<section id="stabilizability">
+<h2>Stabilizability<a class="headerlink" href="#stabilizability" title="Link to this heading">#</a></h2>
+<p>Consider the system:</p>
+<div class="math notranslate nohighlight" id="equation-eq-stbiliz">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-stbiliz" title="Link to this equation">#</a></span>\[\dot x(t)=Ax(t)+Bu(t),\]</div>
+<p>with <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span> and <span class="math notranslate nohighlight">\(B\in\mathbb{R}^{n\times m}\)</span>. Suppose that we have access to the entire state-space vector and we design a controller by</p>
+<div class="math notranslate nohighlight">
+\[
+u(t)=Fx(t)
+\]</div>
+<p>with a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{ m\times n}\)</span>. The closed-loop system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot x&amp;= A x+B F x\\
+    &amp;=(A+BF)x.
+\end{split}\]</div>
+<div class="proof definition admonition" id="def:stabiliz">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-stbiliz">(56)</a> is called stabilizable if there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{ m\times n}\)</span> such that <span class="math notranslate nohighlight">\(A+BF\)</span> is stable
+(that is, every eigenvalue of <span class="math notranslate nohighlight">\(A+BF\)</span> has a negative real part).</p>
+</section>
+</div><p>If <span class="math notranslate nohighlight">\(A\)</span> is stable then clearly <span class="math notranslate nohighlight">\((A,B)\)</span> is stabilizable (just take <span class="math notranslate nohighlight">\(F=0\)</span>). If <span class="math notranslate nohighlight">\(A\)</span> is not stable then stabilizability implies that there exists  a linear feedback controller
+that makes the system’s unstable modes stable.</p>
+<div class="proof example admonition" id="example-20">
+<p class="admonition-title"><span class="caption-number">Example 35 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider <a class="reference internal" href="#equation-eq-stbiliz">(56)</a> with <span class="math notranslate nohighlight">\(A=\begin{bmatrix}
+        -2&amp;3\\5&amp;6
+    \end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(B=\begin{bmatrix}
+        2\\-1
+    \end{bmatrix}\)</span>. Let <span class="math notranslate nohighlight">\(F:=\begin{bmatrix}
+        -116&amp;-222
+    \end{bmatrix}\)</span>. Then
+<span class="math notranslate nohighlight">\(A+BF=\begin{bmatrix}
+        -234 &amp; -441\\
+   121  &amp; 228
+    \end{bmatrix}\)</span>, and this is stable, so <span class="math notranslate nohighlight">\((A,B)\)</span>
+is  stabilizable.</p>
+</section>
+</div><div class="proof proposition admonition" id="proposition-21">
+<p class="admonition-title"><span class="caption-number">Proposition 10 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-stbiliz">(56)</a> is stabilizable if and only if for any <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span> there exists a control <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>, with <span class="math notranslate nohighlight">\(\lim_{t\to\infty}u(t)=0\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{t\to\infty}x(t)=0. 
+\]</div>
+</section>
+</div><p>In other words, for any initial condition there exists
+a control function that steers the state to zero and, moreover, this control function also goes to zero.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. We prove only one implication. Suppose that the system is
+stabilizable. Then there exists <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{m\times n}\)</span> such that <span class="math notranslate nohighlight">\(A+BF\)</span> is stable. Fix <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span>.
+Define <span class="math notranslate nohighlight">\(u(t):=Fx(t)\)</span>.
+Then <span class="math notranslate nohighlight">\(\lim_{t\to\infty}x(t)=0\)</span> and thus</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{t\to\infty}u(t)= \lim_{t\to\infty}Fx(t)=0.
+\]</div>
+</div>
+<p>Using duality yields  the following result.</p>
+<div class="proof theorem admonition" id="theorem-22">
+<p class="admonition-title"><span class="caption-number">Theorem 13 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The pair <span class="math notranslate nohighlight">\((A,C)\)</span> is detectable if and only if the pair <span class="math notranslate nohighlight">\((A^\top,C^\top)\)</span>  is stabilizable.</p>
+</section>
+</div><p>Combining this with <a class="reference internal" href="#def:stabiliz">Definition 12</a> yields the following  result.</p>
+<div class="proof proposition admonition" id="proposition-23">
+<p class="admonition-title"><span class="caption-number">Proposition 11 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span> and <span class="math notranslate nohighlight">\(C\in\mathbb{R}^{p\times n}\)</span>. The pair <span class="math notranslate nohighlight">\((A,C)\)</span> is detectable if and only if there exists <span class="math notranslate nohighlight">\(H\in\mathbb{R}^{n\times p} \)</span> such that <span class="math notranslate nohighlight">\(A+HC\)</span> is stable.</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof.     The pair <span class="math notranslate nohighlight">\((A,C) \)</span> is detectable iff the pair <span class="math notranslate nohighlight">\((A^\top,C^\top)\)</span> is stabilizable  iff there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{p\times n}\)</span> such that <span class="math notranslate nohighlight">\(A^\top+ C^\top F\)</span> is stable iff there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{p\times n}\)</span> such that <span class="math notranslate nohighlight">\(A+F^\top C\)</span> is stable.</p>
+</div>
+</section>
+<section id="observers">
+<h2>Observers<a class="headerlink" href="#observers" title="Link to this heading">#</a></h2>
+<p>Consider the system <a class="reference internal" href="#equation-eq-state-space">(41)</a>. A (full state)  observer is another system that receives the input <span class="math notranslate nohighlight">\(u\)</span>
+and output <span class="math notranslate nohighlight">\(y\)</span> of <a class="reference internal" href="#equation-eq-state-space">(41)</a> and computes an estimate <span class="math notranslate nohighlight">\(x_e\)</span> of the state <span class="math notranslate nohighlight">\(x\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-zero-err">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-zero-err" title="Link to this equation">#</a></span>\[\lim_{t\to\infty} |x_e(t)-x(t) | =0 \]</div>
+<p>for any <span class="math notranslate nohighlight">\(u\)</span> and any <span class="math notranslate nohighlight">\(x(0)\)</span> (see <a class="reference internal" href="#fig-observer"><span class="std std-numref">Fig. 32</span></a>).</p>
+<figure class="align-default" id="fig-observer">
+<a class="reference internal image-reference" href="_images/observer.png"><img alt="_images/observer.png" src="_images/observer.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">An observer.</span><a class="headerlink" href="#fig-observer" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof theorem admonition" id="theorem-24">
+<p class="admonition-title"><span class="caption-number">Theorem 14 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(41)</a> admits an observer that satisfies <a class="reference internal" href="#equation-eq-zero-err">(57)</a> if and only if <span class="math notranslate nohighlight">\((A,C)\)</span> is detectable.</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Suppose that <span class="math notranslate nohighlight">\((A,C) \)</span> is not detectable. Consider the control <span class="math notranslate nohighlight">\(u(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\geq 0\)</span>. For <span class="math notranslate nohighlight">\(x(0)=0\)</span> we have that <span class="math notranslate nohighlight">\(y(t)=Cx(t)=0 \)</span> for all <span class="math notranslate nohighlight">\(t\geq 0\)</span>. Since <span class="math notranslate nohighlight">\((A,C) \)</span> is not detectable, <a class="reference internal" href="#def:detectable">Definition 11</a> implies that there exists an initial condition <span class="math notranslate nohighlight">\(p\)</span> such that for <span class="math notranslate nohighlight">\(x(0)=p\)</span> we have <span class="math notranslate nohighlight">\(y(t)=0\)</span>  for all <span class="math notranslate nohighlight">\(t\geq 0\)</span> and
+<a class="reference internal" href="#equation-eq-contoze">(53)</a> does not hold. Thus, <span class="math notranslate nohighlight">\(p\not =0\)</span>. We conclude that there are two cases: (1) <span class="math notranslate nohighlight">\(x(0)=0\)</span>, <span class="math notranslate nohighlight">\(u(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0 \)</span>;
+and
+(2) <span class="math notranslate nohighlight">\(x(0)=p\not =0 \)</span>, <span class="math notranslate nohighlight">\(u(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0 \)</span> and in both cases the output is identically zero. Thus, no observer will be able to distinguish between these two cases, so it is impossible to achieve <a class="reference internal" href="#equation-eq-zero-err">(57)</a>.</p>
+<p>To prove the converse implication, suppose that <span class="math notranslate nohighlight">\((A,C) \)</span> is detectable. Then there exists <span class="math notranslate nohighlight">\(H\in \mathbb{R}^{n\times p}\)</span> such that <span class="math notranslate nohighlight">\(A+HC\)</span> is stable. We claim that</p>
+<div class="math notranslate nohighlight" id="equation-eq-lun-obser">
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-lun-obser" title="Link to this equation">#</a></span>\[\dot x_e = (A+HC)x_e +(B+HD)u-Hy\]</div>
+<p>is an observer. First note that realizing <span class="math notranslate nohighlight">\(x_e\)</span> requires only the signals <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Second, let <span class="math notranslate nohighlight">\(e(t):=x_e(t)-x(t)\)</span>, that is, the estimation error. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot e&amp; = \dot x_e -\dot x \\
+    &amp;= (A+HC)x_e +(B+HD)u-Hy-(Ax+Bu)\\
+    &amp;=(A+HC)x_e +(B+HD)u-H(Cx+Du) -(Ax+Bu)\\
+    &amp;=(A+HC)(x_e-x)\\
+    &amp;=(A+HC)e. 
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(A+HC\)</span> is stable, this implies that <span class="math notranslate nohighlight">\(\lim_{t\to \infty}e(t)=0\)</span>, for any <span class="math notranslate nohighlight">\(x(0)\)</span>, <span class="math notranslate nohighlight">\(x_e(0)\)</span>,  and control <span class="math notranslate nohighlight">\(u\)</span>, and this completes the proof.</p>
+</div>
+<p>The observer in <a class="reference internal" href="#equation-eq-lun-obser">(58)</a> was invented  by David Gilbert Luenberger who was a professor at Stanford University.</p>
+</section>
+<section id="observer-based-controllers">
+<h2>Observer-based Controllers<a class="headerlink" href="#observer-based-controllers" title="Link to this heading">#</a></h2>
+<p>Consider the system <a class="reference internal" href="#equation-eq-state-space">(41)</a>. If <span class="math notranslate nohighlight">\((A,B)\)</span> is stabilizable then there exits a matrix <span class="math notranslate nohighlight">\(F\)</span> such that <span class="math notranslate nohighlight">\(A+BF\)</span> is stable, so the state-feedback control <span class="math notranslate nohighlight">\(u=Fx\)</span> stabilizes the system.  If <span class="math notranslate nohighlight">\(x\)</span> is not available   to the controller, and <span class="math notranslate nohighlight">\((A,C)\)</span>
+is detectable then we can try to replace <span class="math notranslate nohighlight">\(u=Fx\)</span> by <span class="math notranslate nohighlight">\(u=Fx_e\)</span>, where <span class="math notranslate nohighlight">\(x_e\)</span> is the output of a state observer.
+This yields the scheme in <a class="reference internal" href="#fig-observer-based"><span class="std std-numref">Fig. 33</span></a>.</p>
+<figure class="align-default" id="fig-observer-based">
+<a class="reference internal image-reference" href="_images/observer_based_control.png"><img alt="_images/observer_based_control.png" src="_images/observer_based_control.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Observer-based control.</span><a class="headerlink" href="#fig-observer-based" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot x &amp; =Ax+Bu\\
+    &amp;=Ax + B F x_e \\
+    &amp;=(A+BF)x+ BF e,
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A+BF\)</span> a stable matrix. The closed-loop system is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix} \dot x \\
+    \dot e \end{bmatrix}&amp; =\begin{bmatrix}
+        A+BF&amp;BF\\0&amp;A+HC
+    \end{bmatrix}\begin{bmatrix}  x \\
+     e \end{bmatrix}.
+\end{split}\]</div>
+<p>The block-triangular structure of the matrix implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma (\begin{bmatrix}
+        A+BF&amp;BF\\0&amp;A+HC
+    \end{bmatrix})=\sigma ( 
+        A+BF )
+    \cup \sigma ( A+HC
+     )
+\end{split}\]</div>
+<p>and since <span class="math notranslate nohighlight">\(A+BF\)</span> and <span class="math notranslate nohighlight">\(A+HC\)</span> are stable, the closed-loop system is stable. The above decomposition of the eigenvalues of the closed-loop system eigenvalues into the sets <span class="math notranslate nohighlight">\(\sigma ( 
+        A+BF )\)</span> and
+<span class="math notranslate nohighlight">\(\sigma ( A+HC
+     )\)</span> is called the separation principle, and it implies that we can design the controller and the observer independently.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6: Analysis and Synthesis in the Frequency Domain</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observability">Observability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-rank-condition-for-observability">Kalman Rank Condition for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-canonical-form">Kalman Canonical Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popov-belevitch-hautus-test-for-observability">Popov-Belevitch-Hautus Test for Observability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllability">Controllability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detectability">Detectability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilizability">Stabilizability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observers">Observers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observer-based-controllers">Observer-based Controllers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
