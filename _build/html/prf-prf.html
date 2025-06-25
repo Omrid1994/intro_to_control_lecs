@@ -183,6 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Chapter4.html">Chapter 4: PID Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter5.html">Chapter 5: Root Locus Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter6.html">Chapter 6: Analysis and Synthesis in the Frequency Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter7.html">Chapter 7: State-Space Analysis</a></li>
 </ul>
 
     </div>
@@ -333,23 +334,30 @@
    <h1>Proof Index</h1>
 
    <div class="modindex-jumpbox">
+   <a href="#cap-def:detectable"><strong>def:detectable</strong></a> | 
    <a href="#cap-def:eigvalue_eigenvector"><strong>def:eigvalue_eigenvector</strong></a> | 
    <a href="#cap-def:singular_matrix"><strong>def:singular_matrix</strong></a> | 
+   <a href="#cap-def:stabiliz"><strong>def:stabiliz</strong></a> | 
+   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-definition-11"><strong>definition-11</strong></a> | 
    <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
    <a href="#cap-definition-5"><strong>definition-5</strong></a> | 
    <a href="#cap-definition-7"><strong>definition-7</strong></a> | 
    <a href="#cap-definition-9"><strong>definition-9</strong></a> | 
    <a href="#cap-exa:canonic_RL"><strong>exa:canonic_RL</strong></a> | 
+   <a href="#cap-exa:detect"><strong>exa:detect</strong></a> | 
    <a href="#cap-exa:pi1"><strong>exa:pi1</strong></a> | 
    <a href="#cap-exa:pi2"><strong>exa:pi2</strong></a> | 
+   <a href="#cap-exa:simp_non_obser"><strong>exa:simp_non_obser</strong></a> | 
    <a href="#cap-example-10"><strong>example-10</strong></a> | 
    <a href="#cap-example-11"><strong>example-11</strong></a> | 
    <a href="#cap-example-12"><strong>example-12</strong></a> | 
    <a href="#cap-example-13"><strong>example-13</strong></a> | 
    <a href="#cap-example-15"><strong>example-15</strong></a> | 
    <a href="#cap-example-16"><strong>example-16</strong></a> | 
+   <a href="#cap-example-18"><strong>example-18</strong></a> | 
    <a href="#cap-example-2"><strong>example-2</strong></a> | 
+   <a href="#cap-example-20"><strong>example-20</strong></a> | 
    <a href="#cap-example-3"><strong>example-3</strong></a> | 
    <a href="#cap-example-4"><strong>example-4</strong></a> | 
    <a href="#cap-example-5"><strong>example-5</strong></a> | 
@@ -361,12 +369,17 @@
    <a href="#cap-example:zp1"><strong>example:zp1</strong></a> | 
    <a href="#cap-example:zp2"><strong>example:zp2</strong></a> | 
    <a href="#cap-example:zp3"><strong>example:zp3</strong></a> | 
+   <a href="#cap-lemma-16"><strong>lemma-16</strong></a> | 
    <a href="#cap-prop:B_close_diagonalizbe"><strong>prop:B_close_diagonalizbe</strong></a> | 
    <a href="#cap-prop:G_rational_Stable"><strong>prop:G_rational_Stable</strong></a> | 
    <a href="#cap-prop:linear_ind"><strong>prop:linear_ind</strong></a> | 
+   <a href="#cap-prop:obser_y2"><strong>prop:obser_y2</strong></a> | 
    <a href="#cap-prop:stab_rou_necen_suff"><strong>prop:stab_rou_necen_suff</strong></a> | 
    <a href="#cap-prop:stable_closed_loop"><strong>prop:stable_closed_loop</strong></a> | 
    <a href="#cap-prop:stable_lop"><strong>prop:stable_lop</strong></a> | 
+   <a href="#cap-proposition-12"><strong>proposition-12</strong></a> | 
+   <a href="#cap-proposition-21"><strong>proposition-21</strong></a> | 
+   <a href="#cap-proposition-23"><strong>proposition-23</strong></a> | 
    <a href="#cap-proposition-5"><strong>proposition-5</strong></a> | 
    <a href="#cap-rem:modified_nyquist"><strong>rem:modified_nyquist</strong></a> | 
    <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
@@ -375,18 +388,35 @@
    <a href="#cap-remark-14"><strong>remark-14</strong></a> | 
    <a href="#cap-remark-2"><strong>remark-2</strong></a> | 
    <a href="#cap-remark-3"><strong>remark-3</strong></a> | 
+   <a href="#cap-remark-4"><strong>remark-4</strong></a> | 
    <a href="#cap-remark-7"><strong>remark-7</strong></a> | 
    <a href="#cap-remark-8"><strong>remark-8</strong></a> | 
    <a href="#cap-remark-9"><strong>remark-9</strong></a> | 
    <a href="#cap-theorem-10"><strong>theorem-10</strong></a> | 
    <a href="#cap-theorem-11"><strong>theorem-11</strong></a> | 
+   <a href="#cap-theorem-17"><strong>theorem-17</strong></a> | 
+   <a href="#cap-theorem-22"><strong>theorem-22</strong></a> | 
+   <a href="#cap-theorem-24"><strong>theorem-24</strong></a> | 
+   <a href="#cap-theorem-3"><strong>theorem-3</strong></a> | 
+   <a href="#cap-theorem-7"><strong>theorem-7</strong></a> | 
    <a href="#cap-thm:argument"><strong>thm:argument</strong></a> | 
    <a href="#cap-thm:cayley_hamilton"><strong>thm:cayley_hamilton</strong></a> | 
+   <a href="#cap-thm:controll"><strong>thm:controll</strong></a> | 
+   <a href="#cap-thm:dula"><strong>thm:dula</strong></a> | 
+   <a href="#cap-thm:from_x_to_z"><strong>thm:from_x_to_z</strong></a> | 
    <a href="#cap-thm:nyq_general"><strong>thm:nyq_general</strong></a> | 
    <a href="#cap-thm:nyq_special"><strong>thm:nyq_special</strong></a>
    </div>
 
    <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def:detectable"><td></td><td>
+       <strong>def:detectable</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#def:detectable"><code class="xref">def:detectable</code></a> <em>(Chapter7)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def:eigvalue_eigenvector"><td></td><td>
        <strong>def:eigvalue_eigenvector</strong></td><td></td></tr>
@@ -402,6 +432,22 @@
        <td></td>
        <td>
        <a href="Chapter0.html#def:singular_matrix"><code class="xref">def:singular_matrix</code></a> <em>(Chapter0)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def:stabiliz"><td></td><td>
+       <strong>def:stabiliz</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#def:stabiliz"><code class="xref">def:stabiliz</code></a> <em>(Chapter7)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-0"><td></td><td>
+       <strong>definition-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#definition-0"><code class="xref">definition-0</code></a> <em>(Chapter7)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-definition-11"><td></td><td>
@@ -441,7 +487,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="Chapter6.html#definition-9"><code class="xref">definition-9</code></a> <em>(Chapter6)</em></td><td>
+       <a href="Chapter7.html#definition-9"><code class="xref">definition-9</code></a> <em>(Chapter7)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-exa:canonic_RL"><td></td><td>
@@ -450,6 +496,14 @@
        <td></td>
        <td>
        <a href="Chapter5.html#exa:canonic_RL"><code class="xref">exa:canonic_RL</code></a> <em>(Chapter5)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-exa:detect"><td></td><td>
+       <strong>exa:detect</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#exa:detect"><code class="xref">exa:detect</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-exa:pi1"><td></td><td>
@@ -466,6 +520,14 @@
        <td></td>
        <td>
        <a href="Chapter6.html#exa:pi2"><code class="xref">exa:pi2</code></a> <em>(Chapter6)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-exa:simp_non_obser"><td></td><td>
+       <strong>exa:simp_non_obser</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#exa:simp_non_obser"><code class="xref">exa:simp_non_obser</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-10"><td></td><td>
@@ -497,7 +559,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="Chapter6.html#example-13"><code class="xref">example-13</code></a> <em>(Chapter6)</em></td><td>
+       <a href="Chapter7.html#example-13"><code class="xref">example-13</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-15"><td></td><td>
@@ -516,12 +578,28 @@
        <a href="Chapter6.html#example-16"><code class="xref">example-16</code></a> <em>(Chapter6)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-18"><td></td><td>
+       <strong>example-18</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#example-18"><code class="xref">example-18</code></a> <em>(Chapter7)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-2"><td></td><td>
        <strong>example-2</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="Chapter5.html#example-2"><code class="xref">example-2</code></a> <em>(Chapter5)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-20"><td></td><td>
+       <strong>example-20</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#example-20"><code class="xref">example-20</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-3"><td></td><td>
@@ -545,7 +623,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="Chapter5.html#example-5"><code class="xref">example-5</code></a> <em>(Chapter5)</em></td><td>
+       <a href="Chapter7.html#example-5"><code class="xref">example-5</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-6"><td></td><td>
@@ -569,7 +647,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="Chapter6.html#example-8"><code class="xref">example-8</code></a> <em>(Chapter6)</em></td><td>
+       <a href="Chapter7.html#example-8"><code class="xref">example-8</code></a> <em>(Chapter7)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-9"><td></td><td>
@@ -612,6 +690,14 @@
        <a href="Chapter3.html#example:zp3"><code class="xref">example:zp3</code></a> <em>(Chapter3)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lemma-16"><td></td><td>
+       <strong>lemma-16</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#lemma-16"><code class="xref">lemma-16</code></a> <em>(Chapter7)</em></td><td>
+       <em>lemma</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:B_close_diagonalizbe"><td></td><td>
        <strong>prop:B_close_diagonalizbe</strong></td><td></td></tr>
      <tr>
@@ -636,6 +722,14 @@
        <a href="Chapter0.html#prop:linear_ind"><code class="xref">prop:linear_ind</code></a> <em>(Chapter0)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:obser_y2"><td></td><td>
+       <strong>prop:obser_y2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#prop:obser_y2"><code class="xref">prop:obser_y2</code></a> <em>(Chapter7)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:stab_rou_necen_suff"><td></td><td>
        <strong>prop:stab_rou_necen_suff</strong></td><td></td></tr>
      <tr>
@@ -658,6 +752,30 @@
        <td></td>
        <td>
        <a href="Chapter2.html#prop:stable_lop"><code class="xref">prop:stable_lop</code></a> <em>(Chapter2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-proposition-12"><td></td><td>
+       <strong>proposition-12</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#proposition-12"><code class="xref">proposition-12</code></a> <em>(Chapter7)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-proposition-21"><td></td><td>
+       <strong>proposition-21</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#proposition-21"><code class="xref">proposition-21</code></a> <em>(Chapter7)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-proposition-23"><td></td><td>
+       <strong>proposition-23</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#proposition-23"><code class="xref">proposition-23</code></a> <em>(Chapter7)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-proposition-5"><td></td><td>
@@ -689,7 +807,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="Chapter4.html#remark-1"><code class="xref">remark-1</code></a> <em>(Chapter4)</em></td><td>
+       <a href="Chapter5.html#remark-1"><code class="xref">remark-1</code></a> <em>(Chapter5)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-11"><td></td><td>
@@ -722,6 +840,14 @@
        <td></td>
        <td>
        <a href="Chapter0.html#remark-3"><code class="xref">remark-3</code></a> <em>(Chapter0)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-4"><td></td><td>
+       <strong>remark-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#remark-4"><code class="xref">remark-4</code></a> <em>(Chapter7)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-7"><td></td><td>
@@ -764,6 +890,46 @@
        <a href="Chapter2.html#theorem-11"><code class="xref">theorem-11</code></a> <em>(Chapter2)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-17"><td></td><td>
+       <strong>theorem-17</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#theorem-17"><code class="xref">theorem-17</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-22"><td></td><td>
+       <strong>theorem-22</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#theorem-22"><code class="xref">theorem-22</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-24"><td></td><td>
+       <strong>theorem-24</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#theorem-24"><code class="xref">theorem-24</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-3"><td></td><td>
+       <strong>theorem-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#theorem-3"><code class="xref">theorem-3</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-7"><td></td><td>
+       <strong>theorem-7</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#theorem-7"><code class="xref">theorem-7</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm:argument"><td></td><td>
        <strong>thm:argument</strong></td><td></td></tr>
      <tr>
@@ -778,6 +944,30 @@
        <td></td>
        <td>
        <a href="Chapter0.html#thm:cayley_hamilton"><code class="xref">thm:cayley_hamilton</code></a> <em>(Chapter0)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm:controll"><td></td><td>
+       <strong>thm:controll</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#thm:controll"><code class="xref">thm:controll</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm:dula"><td></td><td>
+       <strong>thm:dula</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#thm:dula"><code class="xref">thm:dula</code></a> <em>(Chapter7)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm:from_x_to_z"><td></td><td>
+       <strong>thm:from_x_to_z</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter7.html#thm:from_x_to_z"><code class="xref">thm:from_x_to_z</code></a> <em>(Chapter7)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm:nyq_general"><td></td><td>
