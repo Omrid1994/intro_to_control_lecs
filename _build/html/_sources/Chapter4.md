@@ -100,7 +100,7 @@ Step response of $G$ and $G_0$.
 ```
 
 It is important to understand how the poles of $S$ (which are also the poles of $G$) depend on the parameters $K_p$ and $K_i$. Denote the poles by $p_1,p_2\in \mathbb{C}$. 
-From {eqref}`eq:sense_p1p2` and {eqref}`eq:S_PI`,  we see that
+From {eq}`eq:sense_p1p2` and {eq}`eq:S_PI`,  we see that
  
 $$
     p_1+p_2&=-2\xi \omega_n = -\frac{1+kK_p}{T},\\ p_1p_2&=\omega_n^2 = \frac{kK_i}{T}.
