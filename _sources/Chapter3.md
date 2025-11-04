@@ -150,7 +150,7 @@ The feedback connection of $P$ and $C$ is stable if and only if the following tw
 Consider
 
 $$
-    P(s)=\frac{3s}{s-1},\quad (s)=\frac{1}{s-1}.
+    P(s)=\frac{3s}{s-1},\quad C(s)=\frac{1}{s-1}.
 $$
 
 Obviously, there is no unstable pole-zero cancellation in $PC$ (in fact, there is no pole-zero cancellation at all). We compute
@@ -159,7 +159,7 @@ $$
     \big(1+P(s)C(s)\big)^{-1}=\frac{s^2-2s+1}{s^2+s+1},
 $$
 
-which is stable, so that the feedback connection is stable. Note that $P$ and $C$ are not stable. Thus, a controller can be used to stabilize an unstable plant. 
+which is stable, so that the feedback connection is stable. Note that $P$ and $C$ are not stable. Thus, an unstable controller can be used to stabilize an unstable plant. 
 ```
 
 

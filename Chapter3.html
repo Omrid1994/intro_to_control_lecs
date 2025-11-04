@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -527,14 +527,14 @@ The pole-zero cancellation is called stable if <span class="math notranslate noh
 <p>Consider</p>
 <div class="math notranslate nohighlight">
 \[
-    P(s)=\frac{3s}{s-1},\quad (s)=\frac{1}{s-1}.
+    P(s)=\frac{3s}{s-1},\quad C(s)=\frac{1}{s-1}.
 \]</div>
 <p>Obviously, there is no unstable pole-zero cancellation in <span class="math notranslate nohighlight">\(PC\)</span> (in fact, there is no pole-zero cancellation at all). We compute</p>
 <div class="math notranslate nohighlight">
 \[
     \big(1+P(s)C(s)\big)^{-1}=\frac{s^2-2s+1}{s^2+s+1},
 \]</div>
-<p>which is stable, so that the feedback connection is stable. Note that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are not stable. Thus, a controller can be used to stabilize an unstable plant.</p>
+<p>which is stable, so that the feedback connection is stable. Note that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are not stable. Thus, an unstable controller can be used to stabilize an unstable plant.</p>
 </section>
 </div></section>
 <section id="w-stability">
@@ -895,7 +895,7 @@ Indeed, in this case  there would be a pole-zero cancellation at <span class="ma
 </tbody>
 </table>
 </div>
-<p>We conclude that the controller must encapsulate the form of the input for which we require zero steady state error. This is known as the internal model principle <span id="id2">[<a class="reference internal" href="markdown.html#id4" title="M. Bin, J. Huang, A. Isidori, L. Marconi, M. Mischiati, and E. D. Sontag. Internal models in control, bioengineering, and neuroscience. Annual Review of Control, Robotics, and Autonomous Systems, 5:20.1-20.25, 2022.">Bin <em>et al.</em>, 2022</a>]</span>.</p>
+<p>We conclude that the controller must encapsulate the form of the input for which we require zero steady state error. This is known as the internal model principle <span id="id2">[<a class="reference internal" href="#id5" title="M. Bin, J. Huang, A. Isidori, L. Marconi, M. Mischiati, and E. D. Sontag. Internal models in control, bioengineering, and neuroscience. Annual Review of Control, Robotics, and Autonomous Systems, 5:20.1-20.25, 2022.">Bin <em>et al.</em>, 2022</a>]</span>.</p>
 <p>This raises interesting questions. For example, if we apply a reverse engineering  process to  decipher a biological controller in our cells, can we determine for what types of inputs/disturbances this controller was designed?</p>
 </section>
 <section id="references">
