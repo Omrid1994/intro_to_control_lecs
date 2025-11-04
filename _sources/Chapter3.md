@@ -181,10 +181,10 @@ If this condition does not hold, then a very small change in $P$ and $C$ can cau
 Consider
 
 $$
-    P(s)=\frac{5s}{s+1},\quad C(s)=\frac{s+2}{s-1}.
+    P(s)=\frac{5s}{s+1},\quad C(s)=-\frac{s+2}{s-1}.
 $$
 
-We have $P(\infty)=5$, $C(\infty)=1$, so $\big|P(\infty)C(\infty)\big|=5$ and the feedback connection of $P$ and $C$ is not $w$-stable. It is easy to check that this feedback connection is stable using {prf:ref}`prop:stable_closed_loop`. Indeed, there are no zero-pole cancellations in $PC$ and
+We have $P(\infty)=5$, $C(\infty)=-1$, so $\big|P(\infty)C(\infty)\big|=5$ and the feedback connection of $P$ and $C$ is not $w$-stable. It is easy to check that this feedback connection is stable using {prf:ref}`prop:stable_closed_loop`. Indeed, there are no zero-pole cancellations in $PC$ and
 
 $$
     S(s)=-\frac{s^2-1}{4s^2+10s+1},
@@ -212,7 +212,7 @@ A transfer function is called  strictly proper if $G(\infty)=0$. Equivalently, t
 Suppose that  the plant is given by 
 
 $$
-    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R}.
+    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R},\;T\neq0.
 $$
 
 We want the control system in {numref}`fig:1order_sys_cont` to be stable,  and the output $y$ of the plant should be close to the reference signal $r$ (i.e., $e$ should be small).

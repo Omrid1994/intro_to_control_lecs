@@ -555,9 +555,9 @@ The pole-zero cancellation is called stable if <span class="math notranslate noh
 <p>Consider</p>
 <div class="math notranslate nohighlight">
 \[
-    P(s)=\frac{5s}{s+1},\quad C(s)=\frac{s+2}{s-1}.
+    P(s)=\frac{5s}{s+1},\quad C(s)=-\frac{s+2}{s-1}.
 \]</div>
-<p>We have <span class="math notranslate nohighlight">\(P(\infty)=5\)</span>, <span class="math notranslate nohighlight">\(C(\infty)=1\)</span>, so <span class="math notranslate nohighlight">\(\big|P(\infty)C(\infty)\big|=5\)</span> and the feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is not <span class="math notranslate nohighlight">\(w\)</span>-stable. It is easy to check that this feedback connection is stable using <a class="reference internal" href="#prop:stable_closed_loop">Proposition 7</a>. Indeed, there are no zero-pole cancellations in <span class="math notranslate nohighlight">\(PC\)</span> and</p>
+<p>We have <span class="math notranslate nohighlight">\(P(\infty)=5\)</span>, <span class="math notranslate nohighlight">\(C(\infty)=-1\)</span>, so <span class="math notranslate nohighlight">\(\big|P(\infty)C(\infty)\big|=5\)</span> and the feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is not <span class="math notranslate nohighlight">\(w\)</span>-stable. It is easy to check that this feedback connection is stable using <a class="reference internal" href="#prop:stable_closed_loop">Proposition 7</a>. Indeed, there are no zero-pole cancellations in <span class="math notranslate nohighlight">\(PC\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[
     S(s)=-\frac{s^2-1}{4s^2+10s+1},
@@ -581,7 +581,7 @@ The pole-zero cancellation is called stable if <span class="math notranslate noh
 <p>Suppose that  the plant is given by</p>
 <div class="math notranslate nohighlight">
 \[
-    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R}.
+    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R},\;T\neq0.
 \]</div>
 <p>We want the control system in <a class="reference internal" href="#fig-1order-sys-cont"><span class="std std-numref">Fig. 4</span></a> to be stable,  and the output <span class="math notranslate nohighlight">\(y\)</span> of the plant should be close to the reference signal <span class="math notranslate nohighlight">\(r\)</span> (i.e., <span class="math notranslate nohighlight">\(e\)</span> should be small).</p>
 <figure class="align-default" id="fig-1order-sys-cont">
