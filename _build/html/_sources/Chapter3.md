@@ -150,7 +150,7 @@ The feedback connection of $P$ and $C$ is stable if and only if the following tw
 Consider
 
 $$
-    P(s)=\frac{3s}{s-1},\quad (s)=\frac{1}{s-1}.
+    P(s)=\frac{3s}{s-1},\quad C(s)=\frac{1}{s-1}.
 $$
 
 Obviously, there is no unstable pole-zero cancellation in $PC$ (in fact, there is no pole-zero cancellation at all). We compute
@@ -159,7 +159,7 @@ $$
     \big(1+P(s)C(s)\big)^{-1}=\frac{s^2-2s+1}{s^2+s+1},
 $$
 
-which is stable, so that the feedback connection is stable. Note that $P$ and $C$ are not stable. Thus, a controller can be used to stabilize an unstable plant. 
+which is stable, so that the feedback connection is stable. Note that $P$ and $C$ are not stable. Thus, an unstable controller can be used to stabilize an unstable plant. 
 ```
 
 
@@ -181,10 +181,10 @@ If this condition does not hold, then a very small change in $P$ and $C$ can cau
 Consider
 
 $$
-    P(s)=\frac{5s}{s+1},\quad C(s)=\frac{s+2}{s-1}.
+    P(s)=\frac{5s}{s+1},\quad C(s)=-\frac{s+2}{s-1}.
 $$
 
-We have $P(\infty)=5$, $C(\infty)=1$, so $\big|P(\infty)C(\infty)\big|=5$ and the feedback connection of $P$ and $C$ is not $w$-stable. It is easy to check that this feedback connection is stable using {prf:ref}`prop:stable_closed_loop`. Indeed, there are no zero-pole cancellations in $PC$ and
+We have $P(\infty)=5$, $C(\infty)=-1$, so $\big|P(\infty)C(\infty)\big|=5$ and the feedback connection of $P$ and $C$ is not $w$-stable. It is easy to check that this feedback connection is stable using {prf:ref}`prop:stable_closed_loop`. Indeed, there are no zero-pole cancellations in $PC$ and
 
 $$
     S(s)=-\frac{s^2-1}{4s^2+10s+1},
@@ -212,7 +212,7 @@ A transfer function is called  strictly proper if $G(\infty)=0$. Equivalently, t
 Suppose that  the plant is given by 
 
 $$
-    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R}.
+    P(s)=\frac{k}{1+Ts},\quad k,T\in\mathbb{R},\;T\neq0.
 $$
 
 We want the control system in {numref}`fig:1order_sys_cont` to be stable,  and the output $y$ of the plant should be close to the reference signal $r$ (i.e., $e$ should be small).
@@ -492,7 +492,7 @@ $$
 \omega_d:=\omega_n\sqrt{1-\xi^2}.
 $$
 
-This is called the damped natural frequency of $G$. As $\xi$ gets bigger, the frequency decreases. When $\xi \approx 1$ the frequency of the oscillations is almost $\omega_n$, which is called  the natural frequency of $G$. 
+This is called the damped natural frequency of $G$. As $\xi$ gets bigger, the frequency decreases. 
 
 ### The critically damped case
   
