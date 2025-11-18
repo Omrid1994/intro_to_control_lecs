@@ -492,7 +492,7 @@ $$
 \omega_d:=\omega_n\sqrt{1-\xi^2}.
 $$
 
-This is called the damped natural frequency of $G$. As $\xi$ gets bigger, the frequency decreases. When $\xi \approx 1$ the frequency of the oscillations is almost $\omega_n$, which is called  the natural frequency of $G$. 
+This is called the damped natural frequency of $G$. As $\xi$ gets bigger, the frequency decreases. 
 
 ### The critically damped case
   
