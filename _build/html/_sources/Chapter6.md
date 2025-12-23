@@ -643,7 +643,7 @@ Design a closed-loop controller such that:
 We will design a controller in the form $kC$, with $C$ a phase lead compensator. We first determine the gain $k$ based on the steady state error requirement
 
 $$
-    e_{ss}(ramp) &= \lim_{s\to 0}\frac1{sP(s)kC(s)} \\
+    e_{ss}(ramp) &= \lim_{s\to 0}\frac1{s(1+kP(s)C(s))} \\
     &=\frac{0.01}{k}.
 $$
 
