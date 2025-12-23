@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -909,7 +909,7 @@ as a controller:</p>
 <p>We will design a controller in the form <span class="math notranslate nohighlight">\(kC\)</span>, with <span class="math notranslate nohighlight">\(C\)</span> a phase lead compensator. We first determine the gain <span class="math notranslate nohighlight">\(k\)</span> based on the steady state error requirement</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    e_{ss}(ramp) &amp;= \lim_{s\to 0}\frac1{sP(s)kC(s)} \\
+    e_{ss}(ramp) &amp;= \lim_{s\to 0}\frac1{s(1+kP(s)C(s))} \\
     &amp;=\frac{0.01}{k}.
 \end{split}\]</div>
 <p>Thus, it is enough to take <span class="math notranslate nohighlight">\(k=1\)</span>. <a class="reference internal" href="#fig-bode-plot-kp"><span class="std std-numref">Fig. 30</span></a>
