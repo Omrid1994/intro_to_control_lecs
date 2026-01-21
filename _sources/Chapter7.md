@@ -392,7 +392,7 @@ so the PBH test implies that the system is not observable.
 ## Controllability
 
 
-Fix an initial condition $x(0)=a$ and a control $u(t)$, $t\in[0,T]$, and let $x(t,u,a)$ be the solution of \eqref{eq:state_space} at time $t$. We then say that the control $u$ 
+Fix an initial condition $x(0)=a$ and a control $u(t)$, $t\in[0,T]$, and let $x(t,u,a)$ be the solution of {eq}`eq:state_space` at time $t$. We then say that the control $u$ 
 steers the system from $a$ to $x(t,u,a)$ in time $t$.
 
 Assume   for a moment that $B=0$. Then clearly any control $u$ steers $x(0)=a$ to $x(T,u,a)=e^{AT} a$ in time $T$. In other words, the control  has 
